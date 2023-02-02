@@ -1,0 +1,19 @@
+﻿using FastRouting.Repositories.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FastRouting.Services.Interfaces
+{
+    public interface IIntersectionsService
+    {
+        Task<List<Intersections>> GetAllAsync();
+        Task<Intersections> GetByIdAsync(int IntersectionID);
+        Task<Intersections> AddAsync(Intersections Intersections);
+        Task<Intersections> UpdateAsync(Intersections Intersections);
+        Task DeleteAsync(int IntersectionID);//מחיקה לפי מזהה הצטלבות
+
+    }
+}
