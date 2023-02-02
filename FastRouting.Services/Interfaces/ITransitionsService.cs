@@ -1,4 +1,5 @@
-﻿using FastRouting.Repositories.Entities;
+﻿using FastRouting.Common.DTO;
+using FastRouting.Repositories.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,11 @@ namespace FastRouting.Services.Interfaces
 {
     public interface ITransitionsService
     {
-        Task<List<Transitions>> GetAllAsync();
-        Task<Transitions> GetByIdAsync(int id);
+        Task<List<TransitionsDTO>> GetAllAsync();
+        Task<TransitionsDTO> GetByIdAsync(int id);
 
-        Task<Transitions> AddAsync(Transitions Transitions);
-        Task<Transitions> UpdateAsync(Transitions Transitions);
+        Task<TransitionsDTO> AddAsync(TransitionsDTO Transitions);
+        Task<TransitionsDTO> UpdateAsync(TransitionsDTO Transitions);
         Task DeleteAsync(int id);
     }
 }

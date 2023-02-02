@@ -10,7 +10,7 @@ using FastRouting.Common.DTO;
 
 namespace FastRouting.Services.Interfaces
 {
-    public interface ICoordinateDTOService
+    public interface ICoordinateService
     {
         Task<List<CoordinateDTO>> GetAllAsync();
         Task<CoordinateDTO> GetByIdAsync(int id);

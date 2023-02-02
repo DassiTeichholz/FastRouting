@@ -1,4 +1,7 @@
-﻿using FastRouting.Repositories.Entities;
+﻿using AutoMapper;
+using FastRouting.Common.DTO;
+using FastRouting.Repositories.Entities;
+using FastRouting.Repositories.Interfaces;
 using FastRouting.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -8,31 +11,41 @@ using System.Threading.Tasks;
 
 namespace FastRouting.Services.Services
 {
-    internal class TransitionsToIntersectionsServer : ITransitionsToIntersectionsService
+    public class TransitionsToIntersectionsServer : ITransitionsToIntersectionsService
     {
-        public Task<TransitionsToIntersections> AddAsync(TransitionsToIntersections TransitionsToIntersections)
+        private readonly ITransitionsToIntersectionsRepository _TransitionsToIntersectionsRepository;
+        private readonly IMapper _mapper;
+        public TransitionsToIntersectionsServer(ITransitionsToIntersectionsRepository TransitionsToIntersectionsRepository, IMapper mapper)
         {
-            throw new NotImplementedException();
+            _TransitionsToIntersectionsRepository = TransitionsToIntersectionsRepository;
+            _mapper = mapper;
         }
 
-        public Task DeleteByIdIdAsync(int IntersectionID, int TransitionId)
+        public async Task<TransitionsToIntersectionsDTO> AddAsync(TransitionsToIntersectionsDTO TransitionsToIntersections)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<TransitionsToIntersectionsDTO>(await _TransitionsToIntersectionsRepository.AddAsync(_mapper.Map<TransitionsToIntersections>(TransitionsToIntersections)));
+
         }
 
-        public Task<List<TransitionsToIntersections>> GetAllAsync()
+        public async Task DeleteByIdIdAsync(int IntersectionID, int TransitionId)
         {
-            throw new NotImplementedException();
+            await _TransitionsToIntersectionsRepository.DeleteByIdIdAsync(IntersectionID, TransitionId);
         }
 
-        public Task<TransitionsToIntersections> GetByIdIdAsync(int IntersectionID, int TransitionId)
+        public async Task<List<TransitionsToIntersectionsDTO>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return _mapper.Map<List<TransitionsToIntersectionsDTO>>(await _TransitionsToIntersectionsRepository.GetAllAsync());
         }
 
-        public Task<TransitionsToIntersections> UpdateAsync(TransitionsToIntersections TransitionsToIntersections)
+        public async Task<TransitionsToIntersectionsDTO> GetByIdIdAsync(int IntersectionID, int TransitionId)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<TransitionsToIntersectionsDTO>(await _TransitionsToIntersectionsRepository.GetByIdIdAsync(IntersectionID,  TransitionId));
+        }
+
+        public async Task<TransitionsToIntersectionsDTO> UpdateAsync(TransitionsToIntersectionsDTO TransitionsToIntersections)
+        {
+            return _mapper.Map<TransitionsToIntersectionsDTO>(await _TransitionsToIntersectionsRepository.UpdateAsync(_mapper.Map<TransitionsToIntersections>(TransitionsToIntersections)));
+
         }
     }
 }

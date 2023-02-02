@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FastRouting.Services
 {
-    internal class MappingProfile : Profile
+    public class MappingProfile : Profile
     {
         public MappingProfile()
         {

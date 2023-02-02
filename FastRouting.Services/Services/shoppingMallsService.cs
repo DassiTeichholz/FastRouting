@@ -1,4 +1,7 @@
-﻿using FastRouting.Repositories.Entities;
+﻿using AutoMapper;
+using FastRouting.Common.DTO;
+using FastRouting.Repositories.Entities;
+using FastRouting.Repositories.Interfaces;
 using FastRouting.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -8,31 +11,43 @@ using System.Threading.Tasks;
 
 namespace FastRouting.Services.Services
 {
-    internal class shoppingMallsService : IshoppingMallsService
+    public class shoppingMallsService : IshoppingMallsService
     {
-        public Task<shoppingMalls> AddAsync(shoppingMalls shoppingMalls)
+        private readonly IshoppingMallsRepository _shoppingMallRepository;
+        private readonly IMapper _mapper;
+        public shoppingMallsService(IshoppingMallsRepository shoppingMallRepository, IMapper mapper)
         {
-            throw new NotImplementedException();
+            _shoppingMallRepository = shoppingMallRepository;
+            _mapper = mapper;
         }
 
-        public Task DeleteAsync(int id)
+        public async Task<ShoppingMallsDTO> AddAsync(ShoppingMallsDTO shoppingMalls)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<ShoppingMallsDTO>(await _shoppingMallRepository.AddAsync(_mapper.Map<shoppingMalls>(shoppingMalls)));
+
         }
 
-        public Task<List<shoppingMalls>> GetAllAsync()
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            await _shoppingMallRepository.DeleteAsync(id);
         }
 
-        public Task<shoppingMalls> GetByIdAsync(int id)
+        public async Task<List<ShoppingMallsDTO>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return _mapper.Map<List<ShoppingMallsDTO>>(await _shoppingMallRepository.GetAllAsync());
+
         }
 
-        public Task<shoppingMalls> UpdateAsync(shoppingMalls shoppingMalls)
+        public async Task<ShoppingMallsDTO> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<ShoppingMallsDTO>(await _shoppingMallRepository.GetByIdAsync(id));
+
+        }
+
+        public async Task<ShoppingMallsDTO> UpdateAsync(ShoppingMallsDTO shoppingMalls)
+        {
+            return _mapper.Map<ShoppingMallsDTO>(await _shoppingMallRepository.UpdateAsync(_mapper.Map<shoppingMalls>(shoppingMalls)));
+
         }
     }
 }

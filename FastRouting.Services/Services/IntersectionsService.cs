@@ -1,4 +1,7 @@
-﻿using FastRouting.Repositories.Entities;
+﻿using AutoMapper;
+using FastRouting.Common.DTO;
+using FastRouting.Repositories.Entities;
+using FastRouting.Repositories.Interfaces;
 using FastRouting.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -8,31 +11,42 @@ using System.Threading.Tasks;
 
 namespace FastRouting.Services.Services
 {
-    internal class IntersectionsService : IIntersectionsService
+    public class IntersectionsService : IIntersectionsService
     {
-        public Task<Intersections> AddAsync(Intersections Intersections)
+        private readonly IIntersectionsRepository _IntersectionsRepository;
+        private readonly IMapper _mapper;
+        public IntersectionsService(IIntersectionsRepository IntersectionsRepository, IMapper mapper)
         {
-            throw new NotImplementedException();
+            _IntersectionsRepository = IntersectionsRepository;
+            _mapper = mapper;
+        }
+        public async Task<IntersectionsDTO> AddAsync(IntersectionsDTO Intersections)
+        {
+            return _mapper.Map<IntersectionsDTO>(await _IntersectionsRepository.AddAsync(_mapper.Map<Intersections>(Intersections)));
+
         }
 
-        public Task DeleteAsync(int IntersectionID)
+        public async Task DeleteAsync(int IntersectionID)
         {
-            throw new NotImplementedException();
+            await _IntersectionsRepository.DeleteAsync(IntersectionID);
         }
 
-        public Task<List<Intersections>> GetAllAsync()
+        public async Task<List<IntersectionsDTO>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            //לוגיקה עסקית
+            return _mapper.Map<List<IntersectionsDTO>>(await _IntersectionsRepository.GetAllAsync());
         }
 
-        public Task<Intersections> GetByIdAsync(int IntersectionID)
+        public async Task<IntersectionsDTO> GetByIdAsync(int IntersectionID)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<IntersectionsDTO>(await _IntersectionsRepository.GetByIdAsync(IntersectionID));
+
         }
 
-        public Task<Intersections> UpdateAsync(Intersections Intersections)
+        public async Task<IntersectionsDTO> UpdateAsync(IntersectionsDTO Intersections)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<IntersectionsDTO>(await _IntersectionsRepository.UpdateAsync(_mapper.Map<Intersections>(Intersections)));
+
         }
     }
 }

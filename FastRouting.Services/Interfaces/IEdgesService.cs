@@ -1,4 +1,5 @@
-﻿using FastRouting.Repositories.Entities;
+﻿using FastRouting.Common.DTO;
+using FastRouting.Repositories.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,10 @@ namespace FastRouting.Services.Interfaces
 {
     public interface IEdgesService
     {
-        Task<List<Edges>> GetAllAsync();
-        Task<Edges> GetByIdAsync(int Id);
-        Task<Edges> AddAsync(Edges Edges);
-        Task<Edges> UpdateAsync(Edges Edges);
+        Task<List<EdgesDTO>> GetAllAsync();
+        Task<EdgesDTO> GetByIdAsync(int Id);
+        Task<EdgesDTO> AddAsync(EdgesDTO Edges);
+        Task<EdgesDTO> UpdateAsync(EdgesDTO Edges);
         Task DeleteAsync(int LocationIdA);
     }
 }

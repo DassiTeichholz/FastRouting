@@ -1,4 +1,7 @@
-﻿using FastRouting.Repositories.Entities;
+﻿using AutoMapper;
+using FastRouting.Common.DTO;
+using FastRouting.Repositories.Entities;
+using FastRouting.Repositories.Interfaces;
 using FastRouting.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -8,31 +11,42 @@ using System.Threading.Tasks;
 
 namespace FastRouting.Services.Services
 {
-    internal class EdgesService : IEdgesService
+    public class EdgesService : IEdgesService
     {
-        public Task<Edges> AddAsync(Edges Edges)
+        private readonly IEdgesRepository _EdgesRepository;
+        private readonly IMapper _mapper;
+        public EdgesService(IEdgesRepository EdgesServiceRepository, IMapper mapper)
         {
-            throw new NotImplementedException();
+            _EdgesRepository = EdgesServiceRepository;
+            _mapper = mapper;
+        }
+        public async Task<EdgesDTO> AddAsync(EdgesDTO Edges)
+        {
+            return _mapper.Map<EdgesDTO>(await _EdgesRepository.AddAsync(_mapper.Map<Edges>(Edges)));
+
         }
 
-        public Task DeleteAsync(int LocationIdA)
+        public async Task DeleteAsync(int LocationIdA)
         {
-            throw new NotImplementedException();
+            await _EdgesRepository.DeleteAsync(LocationIdA);
         }
 
-        public Task<List<Edges>> GetAllAsync()
+        public async Task<List<EdgesDTO>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            //לוגיקה עסקית
+            return _mapper.Map<List<EdgesDTO>>(await _EdgesRepository.GetAllAsync());
         }
 
-        public Task<Edges> GetByIdAsync(int Id)
+        public async Task<EdgesDTO> GetByIdAsync(int Id)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<EdgesDTO>(await _EdgesRepository.GetByIdAsync(Id));
+          
         }
 
-        public Task<Edges> UpdateAsync(Edges Edges)
+        public async Task<EdgesDTO> UpdateAsync(EdgesDTO Edges)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<EdgesDTO>(await _EdgesRepository.UpdateAsync(_mapper.Map<Edges>(Edges)));
+
         }
     }
 }

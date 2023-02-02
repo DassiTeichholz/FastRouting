@@ -1,4 +1,7 @@
-﻿using FastRouting.Repositories.Entities;
+﻿using AutoMapper;
+using FastRouting.Common.DTO;
+using FastRouting.Repositories.Entities;
+using FastRouting.Repositories.Interfaces;
 using FastRouting.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -8,31 +11,43 @@ using System.Threading.Tasks;
 
 namespace FastRouting.Services.Services
 {
-    internal class TransitionsService : ITransitionsService
+    public class TransitionsService : ITransitionsService
     {
-        public Task<Transitions> AddAsync(Transitions Transitions)
+        private readonly ITransitionsRepository _TransitionsRepository;
+        private readonly IMapper _mapper;
+        public TransitionsService(ITransitionsRepository TransitionsRepository, IMapper mapper)
         {
-            throw new NotImplementedException();
+            _TransitionsRepository = TransitionsRepository;
+            _mapper = mapper;
         }
 
-        public Task DeleteAsync(int id)
+        public async Task<TransitionsDTO> AddAsync(TransitionsDTO Transitions)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<TransitionsDTO>(await _TransitionsRepository.AddAsync(_mapper.Map<Transitions>(Transitions)));
+
         }
 
-        public Task<List<Transitions>> GetAllAsync()
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            await _TransitionsRepository.DeleteAsync(id);
         }
 
-        public Task<Transitions> GetByIdAsync(int id)
+        public async Task<List<TransitionsDTO>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return _mapper.Map<List<TransitionsDTO>>(await _TransitionsRepository.GetAllAsync());
+
         }
 
-        public Task<Transitions> UpdateAsync(Transitions Transitions)
+        public async Task<TransitionsDTO> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<TransitionsDTO>(await _TransitionsRepository.GetByIdAsync(id));
+
+        }
+
+        public async Task<TransitionsDTO> UpdateAsync(TransitionsDTO Transitions)
+        {
+            return _mapper.Map<TransitionsDTO>(await _TransitionsRepository.UpdateAsync(_mapper.Map<Transitions>(Transitions)));
+
         }
     }
 }

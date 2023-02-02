@@ -1,4 +1,5 @@
-﻿using FastRouting.Repositories.Entities;
+﻿using FastRouting.Common.DTO;
+using FastRouting.Repositories.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +10,10 @@ namespace FastRouting.Services.Interfaces
 {
     public interface ILocationTypesService
     {
-        Task<List<LocationTypes>> GetAllAsync();
-        Task<LocationTypes> GetByIdAsync(int locationTypeId);
-        Task<LocationTypes> AddAsync(LocationTypes LocationTypes);
-        Task<LocationTypes> UpdateAsync(LocationTypes LocationTypes);
+        Task<List<LocationTypesDTO>> GetAllAsync();
+        Task<LocationTypesDTO> GetByIdAsync(int locationTypeId);
+        Task<LocationTypesDTO> AddAsync(LocationTypesDTO LocationTypes);
+        Task<LocationTypesDTO> UpdateAsync(LocationTypesDTO LocationTypes);
         Task DeleteAsync(int locationTypeId);//מחיקה לפי מזהה סוג מיקום
     }
 }

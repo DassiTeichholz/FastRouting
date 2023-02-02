@@ -1,4 +1,7 @@
-﻿using FastRouting.Common.DTO;
+﻿using AutoMapper;
+using FastRouting.Common.DTO;
+using FastRouting.Repositories.Entities;
+using FastRouting.Repositories.Interfaces;
 using FastRouting.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -8,31 +11,39 @@ using System.Threading.Tasks;
 
 namespace FastRouting.Services.Services
 {
-    internal class CoordinateService : ICoordinateDTOService
+    public class CoordinateService : ICoordinateService
     {
-        public Task<CoordinateDTO> AddAsync(CoordinateDTO CoordinateDTO)
+        private readonly ICoordinateRepository _CoordinateRepository;
+        private readonly IMapper _mapper;
+        public CoordinateService(ICoordinateRepository CoordinateRepository, IMapper mapper)
         {
-            throw new NotImplementedException();
+            _CoordinateRepository = CoordinateRepository;
+            _mapper = mapper;
+        }
+        public async  Task<CoordinateDTO> AddAsync(CoordinateDTO CoordinateDTO)
+        {
+            return _mapper.Map<CoordinateDTO>(await _CoordinateRepository.AddAsync(_mapper.Map < Coordinate > (CoordinateDTO)));
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            await _CoordinateRepository.DeleteAsync(id);
         }
 
-        public Task<List<CoordinateDTO>> GetAllAsync()
+        public async Task<List<CoordinateDTO>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            //לוגיקה עסקית
+            return _mapper.Map<List<CoordinateDTO>>(await _CoordinateRepository.GetAllAsync());
         }
 
-        public Task<CoordinateDTO> GetByIdAsync(int id)
+        public async Task<CoordinateDTO> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<CoordinateDTO>(await _CoordinateRepository.GetByIdAsync(id));
         }
 
-        public Task<CoordinateDTO> UpdateAsync(CoordinateDTO CoordinateDTO)
+        public async Task<CoordinateDTO> UpdateAsync(CoordinateDTO CoordinateDTO)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<CoordinateDTO>(await _CoordinateRepository.UpdateAsync(_mapper.Map<Coordinate>(CoordinateDTO)));
         }
     }
 }

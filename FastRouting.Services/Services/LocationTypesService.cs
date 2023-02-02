@@ -1,4 +1,7 @@
-﻿using FastRouting.Repositories.Entities;
+﻿using AutoMapper;
+using FastRouting.Common.DTO;
+using FastRouting.Repositories.Entities;
+using FastRouting.Repositories.Interfaces;
 using FastRouting.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -8,31 +11,43 @@ using System.Threading.Tasks;
 
 namespace FastRouting.Services.Services
 {
-    internal class LocationTypesService : ILocationTypesService
+    public class LocationTypesService : ILocationTypesService
     {
-        public Task<LocationTypes> AddAsync(LocationTypes LocationTypes)
+        private readonly ILocationTypesRepository _LocationTypesRepository;
+        private readonly IMapper _mapper;
+        public LocationTypesService(ILocationTypesRepository LocationTypesRepository, IMapper mapper)
         {
-            throw new NotImplementedException();
+            _LocationTypesRepository = LocationTypesRepository;
+            _mapper = mapper;
         }
 
-        public Task DeleteAsync(int locationTypeId)
+        public async Task<LocationTypesDTO> AddAsync(LocationTypesDTO LocationTypes)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<LocationTypesDTO>(await _LocationTypesRepository.AddAsync(_mapper.Map<LocationTypes>(LocationTypes)));
+
         }
 
-        public Task<List<LocationTypes>> GetAllAsync()
+        public async Task DeleteAsync(int locationTypeId)
         {
-            throw new NotImplementedException();
+            await _LocationTypesRepository.DeleteAsync(locationTypeId);
         }
 
-        public Task<LocationTypes> GetByIdAsync(int locationTypeId)
+        public async Task<List<LocationTypesDTO>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return _mapper.Map<List<LocationTypesDTO>>(await _LocationTypesRepository.GetAllAsync());
+
         }
 
-        public Task<LocationTypes> UpdateAsync(LocationTypes LocationTypes)
+        public async Task<LocationTypesDTO> GetByIdAsync(int locationTypeId)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<LocationTypesDTO>(await _LocationTypesRepository.GetByIdAsync(locationTypeId));
+
+        }
+
+        public async Task<LocationTypesDTO> UpdateAsync(LocationTypesDTO LocationTypes)
+        {
+            return _mapper.Map<LocationTypesDTO>(await _LocationTypesRepository.UpdateAsync(_mapper.Map<LocationTypes>(LocationTypes)));
+
         }
     }
 }
