@@ -21,6 +21,7 @@ namespace FastRouting.Repositories
             services.AddScoped<ITransitionsRepository, TransitionsRepository>();
             services.AddScoped<ITransitionsToIntersectionsRepository, TransitionsToIntersectionsRepository>();
             services.AddScoped<IshoppingMallsRepository, shoppingMallsRepository>();
+            services.AddScoped<ITheMallPhotosRepository, TheMallPhotosRepository>();
             return services;
         }
     }

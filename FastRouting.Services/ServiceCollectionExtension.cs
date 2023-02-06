@@ -15,7 +15,7 @@ namespace FastRouting.Services
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
             services.AddRepositories();
-            services.AddScoped<ICoordinateDTOService, CoordinateService>();
+            services.AddScoped<ICoordinateService, CoordinateService>();
             services.AddScoped<IEdgesService, EdgesService>();
             services.AddScoped<IIntersectionsService, IntersectionsService>();
             services.AddScoped<ILocationsService, LocationsService>();
@@ -25,6 +25,7 @@ namespace FastRouting.Services
             services.AddScoped<ITransitionsService, TransitionsService>();
             
             services.AddScoped<ITransitionsToIntersectionsService, TransitionsToIntersectionsServer>();
+            services.AddScoped<ITheMallPhotosService, TheMallPhotosService>();
 
             services.AddAutoMapper(typeof(MappingProfile));
 

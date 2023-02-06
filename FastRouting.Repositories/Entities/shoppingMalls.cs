@@ -11,7 +11,7 @@ namespace FastRouting.Repositories.Entities
         public int Iג { get; set; }
         public int Name { get; set; }
 
-        public float ImageId { get; set; }
+        public TheMallPhotos TheMallPhotos { get; set; }
 
     }
 }

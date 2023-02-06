@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
+
+using static System.Net.Mime.MediaTypeNames;
 
 namespace FastRouting.Repositories.Entities
 {
-    public class Coordinate
+    public  class TheMallPhotos
     {
         public int Id { get; set; }
-        public int X { get; set; }
-        public int Y { get; set; }
-        public int Z { get; set; }//floor
+        public byte[] Image { get; set; }
+
     }
 }

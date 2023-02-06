@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using FastRouting.Common.DTO;
 using FastRouting.Repositories.Entities;
+using FastRouting.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,7 @@ namespace FastRouting.Services
             CreateMap<TransitionsDTO, Transitions>().ReverseMap();
 
             CreateMap<TransitionsToIntersectionsDTO, TransitionsToIntersections>().ReverseMap();
+            CreateMap<TheMallPhotosRepositoryDTO, ITheMallPhotosRepository>().ReverseMap();
 
 
         }
