@@ -15,6 +15,9 @@ namespace FastRouting.Services.Services
     {
         private readonly ILocationsRepository _LocationsRepository;
         private readonly IMapper _mapper;
+
+        
+
         public LocationsService(ILocationsRepository LocationsRepository, IMapper mapper)
         {
             _LocationsRepository = LocationsRepository;
