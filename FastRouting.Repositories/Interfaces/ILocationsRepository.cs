@@ -9,10 +9,10 @@ namespace FastRouting.Repositories.Interfaces
 {
     public interface ILocationsRepository
     {
-        Task<List<Locations>> GetAllAsync();
-        Task<Locations> GetByIDAsync(int ID);
-        Task<Locations> AddAsync(Locations Locations);
-        Task<Locations> UpdateAsync(Locations Locations);
+        Task<List<Location>> GetAllAsync();
+        Task<Location> GetByIDAsync(int ID);
+        Task<Location> AddAsync(Location Locations);
+        Task<Location> UpdateAsync(Location Locations);
         Task DeleteAsync(int Id);//מחיקה לפי מזהה הצטלבות
     }
 }

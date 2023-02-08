@@ -15,11 +15,11 @@ namespace FastRouting.Repositories
         DbSet<Edges> Edges { get; set; }
 
         DbSet<Intersections> Intersections { get; set; }
-        DbSet<Locations> Locations { get; set; }
+        DbSet<Location> Locations { get; set; }
 
         DbSet<LocationTypes> LocationTypes { get; set; }
 
-        DbSet<Transitions> Transitions { get; set; }
+        DbSet<Transition> Transitions { get; set; }
 
         DbSet<TransitionsToIntersections> TransitionsToIntersections { get; set; }
         DbSet<shoppingMalls> shoppingMalls { get; set; }

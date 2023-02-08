@@ -19,13 +19,13 @@ namespace FastRouting.Services
 
             CreateMap<IntersectionsDTO, Intersections>().ReverseMap();
 
-            CreateMap<LocationsDTO, Locations>().ReverseMap();
+            CreateMap<LocationsDTO, Location>().ReverseMap();
 
             CreateMap<LocationTypesDTO, LocationTypes>().ReverseMap();
 
             CreateMap<ShoppingMallsDTO, shoppingMalls>().ReverseMap();
 
-            CreateMap<TransitionsDTO, Transitions>().ReverseMap();
+            CreateMap<TransitionsDTO, Transition>().ReverseMap();
 
             CreateMap<TransitionsToIntersectionsDTO, TransitionsToIntersections>().ReverseMap();
             CreateMap<TheMallPhotosRepositoryDTO, ITheMallPhotosRepository>().ReverseMap();

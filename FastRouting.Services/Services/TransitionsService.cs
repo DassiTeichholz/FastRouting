@@ -23,7 +23,7 @@ namespace FastRouting.Services.Services
 
         public async Task<TransitionsDTO> AddAsync(TransitionsDTO Transitions)
         {
-            return _mapper.Map<TransitionsDTO>(await _TransitionsRepository.AddAsync(_mapper.Map<Transitions>(Transitions)));
+            return _mapper.Map<TransitionsDTO>(await _TransitionsRepository.AddAsync(_mapper.Map<Transition>(Transitions)));
 
         }
 
@@ -46,7 +46,7 @@ namespace FastRouting.Services.Services
 
         public async Task<TransitionsDTO> UpdateAsync(TransitionsDTO Transitions)
         {
-            return _mapper.Map<TransitionsDTO>(await _TransitionsRepository.UpdateAsync(_mapper.Map<Transitions>(Transitions)));
+            return _mapper.Map<TransitionsDTO>(await _TransitionsRepository.UpdateAsync(_mapper.Map<Transition>(Transitions)));
 
         }
     }

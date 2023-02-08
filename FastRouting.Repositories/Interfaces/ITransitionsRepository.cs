@@ -9,11 +9,11 @@ namespace FastRouting.Repositories.Interfaces
 {
     public interface ITransitionsRepository
     {
-        Task<List<Transitions>> GetAllAsync();
-        Task<Transitions> GetByIdAsync(int id);
+        Task<List<Transition>> GetAllAsync();
+        Task<Transition> GetByIdAsync(int id);
 
-        Task<Transitions> AddAsync(Transitions Transitions);
-        Task<Transitions> UpdateAsync(Transitions Transitions);
+        Task<Transition> AddAsync(Transition Transitions);
+        Task<Transition> UpdateAsync(Transition Transitions);
         Task DeleteAsync(int id);
     }
 }

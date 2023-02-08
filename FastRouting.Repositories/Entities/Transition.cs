@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FastRouting.Repositories.Entities
 {
-    public class Transitions
+    public class Transition
     {
         public int Id { get; set; }
         public string TransitionsName { get; set; }

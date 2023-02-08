@@ -9,9 +9,9 @@ namespace FastRouting.Context
         public DbSet<Coordinate> Coordinate { get; set; }
         public DbSet<Edges> Edges { get; set; }
         public DbSet<Intersections> Intersections { get; set; }
-        public DbSet<Locations> Locations { get; set; }
+        public DbSet<Location> Locations { get; set; }
         public DbSet<LocationTypes> LocationTypes { get; set; }
-        public DbSet<Transitions> Transitions { get; set; }
+        public DbSet<Transition> Transitions { get; set; }
         public DbSet<TransitionsToIntersections> TransitionsToIntersections { get; set; }
         public DbSet<shoppingMalls> shoppingMalls { get; set; }
     }

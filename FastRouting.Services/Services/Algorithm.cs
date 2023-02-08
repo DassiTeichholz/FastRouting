@@ -1,5 +1,6 @@
 ﻿using FastRouting.Common.DTO;
 using FastRouting.Repositories.Entities;
+using FastRouting.Repositories.Interfaces;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,8 +12,9 @@ namespace FastRouting.Services.Services
 {
     public static class Algorithm
     {
+       
         //באלגוריתם זה אני מוסיפה את הנקודות למסד הנתונים וכן את הקשתות
-        public static bool AddMall(List<LocationsDTO> Locations, List<IntersectionsDTO> Intersections, List<int>[] PassCodes)
+        public static List<EdgesDTO> AddMall(List<LocationsDTO> Locations, List<IntersectionsDTO> Intersections, List<int>[] PassCodes)
         {
             try
             {
@@ -20,7 +22,7 @@ namespace FastRouting.Services.Services
 
                 foreach (var location in Locations)
                 {
-                    int transitionId = location.Transitions;
+                    int transitionId = location.Transition.Id;
                     if (!locationIdsByTransitionId.ContainsKey(transitionId))
                     {
                         locationIdsByTransitionId[transitionId] = new List<int>();
@@ -78,24 +80,26 @@ namespace FastRouting.Services.Services
                     }
                     ////////TransitionsToIntersectionsServer.AddAsync(TransitionsToIntersections);
                 }
-            
-                   //////////LocationsService LocationsService = new LocationsService();
-                   //////////foreach (var location in Locations)
-                   //////////{
-                   //////////    LocationsService.AddAsync(location);
 
-                   //////////}
-                     //////////IntersectionsService IntersectionsService = new IntersectionsService();
-                     //////////foreach (var intersection in Intersections)
-                   //////////{
-                      //////////    IntersectionsService.AddAsync(intersection);
-                   //////////}
+                LocationsService LocationsService = new LocationsService();
+                foreach (var location in Locations)
+                {
+                    LocationsService.AddAsync(location);
+
+                }
+                var c = new List<EdgesDTO>();
+                return c;
+                //////////IntersectionsService IntersectionsService = new IntersectionsService();
+                //////////foreach (var intersection in Intersections)
+                //////////{
+                //////////    IntersectionsService.AddAsync(intersection);
+                //////////}
 
 
 
 
 
-               return true;
+                return true;
             }
             catch (Exception e)
             {
