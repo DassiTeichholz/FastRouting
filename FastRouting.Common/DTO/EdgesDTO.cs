@@ -11,6 +11,6 @@ namespace FastRouting.Common.DTO
         public int LocationIdA { get; set; }
         public int LocationIdB { get; set; }
 
-        public float Distance { get; set; }
+        public double Distance { get; set; }
     }
 }

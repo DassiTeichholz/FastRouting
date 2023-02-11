@@ -9,8 +9,8 @@ namespace FastRouting.Repositories.Entities
     public class Coordinate
     {
         public int Id { get; set; }
-        public int X { get; set; }
-        public int Y { get; set; }
+        public double X { get; set; }
+        public double Y { get; set; }
         public int Z { get; set; }//floor
     }
 }

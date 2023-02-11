@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace FastRouting.Services.Services
 {
+    //הערה
     public static class Algorithm
     {
 
@@ -20,14 +21,14 @@ namespace FastRouting.Services.Services
       }
 
     //באלגוריתם זה אני מוסיפה את הנקודות למסד הנתונים וכן את הקשתות
-    public static List<EdgesDTO> BuildingEdges(List<LocationsDTO> Locations, List<IntersectionsDTO> Intersections, List<int>[] PassCodes)
+    public static object BuildingEdges(List<LocationsDTO> Locations, List<IntersectionsDTO> Intersections, List<int>[] PassCodes)
         {
             try
             {
                 List<EdgesDTO> edges = new List<EdgesDTO>();
-                List<IntersectionsDTO> intersections = new List<IntersectionsDTO>();
+               // List<IntersectionsDTO> intersections = new List<IntersectionsDTO>();
                 List<TransitionsToIntersectionsDTO> transitionsToIntersections = new List<TransitionsToIntersectionsDTO>();
-                List<LocationsDTO> locations = new List<LocationsDTO>();
+               // List<LocationsDTO> locations = new List<LocationsDTO>();
                 var locationIdsByTransitionId = new Dictionary<int, List<int>>();
 
                 foreach (var location in Locations)
@@ -105,7 +106,7 @@ namespace FastRouting.Services.Services
                     }
                     for (int i = 0; i < locationIds.Count; i++)
                     {
-                        if (intersections.Any(x => x.Coordinate.Id == locationIds[i]))
+                        if (Intersections.Any(x => x.Coordinate.Id == locationIds[i]))
                         {
                             TransitionsToIntersectionsDTO transitionsToIntersection = new TransitionsToIntersectionsDTO
                             {
@@ -119,7 +120,14 @@ namespace FastRouting.Services.Services
                     }
                 }
 
-                
+
+                var result = new
+                {
+                    TransitionsToIntersections = transitionsToIntersections,
+                    Edges = edges
+                };
+
+                return result;
 
 
 

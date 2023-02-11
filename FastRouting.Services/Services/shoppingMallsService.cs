@@ -15,6 +15,7 @@ namespace FastRouting.Services.Services
     {
         private readonly IshoppingMallsRepository _shoppingMallRepository;
         private readonly IMapper _mapper;
+        private readonly IEdgesService _edgesService;
         public shoppingMallsService(IshoppingMallsRepository shoppingMallRepository, IMapper mapper)
         {
             _shoppingMallRepository = shoppingMallRepository;
@@ -47,6 +48,32 @@ namespace FastRouting.Services.Services
         public async Task<ShoppingMallsDTO> UpdateAsync(ShoppingMallsDTO shoppingMalls)
         {
             return _mapper.Map<ShoppingMallsDTO>(await _shoppingMallRepository.UpdateAsync(_mapper.Map<shoppingMalls>(shoppingMalls)));
+
+        }
+
+        public async Task<bool> CreateNewMall(List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<int>[] passCodes)
+        {
+
+            try
+            {
+                dynamic result = Algorithm.BuildingEdges(locations, intersections, passCodes);
+                
+
+                List<TransitionsToIntersectionsDTO> TransitionsToIntersections = result.TransitionsToIntersections;
+                List<EdgesDTO> Edges = result.Edges;
+
+                //add edges
+                // var res = await _edgesService.AddAsync(x);
+                //if (res == null)
+                //{
+                //    return false;
+                //}
+                return true;
+            }
+            catch (Exception ex) {
+                return false;
+            }
+           
 
         }
     }

@@ -11,7 +11,7 @@ namespace FastRouting.Repositories.Entities
         public int LocationIdA { get; set; }
         public int LocationIdB { get; set; }
 
-        public float Distance { get; set; }
+        public double Distance { get; set; }
 
 
     }
