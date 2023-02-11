@@ -9,8 +9,8 @@ namespace FastRouting.Common.DTO
     public class CoordinateDTO
     {
         public int Id { get; set; }
-        public float X { get; set; }
-        public float Y { get; set; }
+        public double X { get; set; }
+        public double Y { get; set; }
         public int Z { get; set; }//floor
     }
 }

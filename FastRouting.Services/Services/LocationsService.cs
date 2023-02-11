@@ -57,13 +57,13 @@ namespace FastRouting.Services.Services
         public async Task<bool> CreateNewMall(List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<int>[] passCodes)
         {
 
-            var x = Algorithm.AddMall(locations, intersections, passCodes);
+            var x = Algorithm.BuildingEdges(locations, intersections, passCodes);
             //add edges
-            var res = await _edgesService.AddAsync(x);
-            if (res == null)
-            {
-                return false;
-            }
+           // var res = await _edgesService.AddAsync(x);
+            //if (res == null)
+            //{
+            //    return false;
+            //}
             return true;
 
         }

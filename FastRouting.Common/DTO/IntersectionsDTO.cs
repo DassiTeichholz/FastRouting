@@ -9,7 +9,7 @@ namespace FastRouting.Common.DTO
     public class IntersectionsDTO
     {
         public int IntersectionID { get; set; }//קוד הצלבות
-        public int Coordinate { get; set; }
-        public int shoppingMalls { get; set; }
+        public CoordinateDTO Coordinate { get; set; }
+        public ShoppingMallsDTO shoppingMalls { get; set; }
     }
 }

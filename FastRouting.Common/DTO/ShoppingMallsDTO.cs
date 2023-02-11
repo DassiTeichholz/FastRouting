@@ -11,6 +11,6 @@ namespace FastRouting.Common.DTO
         public int Iג { get; set; }
         public int Name { get; set; }
 
-        public float ImageId { get; set; }
+        public TheMallPhotosRepositoryDTO TheMallPhotosRepository { get; set; }
     }
 }

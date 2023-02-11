@@ -8,7 +8,7 @@ namespace FastRouting.Repositories.Entities
 {
     public class shoppingMalls
     {
-        public int Iג { get; set; }
+        public int Id { get; set; }
         public int Name { get; set; }
 
         public TheMallPhotos TheMallPhotos { get; set; }
