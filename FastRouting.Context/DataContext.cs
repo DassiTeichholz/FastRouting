@@ -14,5 +14,6 @@ namespace FastRouting.Context
         public DbSet<Transition> Transitions { get; set; }
         public DbSet<TransitionsToIntersections> TransitionsToIntersections { get; set; }
         public DbSet<shoppingMalls> shoppingMalls { get; set; }
+        public DbSet<TheMallPhotos> TheMallPhotos { get ; set ; }
     }
 }
