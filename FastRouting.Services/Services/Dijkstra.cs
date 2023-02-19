@@ -9,83 +9,207 @@ using System.Collections.Generic;
 using FastRouting.Common.DTO;
 using FastRouting.Repositories.Entities;
 using FastRouting.Repositories.Interfaces;
+using FastRouting.Services.Services;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.Metrics;
+using System.Linq;
+using System.Xml.Linq;
+
 
 
 namespace FastRouting.Services.Services
 {
+    //public class internalObject
+    //{
+    //    public int idCoordinate;
+    //    public double distance;
+
+    //    public internalObject(int idCoordinate, double distance)
+    //    {
+    //        this.idCoordinate = idCoordinate;
+    //        this.distance = distance;
+    //    }
+    //}
+    public class EdgeOfGraph
+    {
+        public int num { get; set; }
+        public EdgesDTO Edge { get; set; }
+        public EdgeOfGraph(int num, EdgesDTO edge)
+        {
+            this.num = num;
+            Edge = edge;
+        }
+    }
+
+    //public class HeapItem
+    //{
+    //    public int id;
+    //    public double distance;
+    //    public HeapItem(int id, double distance)
+    //    {
+    //        this.id = id;
+    //        this.distance = distance;
+    //    }
+
+    //}
 
 
 
-    using System;
-    using System.Collections.Generic;
-    using System.Diagnostics.Metrics;
-    using System.Linq;
-    using System.Xml.Linq;
+
+    public class VertexOfGraph
+    {
+        public int num { get; set; }
+        //private int vertexNum;
+        public CoordinateDTO coordinate { get; set; }
+        public LocationTypesDTO LocationTypes { get; set; }
+        public string name { get; set; }
+        public List<EdgeOfGraph> EdgesOfGraphs { get; set; }
+        //private int num;
+
+        public VertexOfGraph(CoordinateDTO coordinate, LocationTypesDTO LocationTypes, string name, int num, List<EdgeOfGraph> listEdgeOfGraph)
+        {
+            this.coordinate = coordinate;
+            this.LocationTypes = LocationTypes;
+            this.name = name;
+            this.EdgesOfGraphs = listEdgeOfGraph;
+            this.num = num;
+        }
+        public VertexOfGraph(CoordinateDTO coordinate, int num, List<EdgeOfGraph> listEdgeOfGraph)
+        {
+            this.num = num;
+            this.coordinate = coordinate;
+            this.LocationTypes = null; ;
+            this.name = null;
+            this.EdgesOfGraphs = listEdgeOfGraph;
+
+        }
+    }
+
+
+
 
     public static class Dijkstra
     {
-        public class internalObject
-        {
-            public int idCoordinate;
-            public double distance;
 
-            public internalObject(int idCoordinate, double distance)
+        public statics int[] ShortestPath(int src)
+        {
+            int[] dist = new int[V];
+            bool[] visited = new bool[V];
+            for (int i = 0; i < V; i++)
             {
-                this.idCoordinate=idCoordinate;
-                this.distance=distance;
+                dist[i] = int.MaxValue;
             }
+            dist[src] = 0;
+
+            var minHeap = new SortedSet<Tuple<int, int>>();
+            minHeap.Add(new Tuple<int, int>(0, src));
+
+            while (minHeap.Count > 0)
+            {
+                var node = minHeap.Min;
+                minHeap.Remove(node);
+
+                int u = node.Item2;
+                if (visited[u]) continue;
+                visited[u] = true;
+
+                foreach (var neighbor in adj[u])
+                {
+                    int v = neighbor.Item1;
+                    int w = neighbor.Item2;
+                    if (dist[u] + w < dist[v])
+                    {
+                        dist[v] = dist[u] + w;
+                        if (!visited[v])
+                        {
+                            minHeap.Add(new Tuple<int, int>(dist[v], v));
+                        }
+                    }
+                }
+            }
+
+            return dist;
         }
 
-        public class Vertex
-        {
-            //private int vertexNum;
-            private CoordinateDTO coordinate;
-            private LocationTypesDTO LocationTypes;
-            private string name;
-            private List<internalObject> internalObject;
-            //private int num;
+        //הקשתות איתן נעבוד לחישוב האלגוריתם, מכילות מספר
 
-            public Vertex(CoordinateDTO coordinate, LocationTypesDTO LocationTypes,string name)
-            {
-                this.coordinate = coordinate;
-                this.LocationTypes = LocationTypes;
-                this.name = name;
-                this.internalObject = new List<internalObject>();
-            }
-            public Vertex(CoordinateDTO coordinate)
-            {
-                this.coordinate = coordinate;
-                this.LocationTypes = null; ;
-                this.name = null;
 
-            }
-        }
-        public static List<Vertex> Dijkstra(int startId, int endId, List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<EdgesDTO> edges)
+
+        public static List<VertexOfGraph> Dijkstra(int startId, int endId, List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<EdgesDTO> edges)
         {
 
-            int[] parent = new int[locations.Count+intersections.Count];
-            bool[] isVisit = new bool[locations.Count+intersections.Count];
-            double[] distance = new double[locations.Count+intersections.Count];
-            Vertex[] graph = new Vertex[locations.Count+intersections.Count];
-            double[] heapArray = new double[locations.Count+intersections.Count];
+            int[] parent = new int[locations.Count + intersections.Count];
+            bool[] isVisit = new bool[locations.Count + intersections.Count];
+            double[] distance = new double[locations.Count + intersections.Count];
+            VertexOfGraph[] graph = new VertexOfGraph[locations.Count + intersections.Count];
+           // double[] heapArray = new double[locations.Count + intersections.Count];
 
-            foreach (Vertex edge in graph) 
+            int index = 0;
+            foreach (var location in locations)
             {
-                int index = IntStream.range(0, persons.length)
-                                     .filter(i->persons[i].id == 5)
-                                     .findFirst()
-                                     .orElse(-1);
+                List<EdgeOfGraph> listEdgeOfGraph = new List<EdgeOfGraph>();
+                foreach (var edge in edges)
+                {
+                    if (edge.LocationIdA == location.Coordinate.Id)
+                    {
+                        EdgeOfGraph EdgesOfGraph = new EdgeOfGraph(index, edge);
+                        
+                      
+                        listEdgeOfGraph.Add(EdgesOfGraph);
+                     }
+                }
+                
+                VertexOfGraph VertexOfGraph = new VertexOfGraph(location.Coordinate,location.LocationTypes,location.LocationName,index, listEdgeOfGraph);
+
+                graph[index] = VertexOfGraph;
+                index++;
+
+            }
+
+            foreach (var intersection in intersections)
+            {
+                List<EdgeOfGraph> listEdgeOfGraph = new List<EdgeOfGraph>();
+                foreach (var edge in edges)
+                {
+                    if (edge.LocationIdA == intersection.Coordinate.Id)
+                    {
+                        EdgeOfGraph EdgesOfGraph = new EdgeOfGraph(index, edge);
+
+
+                        listEdgeOfGraph.Add(EdgesOfGraph);
+                    }
+                }
+               
+                VertexOfGraph VertexOfGraph = new VertexOfGraph(intersection.Coordinate, index, listEdgeOfGraph);
+
+                graph[index] = VertexOfGraph;
+                index++;
+
             }
 
 
-
-
-
-
-
         }
-
-
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
