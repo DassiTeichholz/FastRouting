@@ -16,6 +16,9 @@ namespace FastRouting.Services.Services
         private readonly IshoppingMallsRepository _shoppingMallRepository;
         private readonly IMapper _mapper;
         private readonly IEdgesService _edgesService;
+        //private readonly IEdgesService _edgesService;
+        //private readonly IEdgesService _edgesService;
+        //private readonly IEdgesService _edgesService;
         public shoppingMallsService(IshoppingMallsRepository shoppingMallRepository, IMapper mapper)
         {
             _shoppingMallRepository = shoppingMallRepository;
@@ -62,6 +65,11 @@ namespace FastRouting.Services.Services
                 List<TransitionsToIntersectionsDTO> TransitionsToIntersections = result.TransitionsToIntersections;
                 List<EdgesDTO> Edges = result.Edges;
 
+                foreach (var item in TransitionsToIntersections)
+                {
+
+
+                }
                 //add edges
                 // var res = await _edgesService.AddAsync(x);
                 //if (res == null)

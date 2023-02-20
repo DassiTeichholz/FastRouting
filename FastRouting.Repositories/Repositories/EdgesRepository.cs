@@ -22,7 +22,14 @@ namespace FastRouting.Repositories.Repositories
 
         public async Task DeleteAsync(int Id)
         {
-            var Edges = await GetByIdAsync(Id);
+            var Edges = await GetByLocationIdAAsync(Id);
+            _context.Edges.Remove(Edges);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task  DeleteEdgesOfIdAsync(int id)
+        {
+            var Edges = await GetByLocationIdAAsync(Id);
             _context.Edges.Remove(Edges);
             await _context.SaveChangesAsync();
         }
@@ -31,12 +38,19 @@ namespace FastRouting.Repositories.Repositories
         {
             return await _context.Edges.ToListAsync();
         }
-
-        public async Task<Edges> GetByIdAsync(int Id)
+        public async Task<List<Edges>> GetAllByIdAsync()
         {
-            return await _context.Edges.FindAsync(Id);
+            return await _context.Edges.ToListAsync();
         }
 
+        public async Task<Edges> GetByLocationIdAAsync(int Id)
+        {
+            return  _context.Edges.FirstOrDefault(x=>x.LocationIdA==Id);
+        }
+        public async Task<Edges> GetByLocationIdBAsync(int Id)
+        {
+            return  _context.Edges.FirstOrDefault(x => x.LocationIdB == Id);
+        }
         public async Task<Edges> UpdateAsync(Edges Edges)
         {
             var Edge = _context.Edges.Update(Edges);

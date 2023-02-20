@@ -9,11 +9,13 @@ namespace FastRouting.Repositories.Interfaces
 {
     public interface IEdgesRepository
     {
-        Task<List<Edges>> GetAllAsync();
-        Task<Edges> GetByIdAsync(int Id);
+        Task<List<Edges>> GetAllAsync(); 
+        Task<List<Edges>> GetAllByIdAsync(int id);
+        Task<Edges> GetByLocationIdAAsync(int Id);
+        Task<Edges> GetByLocationIdBAsync(int Id);
         Task<Edges> AddAsync(Edges Edges);
         Task<Edges> UpdateAsync(Edges Edges);
         Task DeleteAsync(int LocationIdA);
-       
+        Task DeleteEdgesOfIdAsync(int id);
     }
 }

@@ -15,6 +15,8 @@ using System.Collections.Generic;
 using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Xml.Linq;
+using System;
+using System.Collections.Generic;
 
 
 
@@ -42,17 +44,19 @@ namespace FastRouting.Services.Services
         }
     }
 
-    //public class HeapItem
-    //{
-    //    public int id;
-    //    public double distance;
-    //    public HeapItem(int id, double distance)
-    //    {
-    //        this.id = id;
-    //        this.distance = distance;
-    //    }
+    public class HeapItem
+    {
+        public int id;
+        public double distance;
+        public HeapItem(int id, double distance)
+        {
+            this.id = id;
+            this.distance = distance;
+        }
 
-    //}
+    }
+
+
 
 
 
@@ -92,58 +96,18 @@ namespace FastRouting.Services.Services
     public static class Dijkstra
     {
 
-        public statics int[] ShortestPath(int src)
-        {
-            int[] dist = new int[V];
-            bool[] visited = new bool[V];
-            for (int i = 0; i < V; i++)
-            {
-                dist[i] = int.MaxValue;
-            }
-            dist[src] = 0;
 
-            var minHeap = new SortedSet<Tuple<int, int>>();
-            minHeap.Add(new Tuple<int, int>(0, src));
-
-            while (minHeap.Count > 0)
-            {
-                var node = minHeap.Min;
-                minHeap.Remove(node);
-
-                int u = node.Item2;
-                if (visited[u]) continue;
-                visited[u] = true;
-
-                foreach (var neighbor in adj[u])
-                {
-                    int v = neighbor.Item1;
-                    int w = neighbor.Item2;
-                    if (dist[u] + w < dist[v])
-                    {
-                        dist[v] = dist[u] + w;
-                        if (!visited[v])
-                        {
-                            minHeap.Add(new Tuple<int, int>(dist[v], v));
-                        }
-                    }
-                }
-            }
-
-            return dist;
-        }
 
         //הקשתות איתן נעבוד לחישוב האלגוריתם, מכילות מספר
 
 
 
-        public static List<VertexOfGraph> Dijkstra(int startId, int endId, List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<EdgesDTO> edges)
+        public static List<VertexOfGraph> Dijkstra(int src, int dest, List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<EdgesDTO> edges)
         {
 
-            int[] parent = new int[locations.Count + intersections.Count];
-            bool[] isVisit = new bool[locations.Count + intersections.Count];
-            double[] distance = new double[locations.Count + intersections.Count];
+
             VertexOfGraph[] graph = new VertexOfGraph[locations.Count + intersections.Count];
-           // double[] heapArray = new double[locations.Count + intersections.Count];
+            // double[] heapArray = new double[locations.Count + intersections.Count];
 
             int index = 0;
             foreach (var location in locations)
@@ -154,13 +118,13 @@ namespace FastRouting.Services.Services
                     if (edge.LocationIdA == location.Coordinate.Id)
                     {
                         EdgeOfGraph EdgesOfGraph = new EdgeOfGraph(index, edge);
-                        
-                      
+
+
                         listEdgeOfGraph.Add(EdgesOfGraph);
-                     }
+                    }
                 }
-                
-                VertexOfGraph VertexOfGraph = new VertexOfGraph(location.Coordinate,location.LocationTypes,location.LocationName,index, listEdgeOfGraph);
+
+                VertexOfGraph VertexOfGraph = new VertexOfGraph(location.Coordinate, location.LocationTypes, location.LocationName, index, listEdgeOfGraph);
 
                 graph[index] = VertexOfGraph;
                 index++;
@@ -180,7 +144,7 @@ namespace FastRouting.Services.Services
                         listEdgeOfGraph.Add(EdgesOfGraph);
                     }
                 }
-               
+
                 VertexOfGraph VertexOfGraph = new VertexOfGraph(intersection.Coordinate, index, listEdgeOfGraph);
 
                 graph[index] = VertexOfGraph;
@@ -189,10 +153,50 @@ namespace FastRouting.Services.Services
             }
 
 
+            int[] prev = new int[graph.Length];
+            bool[] isVisit = new bool[graph.Length];
+            double[] dist = new double[graph.Length];
+
+            for (int i = 0; i < graph.Length; i++)
+            {
+                dist[i] = int.MaxValue;
+                prev[i] = -1;
+            }
+
+            dist[src] = 0;
+            var pq = new PriorityQueue<HeapItem, double>();
+            HeapItem HeapItem = new HeapItem(src, 0);
+            pq.Enqueue(HeapItem, 0);
+            while (pq.Count > 0)
+            {
+                HeapItem curr;
+                curr = pq.Dequeue();
+                int u = ;
+                if (u == dest)
+                {
+                    break; // if the destination vertex is reached, exit early
+                }
+                if (curr[0] > dist[u])
+                {
+                    continue; // if a shorter distance to u is already known, skip it
+                }
+                foreach (int v in adj[u])
+                {
+                    int alt = dist[u] + 1; // in this case, the weight of the edges is 1
+                    if (alt < dist[v])
+                    {
+                        dist[v] = alt;
+                        prev[v] = u;
+                        pq.Enqueue(new int[] { alt, v });
+                    }
+                }
+            }
         }
 
     }
+
 }
+
 
 
 
