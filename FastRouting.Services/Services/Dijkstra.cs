@@ -22,48 +22,25 @@ using System.Collections.Generic;
 
 namespace FastRouting.Services.Services
 {
-    //public class internalObject
-    //{
-    //    public int idCoordinate;
-    //    public double distance;
-
-    //    public internalObject(int idCoordinate, double distance)
-    //    {
-    //        this.idCoordinate = idCoordinate;
-    //        this.distance = distance;
-    //    }
-    //}
-    public class EdgeOfGraph
+   
+    
+    //קלאס זה מכיל את הקשתות המקוריות + תרגום מזהי המיקומים לאינדקס שלהם בגרף
+    public class EdgeOfGraph 
     {
-        public int num { get; set; }
+        public int IndexA { get; set; }
+        public int IndexB { get; set; }
+
         public EdgesDTO Edge { get; set; }
-        public EdgeOfGraph(int num, EdgesDTO edge)
+        public EdgeOfGraph( EdgesDTO edge)
         {
-            this.num = num;
             Edge = edge;
         }
     }
 
-    public class HeapItem
-    {
-        public int id;
-        public double distance;
-        public HeapItem(int id, double distance)
-        {
-            this.id = id;
-            this.distance = distance;
-        }
-
-    }
-
-
-
-
-
-
+   
     public class VertexOfGraph
     {
-        public int num { get; set; }
+        //public int num { get; set; }
         //private int vertexNum;
         public CoordinateDTO coordinate { get; set; }
         public LocationTypesDTO LocationTypes { get; set; }
@@ -71,22 +48,47 @@ namespace FastRouting.Services.Services
         public List<EdgeOfGraph> EdgesOfGraphs { get; set; }
         //private int num;
 
-        public VertexOfGraph(CoordinateDTO coordinate, LocationTypesDTO LocationTypes, string name, int num, List<EdgeOfGraph> listEdgeOfGraph)
+        public VertexOfGraph(CoordinateDTO coordinate, LocationTypesDTO LocationTypes, string name/*, int num*/)
         {
             this.coordinate = coordinate;
             this.LocationTypes = LocationTypes;
             this.name = name;
-            this.EdgesOfGraphs = listEdgeOfGraph;
-            this.num = num;
+            this.EdgesOfGraphs = new List<EdgeOfGraph>();
+           // this.num = num;
         }
-        public VertexOfGraph(CoordinateDTO coordinate, int num, List<EdgeOfGraph> listEdgeOfGraph)
+        public VertexOfGraph(CoordinateDTO coordinate/*, int num*/)
         {
-            this.num = num;
+           // this.num = num;
             this.coordinate = coordinate;
-            this.LocationTypes = null; ;
+            this.LocationTypes = null; 
             this.name = null;
-            this.EdgesOfGraphs = listEdgeOfGraph;
+            this.EdgesOfGraphs = new List<EdgeOfGraph>();
 
+        }
+    }
+    public class AdjListNode : IComparable<AdjListNode>
+    {
+        private int vertex;
+        private double weight;
+        public AdjListNode(int v, double w)
+        {
+            vertex = v;
+            weight = w;
+        }
+        public int getVertex() { return vertex; }
+        public double getWeight() { return weight; }
+        public int CompareTo(AdjListNode other)
+        {
+            double ans = weight - other.weight;
+            if (ans < 0)
+            {
+                return -1;
+            }
+            if (ans > 0)
+            {
+                return 1;
+            }
+            return 0;
         }
     }
 
@@ -98,33 +100,41 @@ namespace FastRouting.Services.Services
 
 
 
-        //הקשתות איתן נעבוד לחישוב האלגוריתם, מכילות מספר
-
-
-
-        public static List<VertexOfGraph> Dijkstra(int src, int dest, List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<EdgesDTO> edges)
+        
+        public static VertexOfGraph[] PreparingTheGraph(List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<EdgesDTO> edges)
         {
-
-
-            VertexOfGraph[] graph = new VertexOfGraph[locations.Count + intersections.Count];
-            // double[] heapArray = new double[locations.Count + intersections.Count];
-
             int index = 0;
+            VertexOfGraph[] graph = new VertexOfGraph[locations.Count + intersections.Count];
+            List<EdgeOfGraph> listEdgeOfGraph = new List<EdgeOfGraph>();
+            foreach(var edge in edges)
+            {
+                EdgeOfGraph edgeOfGraph = new EdgeOfGraph(edge);
+                listEdgeOfGraph.Add(edgeOfGraph);
+            }
+
+
             foreach (var location in locations)
             {
-                List<EdgeOfGraph> listEdgeOfGraph = new List<EdgeOfGraph>();
-                foreach (var edge in edges)
+                //List<EdgeOfGraph> listEdgeOfGraph = new List<EdgeOfGraph>();
+
+                foreach (var edgeOfGraph in listEdgeOfGraph)
                 {
-                    if (edge.LocationIdA == location.Coordinate.Id)
+                    if(location.Coordinate.Id==edgeOfGraph.Edge.LocationIdA)
                     {
-                        EdgeOfGraph EdgesOfGraph = new EdgeOfGraph(index, edge);
-
-
-                        listEdgeOfGraph.Add(EdgesOfGraph);
+                        edgeOfGraph.IndexA = index;
                     }
+                    else
+                    {
+                        if(location.Coordinate.Id==edgeOfGraph.Edge.LocationIdB){
+
+                            edgeOfGraph.IndexB = index;
+                        }
+                    }
+
+                    
                 }
 
-                VertexOfGraph VertexOfGraph = new VertexOfGraph(location.Coordinate, location.LocationTypes, location.LocationName, index, listEdgeOfGraph);
+                VertexOfGraph VertexOfGraph = new VertexOfGraph(location.Coordinate, location.LocationTypes, location.LocationName/*, index*/);
 
                 graph[index] = VertexOfGraph;
                 index++;
@@ -133,64 +143,98 @@ namespace FastRouting.Services.Services
 
             foreach (var intersection in intersections)
             {
-                List<EdgeOfGraph> listEdgeOfGraph = new List<EdgeOfGraph>();
-                foreach (var edge in edges)
+                //List<EdgeOfGraph> listEdgeOfGraph = new List<EdgeOfGraph>();
+
+                foreach (var edgeOfGraph in listEdgeOfGraph)
                 {
-                    if (edge.LocationIdA == intersection.Coordinate.Id)
+                    if (intersection.Coordinate.Id==edgeOfGraph.Edge.LocationIdA)
                     {
-                        EdgeOfGraph EdgesOfGraph = new EdgeOfGraph(index, edge);
-
-
-                        listEdgeOfGraph.Add(EdgesOfGraph);
+                        edgeOfGraph.IndexA = index;
                     }
+                    else
+                    {
+                        if (intersection.Coordinate.Id==edgeOfGraph.Edge.LocationIdB)
+                        {
+
+                            edgeOfGraph.IndexB = index;
+                        }
+                    }
+
+
                 }
 
-                VertexOfGraph VertexOfGraph = new VertexOfGraph(intersection.Coordinate, index, listEdgeOfGraph);
+                VertexOfGraph VertexOfGraph = new VertexOfGraph(intersection.Coordinate);
 
                 graph[index] = VertexOfGraph;
                 index++;
 
             }
+            foreach(var egdeOfGraph in listEdgeOfGraph)
+            {
+                graph[egdeOfGraph.IndexA].EdgesOfGraphs.Add(egdeOfGraph);
+            }
 
 
-            int[] prev = new int[graph.Length];
-            bool[] isVisit = new bool[graph.Length];
-            double[] dist = new double[graph.Length];
+
+            return graph;
+        }
+
+        //חשוב מאד!!
+        //המקור והיעד הם האינדקסים של המקומות בגרף המבטאים מקור ויעד
+        public static List<VertexOfGraph> DijkstraAlgorithm(int src, int dest ,VertexOfGraph[] graph)
+        {
+            List<VertexOfGraph> VertexOfGraph=new List<VertexOfGraph>();
+           double[] distance = new double[graph.Length];
+            int[] parent = new int[graph.Length];
 
             for (int i = 0; i < graph.Length; i++)
             {
-                dist[i] = int.MaxValue;
-                prev[i] = -1;
+                distance[i] = double.MaxValue;
+                parent[i] = -1;
             }
+               
+            distance[src] = 0;
+            SortedSet<AdjListNode> pq = new SortedSet<AdjListNode>();
+            pq.Add(new AdjListNode(src, 0));
 
-            dist[src] = 0;
-            var pq = new PriorityQueue<HeapItem, double>();
-            HeapItem HeapItem = new HeapItem(src, 0);
-            pq.Enqueue(HeapItem, 0);
             while (pq.Count > 0)
             {
-                HeapItem curr;
-                curr = pq.Dequeue();
-                int u = ;
-                if (u == dest)
+
+                AdjListNode current = pq.First();
+                if(current.getVertex()== dest)
                 {
-                    break; // if the destination vertex is reached, exit early
+                    break;
                 }
-                if (curr[0] > dist[u])
+                pq.Remove(current);
+
+                foreach (EdgeOfGraph n in graph[current.getVertex()].EdgesOfGraphs)
                 {
-                    continue; // if a shorter distance to u is already known, skip it
-                }
-                foreach (int v in adj[u])
-                {
-                    int alt = dist[u] + 1; // in this case, the weight of the edges is 1
-                    if (alt < dist[v])
+
+                    if (distance[current.getVertex()]  + n.Edge.Distance< distance[n.IndexB])
                     {
-                        dist[v] = alt;
-                        prev[v] = u;
-                        pq.Enqueue(new int[] { alt, v });
+                        distance[n.IndexB]=distance[current.getVertex()] + +n.Edge.Distance;
+                        parent[n.IndexB] = current.getVertex();
+
+                        pq.Add(new AdjListNode(
+                          n.IndexB,
+                          distance[n.IndexB]));
                     }
                 }
             }
+            int currentVertexOfGraph=dest;
+            while (currentVertexOfGraph!=src)
+            {
+                graph[currentVertexOfGraph].EdgesOfGraphs=null;
+                VertexOfGraph.Insert(0, graph[currentVertexOfGraph]);
+                currentVertexOfGraph=parent[currentVertexOfGraph];
+            }
+            graph[src].EdgesOfGraphs=null;
+            VertexOfGraph.Insert(0, graph[src]);
+
+
+
+
+            return VertexOfGraph;
         }
 
     }
