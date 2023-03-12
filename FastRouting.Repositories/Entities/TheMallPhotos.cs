@@ -15,6 +15,7 @@ namespace FastRouting.Repositories.Entities
         [Key]
         public int Id { get; set; }
         public byte[] Image { get; set; }
+        public int floor { get; set; }
 
     }
 }

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace FastRouting.Services.Services
 {
-    internal class TheMallPhotosService : ITheMallPhotosService
+    public class TheMallPhotosService : ITheMallPhotosService
     {
-        public Task<TheMallPhotosRepositoryDTO> AddAsync(TheMallPhotosRepositoryDTO TheMallPhotosRepository)
+        public Task<TheMallPhotosDTO> AddAsync(TheMallPhotosDTO TheMallPhotosRepository)
         {
             throw new NotImplementedException();
         }
@@ -20,17 +20,17 @@ namespace FastRouting.Services.Services
             throw new NotImplementedException();
         }
 
-        public Task<List<TheMallPhotosRepositoryDTO>> GetAllAsync()
+        public Task<List<TheMallPhotosDTO>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<TheMallPhotosRepositoryDTO> GetByIDAsync(int ID)
+        public Task<TheMallPhotosDTO> GetByIDAsync(int ID)
         {
             throw new NotImplementedException();
         }
 
-        public Task<TheMallPhotosRepositoryDTO> UpdateAsync(TheMallPhotosRepositoryDTO TheMallPhotosRepository)
+        public Task<TheMallPhotosDTO> UpdateAsync(TheMallPhotosDTO TheMallPhotosRepository)
         {
             throw new NotImplementedException();
         }

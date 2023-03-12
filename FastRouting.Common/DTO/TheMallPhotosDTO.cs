@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace FastRouting.Common.DTO
 {
-    public class TheMallPhotosRepositoryDTO
+    public class TheMallPhotosDTO
     {
         public int Id { get; set; }
         public byte[] Image { get; set; }
+        public int floor { get; set; }
+
     }
 }

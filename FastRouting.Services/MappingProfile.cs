@@ -28,7 +28,7 @@ namespace FastRouting.Services
             CreateMap<TransitionsDTO, Transition>().ReverseMap();
 
             CreateMap<TransitionsToIntersectionsDTO, TransitionsToIntersections>().ReverseMap();
-            CreateMap<TheMallPhotosRepositoryDTO, ITheMallPhotosRepository>().ReverseMap();
+            CreateMap<TheMallPhotosDTO, ITheMallPhotosRepository>().ReverseMap();
 
 
         }

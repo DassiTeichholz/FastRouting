@@ -13,7 +13,7 @@ namespace FastRouting.Services.Interfaces
         Task<List<ShoppingMallsDTO>> GetAllAsync();
         Task<ShoppingMallsDTO> GetByIdAsync(int id);
         Task<ShoppingMallsDTO> AddAsync(ShoppingMallsDTO shoppingMalls);
-        Task<bool> CreateNewMall(List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<int>[] passCodes);
+        Task<bool> CreateNewMall(string centerName, List<TheMallPhotosDTO> theMallPhotosDTOList, List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<int>[] passCodes, List<object> edgesCrossFloors);
         Task<ShoppingMallsDTO> UpdateAsync(ShoppingMallsDTO shoppingMalls);
         Task DeleteAsync(int id);
     }

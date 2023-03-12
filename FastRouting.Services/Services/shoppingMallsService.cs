@@ -14,15 +14,24 @@ namespace FastRouting.Services.Services
     public class shoppingMallsService : IshoppingMallsService
     {
         private readonly IshoppingMallsRepository _shoppingMallRepository;
+        private readonly ILocationsService _LocationsService;
+        private readonly IIntersectionsService _IntersectionsService;
+        private readonly ITheMallPhotosService _theMallPhotosService;
         private readonly IMapper _mapper;
         private readonly IEdgesService _edgesService;
-        //private readonly IEdgesService _edgesService;
-        //private readonly IEdgesService _edgesService;
-        //private readonly IEdgesService _edgesService;
-        public shoppingMallsService(IshoppingMallsRepository shoppingMallRepository, IMapper mapper)
+        private readonly ITransitionsService _transitionsService;
+        private readonly ILocationTypesService _locationTypesService;
+        private readonly ITransitionsToIntersectionsService _transitionsToIntersectionsService;
+        public shoppingMallsService(IshoppingMallsRepository shoppingMallRepository, IMapper mapper, ITheMallPhotosService theMallPhotosService, IIntersectionsService intersectionsService, ILocationsService locationsService, ITransitionsService transitionsService, ILocationTypesService locationTypesService, ITransitionsToIntersectionsService transitionsToIntersectionsService)
         {
             _shoppingMallRepository = shoppingMallRepository;
             _mapper = mapper;
+            _theMallPhotosService=theMallPhotosService;
+            _IntersectionsService=intersectionsService;
+            _LocationsService=locationsService;
+            _transitionsService=transitionsService;
+            _locationTypesService=locationTypesService;
+            _transitionsToIntersectionsService=transitionsToIntersectionsService;
         }
 
         public async Task<ShoppingMallsDTO> AddAsync(ShoppingMallsDTO shoppingMalls)
@@ -54,12 +63,40 @@ namespace FastRouting.Services.Services
 
         }
 
-        public async Task<bool> CreateNewMall(List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<int>[] passCodes)
+        public async Task<bool> CreateNewMall(string centerName, List<TheMallPhotosDTO> theMallPhotosDTOList,List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<int>[] passCodes, List<object> edgesCrossFloors)
         {
 
             try
             {
-                dynamic result = Algorithm.BuildingEdges(locations, intersections, passCodes);
+                List<LocationsDTO> locations2 = new List<LocationsDTO>();
+                List<IntersectionsDTO> intersections2 = new List<IntersectionsDTO>();
+                ShoppingMallsDTO shoppingMall = new ShoppingMallsDTO {
+                    Name=centerName
+                };
+                int shoppingMallId =  AddAsync(shoppingMall).Result.Id;
+                foreach(var mallPhoto in theMallPhotosDTOList)
+                {
+                    mallPhoto.Id= shoppingMallId;
+                    await _theMallPhotosService.AddAsync(mallPhoto);
+                }
+                //מה בקשר לקאורדיננטה בעצמה?
+                foreach (var location in locations)
+                {
+                    if (location.Transitions==null)
+                    {
+                        location.Transitions=await _transitionsService.GetByIdAsync(location.TransitionId);
+                    }
+                    if(location.LocationTypes==null)
+                    {
+                        location.LocationTypes=await _locationTypesService.GetByIdAsync(location.LocationTypesId);
+                    }
+                    locations2.Add(await _LocationsService.AddAsync(location));
+                }
+                foreach(var intersection in intersections)
+                {
+                    intersections2.Add( await _IntersectionsService.AddAsync(intersection));
+                }
+                dynamic result = Algorithm.BuildingEdges(locations2, intersections2, passCodes);
                 
 
                 List<TransitionsToIntersectionsDTO> TransitionsToIntersections = result.TransitionsToIntersections;
@@ -67,8 +104,17 @@ namespace FastRouting.Services.Services
 
                 foreach (var item in TransitionsToIntersections)
                 {
-
-
+                    await _transitionsToIntersectionsService.AddAsync(item);
+                }
+                foreach (var edge in Edges)
+                {
+                    await _edgesService.AddAsync(edge);
+                }
+                int idA;
+                int idB;
+                foreach(var obj in edgesCrossFloors)
+                {
+                   // idA=await _LocationsService.GetByIDAsync(obj.name)
                 }
                 //add edges
                 // var res = await _edgesService.AddAsync(x);

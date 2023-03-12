@@ -30,8 +30,10 @@ namespace FastRouting.Services.Services
                // List<IntersectionsDTO> intersections = new List<IntersectionsDTO>();
                 List<TransitionsToIntersectionsDTO> transitionsToIntersections = new List<TransitionsToIntersectionsDTO>();
                // List<LocationsDTO> locations = new List<LocationsDTO>();
+                //מילון של "מעברים", המפתח במילון הוא מס' המעבר והערך הוא ליסט של מזהים שנמצאים במעבר זה
                 var locationIdsByTransitionId = new Dictionary<int, List<int>>();
 
+                //עובר על כל נקודות המיקום, ומוסיף את מזהה המיקום לליסט המתאים לו במילון המעברים
                 foreach (var location in Locations)
                 {
                     int transitionId = location.Transitions.Id;
@@ -41,6 +43,8 @@ namespace FastRouting.Services.Services
                     }
                     locationIdsByTransitionId[transitionId].Add(location.Coordinate.Id);
                 }
+
+                //עובר על כל נקודות ההצטלבות, ומוסיף את מזהה הצטלבות לליסטים!!! (יכול להיות יותר מאחד) המתאימים לו במילון המעברים
 
                 foreach (var intersection in Intersections)
                 {
@@ -133,7 +137,7 @@ namespace FastRouting.Services.Services
 
 
 
-                return edges;
+                //return edges;
             }
             catch (Exception e)
             {

@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace FastRouting.Services.Interfaces
 {
-    internal interface ITheMallPhotosService
+    public interface ITheMallPhotosService
     {
-        Task<List<TheMallPhotosRepositoryDTO>> GetAllAsync();
-        Task<TheMallPhotosRepositoryDTO> GetByIDAsync(int ID);
-        Task<TheMallPhotosRepositoryDTO> AddAsync(TheMallPhotosRepositoryDTO TheMallPhotosRepository);
-        Task<TheMallPhotosRepositoryDTO> UpdateAsync(TheMallPhotosRepositoryDTO TheMallPhotosRepository);
+        Task<List<TheMallPhotosDTO>> GetAllAsync();
+        Task<TheMallPhotosDTO> GetByIDAsync(int ID);
+        Task<TheMallPhotosDTO> AddAsync(TheMallPhotosDTO TheMallPhotosRepository);
+        Task<TheMallPhotosDTO> UpdateAsync(TheMallPhotosDTO TheMallPhotosRepository);
         Task DeleteAsync(int Id);//מחיקה לפי מזהה הצטלבות
     }
 }
