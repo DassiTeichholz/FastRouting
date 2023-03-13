@@ -13,11 +13,23 @@ namespace FastRouting.Repositories.Repositories
     {
         private readonly IContext _context;
 
-        public async Task<Location> AddAsync(Location Locations)
+        public async Task<Location> AddAsync(Location Location)
         {
-            await _context.Locations.AddAsync(Locations);
+            
+            if(Location.Transition == null)
+            {
+                _context.Transitions.Attach(Location.Transition);
+            }
+            if(Location.LocationTypes == null)
+            {
+                _context.LocationTypes.Attach(Location.LocationTypes);
+            }
+
+
+
+            await _context.Locations.AddAsync(Location);
             await _context.SaveChangesAsync();
-            return Locations;
+            return Location;
         }
 
         public async Task DeleteAsync(int Id)
@@ -35,6 +47,14 @@ namespace FastRouting.Repositories.Repositories
         public async Task<Location> GetByIDAsync(int ID)
         {
             return await _context.Locations.FindAsync(ID);
+        }
+        public async Task<List<Location>> GetByCenterIdAsync(int id)
+        {
+            return await _context.Locations.Where(x=>x.centerId==id).ToListAsync();
+        }
+          public async Task<Location> GetByNameAsync(string name)
+        {
+            return await  _context.Locations/*.Include(x=>x.Coordinate)*/.FirstOrDefaultAsync(x=>x.LocationName==name);
         }
 
         public async Task<Location> UpdateAsync(Location Locations)

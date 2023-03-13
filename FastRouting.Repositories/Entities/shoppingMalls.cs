@@ -13,7 +13,7 @@ namespace FastRouting.Repositories.Entities
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
-        public virtual ICollection<TheMallPhotos> TheMallPhotos { get; set; }
+       //public virtual ICollection<TheMallPhotos> TheMallPhotos { get; set; }
 
         //public TheMallPhotos TheMallPhotos { get; set; }
 

@@ -33,8 +33,9 @@ namespace FastRouting.Api.Controllers
             List<LocationsDTO> locations = value[0].ToObject<List<LocationsDTO>>();
             List<IntersectionsDTO> intersections = value[1].ToObject<List<IntersectionsDTO>>();
             List<int>[] passCodes = value[2].ToObject<List<int>[]>();
-            var flag = await _shoppingMallsService.CreateNewMall(locations, intersections, passCodes);
-            return flag;
+            // var flag = await _shoppingMallsService.CreateNewMall(locations, intersections, passCodes);
+            //return flag;
+            return true; 
         }
 
         // PUT api/<ConstructionOfANewCenter>/5

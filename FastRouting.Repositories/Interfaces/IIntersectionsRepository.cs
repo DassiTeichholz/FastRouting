@@ -11,6 +11,7 @@ namespace FastRouting.Repositories.Interfaces
     {
         Task<List<Intersections>> GetAllAsync();
         Task<Intersections> GetByIdAsync(int IntersectionID);
+        Task<List<Intersections>> GetBycenterIdAsync(int id);
         Task<Intersections> AddAsync(Intersections Intersections);
         Task<Intersections> UpdateAsync(Intersections Intersections);
         Task DeleteAsync(int IntersectionID);//מחיקה לפי מזהה הצטלבות

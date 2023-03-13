@@ -10,7 +10,8 @@ namespace FastRouting.Repositories.Interfaces
     public interface IshoppingMallsRepository
     {
         Task<List<shoppingMalls>> GetAllAsync();
-        Task<shoppingMalls> GetByIdAsync(int id);
+        Task<shoppingMalls> GetByIdAsync(int id); 
+        Task<shoppingMalls> GetByNameAsync(string name);
         Task<shoppingMalls> AddAsync(shoppingMalls shoppingMalls);
         Task<shoppingMalls> UpdateAsync(shoppingMalls shoppingMalls);
         Task DeleteAsync(int id);

@@ -47,6 +47,17 @@ namespace FastRouting.Services.Services
             return _mapper.Map<LocationsDTO>(await _LocationsRepository.GetByIDAsync(ID));
 
         }
+        public async Task<List<LocationsDTO>> GetByCenterIdAsync(int id)
+        {
+            return _mapper.Map<List<LocationsDTO>>(await _LocationsRepository.GetByCenterIdAsync(id));
+
+        }
+        public async Task<LocationsDTO> GetByNameAsync(string name)
+        {
+            return _mapper.Map<LocationsDTO>(await _LocationsRepository.GetByNameAsync(name));
+
+        }
+
 
         public async Task<LocationsDTO> UpdateAsync(LocationsDTO Locations)
         {
@@ -54,18 +65,18 @@ namespace FastRouting.Services.Services
 
         }
 
-        public async Task<bool> CreateNewMall(List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<int>[] passCodes)
-        {
+        //public async Task<bool> CreateNewMall(List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<int>[] passCodes)
+        //{
 
-            var x = Algorithm.BuildingEdges(locations, intersections, passCodes);
-            //add edges
-           // var res = await _edgesService.AddAsync(x);
-            //if (res == null)
-            //{
-            //    return false;
-            //}
-            return true;
+        //    var x = Algorithm.BuildingEdges(locations, intersections, passCodes);
+        //    //add edges
+        //   // var res = await _edgesService.AddAsync(x);
+        //    //if (res == null)
+        //    //{
+        //    //    return false;
+        //    //}
+        //    return true;
 
-        }
+        //}
     }
 }

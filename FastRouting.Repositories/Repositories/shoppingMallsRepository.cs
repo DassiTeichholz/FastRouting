@@ -1,5 +1,6 @@
 ﻿using FastRouting.Repositories.Entities;
 using FastRouting.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,8 @@ namespace FastRouting.Repositories.Repositories
 {
     public class shoppingMallsRepository : IshoppingMallsRepository
     {
+        private readonly IContext _context;
+
         public Task<shoppingMalls> AddAsync(shoppingMalls shoppingMalls)
         {
             throw new NotImplementedException();
@@ -28,6 +31,10 @@ namespace FastRouting.Repositories.Repositories
         public Task<shoppingMalls> GetByIdAsync(int id)
         {
             throw new NotImplementedException();
+        }
+        public async Task<shoppingMalls> GetByNameAsync(string name)
+        {
+            return await _context.shoppingMalls.FirstOrDefaultAsync(x => x.Name == name);
         }
 
         public Task<shoppingMalls> UpdateAsync(shoppingMalls shoppingMalls)

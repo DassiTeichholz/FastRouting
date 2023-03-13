@@ -56,6 +56,11 @@ namespace FastRouting.Services.Services
             return _mapper.Map<ShoppingMallsDTO>(await _shoppingMallRepository.GetByIdAsync(id));
 
         }
+        public async Task<ShoppingMallsDTO> GetByNameAsync(string name)
+        {
+            return _mapper.Map<ShoppingMallsDTO>(await _shoppingMallRepository.GetByNameAsync(name));
+
+        }
 
         public async Task<ShoppingMallsDTO> UpdateAsync(ShoppingMallsDTO shoppingMalls)
         {
@@ -63,7 +68,7 @@ namespace FastRouting.Services.Services
 
         }
 
-        public async Task<bool> CreateNewMall(string centerName, List<TheMallPhotosDTO> theMallPhotosDTOList,List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<int>[] passCodes, List<object> edgesCrossFloors)
+        public async Task<bool> CreateNewMall(string centerName, List<TheMallPhotosDTO> theMallPhotosDTOList,List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<int>[] passCodes, List<dynamic> edgesCrossFloors)
         {
 
             try
@@ -82,6 +87,7 @@ namespace FastRouting.Services.Services
                 //מה בקשר לקאורדיננטה בעצמה?
                 foreach (var location in locations)
                 {
+                    location.centerId = shoppingMallId;
                     if (location.Transitions==null)
                     {
                         location.Transitions=await _transitionsService.GetByIdAsync(location.TransitionId);
@@ -94,6 +100,7 @@ namespace FastRouting.Services.Services
                 }
                 foreach(var intersection in intersections)
                 {
+                    intersection.centerId = shoppingMallId;
                     intersections2.Add( await _IntersectionsService.AddAsync(intersection));
                 }
                 dynamic result = Algorithm.BuildingEdges(locations2, intersections2, passCodes);
@@ -108,26 +115,57 @@ namespace FastRouting.Services.Services
                 }
                 foreach (var edge in Edges)
                 {
+                    edge.centerId = shoppingMallId;
                     await _edgesService.AddAsync(edge);
                 }
                 int idA;
                 int idB;
                 foreach(var obj in edgesCrossFloors)
                 {
-                   // idA=await _LocationsService.GetByIDAsync(obj.name)
+                   idA=await _LocationsService.GetByNameAsync(obj[0]).Coordinate.Id;
+                   idB=await _LocationsService.GetByNameAsync(obj[1]).Coordinate.Id;
+                    EdgesDTO edge = new EdgesDTO
+                    {
+                        LocationIdA=idA,
+                        LocationIdB=idB,
+                        Distance=0
+
+                    };
+                    await _edgesService.AddAsync(edge);
                 }
-                //add edges
-                // var res = await _edgesService.AddAsync(x);
-                //if (res == null)
-                //{
-                //    return false;
-                //}
+
+     
                 return true;
             }
             catch (Exception ex) {
                 return false;
             }
            
+
+        }
+        public async Task<List<VertexOfGraph>> GetRoute(string centerName, string sourceName, string DestName)
+        {
+            try
+            {
+                int centerId = _shoppingMallRepository.GetByNameAsync(centerName).Id;
+                List<EdgesDTO> edges;
+                List<IntersectionsDTO> intersections;
+                List<LocationsDTO> locations;
+                edges = await _edgesService.GetByCenterIdAsync(centerId);
+                intersections = await _IntersectionsService.GetBycenterIdAsync(centerId);
+                locations = await _LocationsService.GetByCenterIdAsync(centerId);
+                VertexOfGraph[] graph = Dijkstra.PreparingTheGraph(locations,intersections,edges);
+                // idA=await _LocationsService.GetByNameAsync(obj[0]).Coordinate.Id;
+                // int sourceNameId = await _LocationsService.GetByNameAsync(sourceName).Coordinate.Id;
+                // int DestNameId = await _LocationsService.GetByNameAsync(DestName).Coordinate.Id;
+                // List<VertexOfGraph>  route=Dijkstra.DijkstraAlgorithm(sourceNameId, DestNameId, graph);
+                // return route;
+                return null;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
 
         }
     }

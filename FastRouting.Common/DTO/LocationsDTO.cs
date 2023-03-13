@@ -17,6 +17,7 @@ namespace FastRouting.Common.DTO
         public TransitionsDTO Transitions { get; set; }//מזהה מעבר
         public int LocationTypesId { get; set; }
         public LocationTypesDTO LocationTypes { get; set; }//מזהה סוג מיקום
-        public ShoppingMallsDTO shoppingMalls { get; set; }
+                                                           //public ShoppingMallsDTO shoppingMalls { get; set; }
+        public int centerId { get; set; }
     }
 }

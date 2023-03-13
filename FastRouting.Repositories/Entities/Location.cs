@@ -20,7 +20,7 @@ namespace FastRouting.Repositories.Entities
         
         public int LocationTypesId { get; set; }
         public LocationTypes LocationTypes { get; set; }//מזהה סוג מיקום
-        public shoppingMalls shoppingMalls { get; set; }
-
+                                                        //public shoppingMalls shoppingMalls { get; set; }
+        public int centerId { get; set; }
     }
 }

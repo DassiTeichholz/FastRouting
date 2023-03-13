@@ -29,7 +29,7 @@ namespace FastRouting.Repositories.Repositories
 
         public async Task  DeleteEdgesOfIdAsync(int id)
         {
-            var Edges = await GetByLocationIdAAsync(Id);
+            var Edges = await GetByLocationIdAAsync(id);
             _context.Edges.Remove(Edges);
             await _context.SaveChangesAsync();
         }
@@ -38,9 +38,9 @@ namespace FastRouting.Repositories.Repositories
         {
             return await _context.Edges.ToListAsync();
         }
-        public async Task<List<Edges>> GetAllByIdAsync()
+        public async Task<List<Edges>> GetByCenterIdAsync(int id)
         {
-            return await _context.Edges.ToListAsync();
+            return await _context.Edges.Where(x=>x.centerId==id).ToListAsync();
         }
 
         public async Task<Edges> GetByLocationIdAAsync(int Id)

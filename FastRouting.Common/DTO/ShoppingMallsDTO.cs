@@ -10,7 +10,7 @@ namespace FastRouting.Common.DTO
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public virtual ICollection<TheMallPhotosDTO> TheMallPhotos { get; set; }
+        //public virtual ICollection<TheMallPhotosDTO> TheMallPhotos { get; set; }
 
         // public TheMallPhotosRepositoryDTO TheMallPhotosRepository { get; set; }
     }

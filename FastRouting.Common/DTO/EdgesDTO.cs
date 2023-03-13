@@ -12,5 +12,6 @@ namespace FastRouting.Common.DTO
         public int LocationIdB { get; set; }
 
         public double Distance { get; set; }
+        public int centerId { get; set; }
     }
 }

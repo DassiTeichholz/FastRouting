@@ -1,5 +1,6 @@
 ﻿using FastRouting.Common.DTO;
 using FastRouting.Services.Interfaces;
+using FastRouting.Services.Services;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -29,9 +30,10 @@ namespace FastRouting.Api.Controllers
 
         // GET api/<shoppingMallsController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public List<VertexOfGraph> GetRoute(string centerName,string sourceName, string DestinationName)
         {
-            return "value";
+
+            return null;
         }
 
         // POST api/<shoppingMallsController>
@@ -58,7 +60,7 @@ namespace FastRouting.Api.Controllers
             var locationsList= value[2].ToObject<List<LocationsDTO>>();
             var IntersectionsList = value[3].ToObject<List<IntersectionsDTO>>();
             var passCodes = value[4].ToObject<List<int>[]>();
-            var edgesCrossFloors = value[5].ToObject<List<object>>();
+            var edgesCrossFloors = value[5].ToObject<List<dynamic>>();
 
 
             return await _shoppingMallsServiece.CreateNewMall(centerName, theMallPhotosDTOList, locationsList, IntersectionsList, passCodes, edgesCrossFloors);

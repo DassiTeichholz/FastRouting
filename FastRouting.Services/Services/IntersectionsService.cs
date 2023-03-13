@@ -42,6 +42,11 @@ namespace FastRouting.Services.Services
             return _mapper.Map<IntersectionsDTO>(await _IntersectionsRepository.GetByIdAsync(IntersectionID));
 
         }
+        public async Task<List<IntersectionsDTO>> GetBycenterIdAsync(int id)
+        {
+            return _mapper.Map<List<IntersectionsDTO>>(await _IntersectionsRepository.GetBycenterIdAsync(id));
+
+        }
 
         public async Task<IntersectionsDTO> UpdateAsync(IntersectionsDTO Intersections)
         {

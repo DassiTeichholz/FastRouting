@@ -14,7 +14,7 @@ namespace FastRouting.Repositories.Entities
         public Coordinate Coordinate { get; set; }
         //public int AccessPointID  { get; set; }//קוד נקודת גישה
 
-        public shoppingMalls shoppingMalls { get; set; }
-
+        //public shoppingMalls shoppingMalls { get; set; }
+        public int centerId { get; set; }
     }
 }

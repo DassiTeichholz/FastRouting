@@ -11,7 +11,9 @@ namespace FastRouting.Services.Interfaces
     public interface ILocationsService
     {
         Task<List<LocationsDTO>> GetAllAsync();
-        Task<LocationsDTO> GetByIDAsync(int ID);
+        Task<LocationsDTO> GetByIDAsync(int id);
+        Task<List<LocationsDTO>> GetByCenterIdAsync(int id);
+        Task<LocationsDTO> GetByNameAsync(string name);
         Task<LocationsDTO> AddAsync(LocationsDTO Locations);
         Task<LocationsDTO> UpdateAsync(LocationsDTO Locations);
         Task DeleteAsync(int Id);//מחיקה לפי מזהה הצטלבות

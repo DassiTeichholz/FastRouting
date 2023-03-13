@@ -1,3 +1,8 @@
+using FastRouting.Context;
+using FastRouting.Repositories;
+using FastRouting.Services;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,7 +11,17 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+//my injections!
 
+builder.Services.AddServices();
+
+
+builder.Services.AddDbContext<IContext, DataContext>(options =>
+{
+    options.UseSqlServer("name=ConnectionStrings:FastRouting");
+    options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -37,9 +37,15 @@ namespace FastRouting.Services.Services
             return _mapper.Map<List<EdgesDTO>>(await _EdgesRepository.GetAllAsync());
         }
 
-        public async Task<EdgesDTO> GetByIdAsync(int Id)
+        //public async Task<EdgesDTO> GetByIdAsync(int Id)
+        //{
+        //    return _mapper.Map<EdgesDTO>(await _EdgesRepository.GetByIdAsync(Id));
+          
+        //}
+
+        public async Task<List<EdgesDTO>> GetByCenterIdAsync(int Id)
         {
-            return _mapper.Map<EdgesDTO>(await _EdgesRepository.GetByIdAsync(Id));
+            return _mapper.Map<List<EdgesDTO>>(await _EdgesRepository.GetByCenterIdAsync(Id));
           
         }
 

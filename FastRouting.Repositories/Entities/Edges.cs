@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,14 +8,16 @@ using System.Threading.Tasks;
 
 namespace FastRouting.Repositories.Entities
 {
+    [PrimaryKey("LocationIdA", "LocationIdB")]
     public class Edges
     {
-        [Key]
+        
         public int LocationIdA { get; set; }
-        [Key]
+       
         public int LocationIdB { get; set; }
 
         public double Distance { get; set; }
+        public int centerId { get; set; }
 
 
     }

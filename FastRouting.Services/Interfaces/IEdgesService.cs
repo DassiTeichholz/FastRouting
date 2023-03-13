@@ -11,7 +11,8 @@ namespace FastRouting.Services.Interfaces
     public interface IEdgesService
     {
         Task<List<EdgesDTO>> GetAllAsync();
-        Task<EdgesDTO> GetByIdAsync(int Id);
+       // Task<EdgesDTO> GetByIdAsync(int Id);
+        Task<List<EdgesDTO>> GetByCenterIdAsync(int Id);
         Task<EdgesDTO> AddAsync(EdgesDTO Edges);
         Task<EdgesDTO> UpdateAsync(EdgesDTO Edges);
         Task DeleteAsync(int LocationIdA);
