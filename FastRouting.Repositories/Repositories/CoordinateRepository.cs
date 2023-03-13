@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace FastRouting.Repositories.Repositories
 {
@@ -13,11 +14,22 @@ namespace FastRouting.Repositories.Repositories
     {
         private readonly IContext _context;
 
+        public CoordinateRepository(IContext context)
+        {
+            _context = context;
+        }
+
+        //public async Task<Subject> AddAsync(Subject subject)
+        //{
+        //    var addedSubject = await _context.Subjects.AddAsync(subject);
+        //    await _context.SaveChangesAsync();
+        //    return addedSubject.Entity;
+        //}
         public async Task<Coordinate> AddAsync(Coordinate Coordinate)
         {
-            await _context.Coordinate.AddAsync(Coordinate);
+             var item=await _context.Coordinate.AddAsync(Coordinate);
             await _context.SaveChangesAsync();
-            return Coordinate;
+            return item.Entity;
         }
 
         public async Task DeleteAsync(int id)

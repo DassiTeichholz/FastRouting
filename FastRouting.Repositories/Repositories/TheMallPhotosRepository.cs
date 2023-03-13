@@ -12,6 +12,10 @@ namespace FastRouting.Repositories.Repositories
     public class TheMallPhotosRepository : ITheMallPhotosRepository
     {
         private readonly IContext _context;
+        public TheMallPhotosRepository(IContext context)
+        {
+            _context = context;
+        }
         public async Task<TheMallPhotos> AddAsync(TheMallPhotos TheMallPhotos)
         {
             await _context.TheMallPhotos.AddAsync(TheMallPhotos);

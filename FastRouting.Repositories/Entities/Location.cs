@@ -16,10 +16,10 @@ namespace FastRouting.Repositories.Entities
         public string LocationName { get; set; }//שם המיקום
         
         public int TransitionId { get; set; }
-        public Transition Transition { get; set; }//מזהה מעבר
+        public Transition? Transition { get; set; }//מזהה מעבר
         
         public int LocationTypesId { get; set; }
-        public LocationTypes LocationTypes { get; set; }//מזהה סוג מיקום
+        public LocationTypes? LocationTypes { get; set; }//מזהה סוג מיקום
                                                         //public shoppingMalls shoppingMalls { get; set; }
         public int centerId { get; set; }
     }

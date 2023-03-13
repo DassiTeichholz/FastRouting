@@ -12,6 +12,10 @@ namespace FastRouting.Repositories.Repositories
     public class shoppingMallsRepository : IshoppingMallsRepository
     {
         private readonly IContext _context;
+        public shoppingMallsRepository(IContext context)
+        {
+            _context = context;
+        }
 
         public Task<shoppingMalls> AddAsync(shoppingMalls shoppingMalls)
         {

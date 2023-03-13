@@ -12,6 +12,10 @@ namespace FastRouting.Repositories.Repositories
     public class LocationsRepository : ILocationsRepository
     {
         private readonly IContext _context;
+        public LocationsRepository(IContext context)
+        {
+            _context = context;
+        }
 
         public async Task<Location> AddAsync(Location Location)
         {

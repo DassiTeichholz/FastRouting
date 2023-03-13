@@ -12,7 +12,10 @@ namespace FastRouting.Repositories.Repositories
     public class TransitionsToIntersectionsRepository : ITransitionsToIntersectionsRepository
     {
         private readonly IContext _context;
-
+        public TransitionsToIntersectionsRepository(IContext context)
+        {
+            _context = context;
+        }
         public async Task<TransitionsToIntersections> AddAsync(TransitionsToIntersections TransitionsToIntersections)
         {
             await _context.TransitionsToIntersections.AddAsync(TransitionsToIntersections);

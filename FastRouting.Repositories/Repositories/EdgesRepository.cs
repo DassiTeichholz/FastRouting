@@ -12,6 +12,10 @@ namespace FastRouting.Repositories.Repositories
     public class EdgesRepository : IEdgesRepository
     {
         private readonly IContext _context;
+        public EdgesRepository(IContext context)
+        {
+            _context = context;
+        }
 
         public async Task<Edges> AddAsync(Edges Edges)
         {

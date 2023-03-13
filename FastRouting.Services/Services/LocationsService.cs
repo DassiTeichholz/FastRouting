@@ -16,18 +16,34 @@ namespace FastRouting.Services.Services
         private readonly ILocationsRepository _LocationsRepository;
         private readonly IMapper _mapper;
         private readonly IEdgesService _edgesService;
+        private readonly ILocationTypesService _locationTypesService;
+        private readonly ITransitionsService _transitionsService;
 
 
-        public LocationsService(ILocationsRepository LocationsRepository, IMapper mapper, IEdgesService edgesService)
+        public LocationsService(ILocationsRepository LocationsRepository, IMapper mapper, IEdgesService edgesService, ITransitionsService transitionsService, ILocationTypesService locationTypesService)
         {
             _LocationsRepository = LocationsRepository;
             _mapper = mapper;
             _edgesService = edgesService;
+            _transitionsService = transitionsService;
+            _locationTypesService = locationTypesService;   
         }
 
-        public async Task<LocationsDTO> AddAsync(LocationsDTO Locations)
+        public async Task<LocationsDTO> AddAsync(LocationsDTO Location)
         {
-            return _mapper.Map<LocationsDTO>(await _LocationsRepository.AddAsync(_mapper.Map<Location>(Locations)));
+            //if (game.Subject == null)
+            //{
+            //    game.Subject =await _subjectService.GetByIdAsync(game.SubjectID);
+            //}
+            if (Location.Transitions==null)
+            {
+                Location.Transitions=await _transitionsService.GetByIdAsync(Location.TransitionId);
+            }
+            if (Location.LocationTypes==null)
+            {
+                Location.LocationTypes=await _locationTypesService.GetByIdAsync(Location.LocationTypesId);
+            }
+            return _mapper.Map<LocationsDTO>(await _LocationsRepository.AddAsync(_mapper.Map<Location>(Location)));
 
         }
 

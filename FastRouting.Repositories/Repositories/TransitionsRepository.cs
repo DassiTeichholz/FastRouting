@@ -12,6 +12,10 @@ namespace FastRouting.Repositories.Repositories
     public class TransitionsRepository : ITransitionsRepository
     {
         private readonly IContext _context;
+        public TransitionsRepository(IContext context)
+        {
+            _context = context;
+        }
 
         public async Task<Transition> AddAsync(Transition Transitions)
         {
