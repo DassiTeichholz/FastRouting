@@ -122,8 +122,11 @@ namespace FastRouting.Services.Services
                 int idB;
                 foreach(var obj in edgesCrossFloors)
                 {
-                   idA=await _LocationsService.GetByNameAsync(obj[0]).Coordinate.Id;
-                   idB=await _LocationsService.GetByNameAsync(obj[1]).Coordinate.Id;
+                    var location = await _LocationsService.GetByNameAsync(obj[0]);
+                    idA = location.Coordinate.Id;
+
+                    location = await _LocationsService.GetByNameAsync(obj[1]);
+                    idB = location.Coordinate.Id;
                     EdgesDTO edge = new EdgesDTO
                     {
                         LocationIdA=idA,
@@ -155,18 +158,43 @@ namespace FastRouting.Services.Services
                 intersections = await _IntersectionsService.GetBycenterIdAsync(centerId);
                 locations = await _LocationsService.GetByCenterIdAsync(centerId);
                 VertexOfGraph[] graph = Dijkstra.PreparingTheGraph(locations,intersections,edges);
-                // idA=await _LocationsService.GetByNameAsync(obj[0]).Coordinate.Id;
-                // int sourceNameId = await _LocationsService.GetByNameAsync(sourceName).Coordinate.Id;
-                // int DestNameId = await _LocationsService.GetByNameAsync(DestName).Coordinate.Id;
-                // List<VertexOfGraph>  route=Dijkstra.DijkstraAlgorithm(sourceNameId, DestNameId, graph);
-                // return route;
-                return null;
+                var location = await _LocationsService.GetByNameAsync(sourceName);
+                int sourceNameId = location.Coordinate.Id;
+                location = await _LocationsService.GetByNameAsync(DestName);
+                int DestNameId = location.Coordinate.Id;
+                List<VertexOfGraph> route = Dijkstra.DijkstraAlgorithm(sourceNameId, DestNameId, graph);
+                return route;
+                
             }
             catch (Exception ex)
             {
                 return null;
             }
+        
 
+        }
+
+        public async Task<bool> DeleteALocation(LocationsDTO location)
+        {
+            try
+            {
+             var loc = await _LocationsService.GetByIDAsync(location.Id);
+             int centerId = loc.centerId;
+             List<EdgesDTO> edges = await _edgesService.GetByCenterIdAsync(centerId);
+             foreach (EdgesDTO edge in edges)
+                {
+                    if (edge.LocationIdA==location.Coordinate.Id||edge.LocationIdB==location.Coordinate.Id)
+                    {
+                        await _edgesService.DeleteAsync(edge.LocationIdA);
+                    }
+                }
+
+             return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }
