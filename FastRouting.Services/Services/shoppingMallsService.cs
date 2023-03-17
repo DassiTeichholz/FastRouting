@@ -189,6 +189,7 @@ namespace FastRouting.Services.Services
                     }
                 }
 
+             //if the trasition of the location is unusing- delete its!
              return true;
             }
             catch (Exception ex)

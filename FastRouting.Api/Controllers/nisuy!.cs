@@ -1,6 +1,7 @@
 ﻿using FastRouting.Common.DTO;
 using FastRouting.Repositories.Interfaces;
 using FastRouting.Services.Interfaces;
+using FastRouting.Services.Services;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -12,11 +13,11 @@ namespace FastRouting.Api.Controllers
     public class nisuy_ : ControllerBase
     {
 
-        private readonly ILocationsService _CoordinateService;
+        private readonly IntersectionsService _intersectionsService;
 
-        public nisuy_(ILocationsService shoppingMallsServiece)
+        public nisuy_(IntersectionsService shoppingMallsServiece)
         {
-            _CoordinateService = shoppingMallsServiece;
+            _intersectionsService = shoppingMallsServiece;
         }
 
         // GET: api/<nisuy_>
@@ -35,9 +36,9 @@ namespace FastRouting.Api.Controllers
 
         // POST api/<nisuy_>
         [HttpPost]
-        public async Task<bool> AddCoordy([FromBody] LocationsDTO item)
+        public async Task<bool> AddCoordy([FromBody] IntersectionsDTO item)
         {
-            await _CoordinateService.AddAsync(item);
+            await _intersectionsService.AddAsync(item);
             return true;
         }
 

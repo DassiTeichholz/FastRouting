@@ -39,6 +39,7 @@ namespace FastRouting.Services.Services
             {
                 Location.Transitions=await _transitionsService.GetByIdAsync(Location.TransitionId);
             }
+            
             if (Location.LocationTypes==null)
             {
                 Location.LocationTypes=await _locationTypesService.GetByIdAsync(Location.LocationTypesId);

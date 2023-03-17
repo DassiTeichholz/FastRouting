@@ -20,11 +20,11 @@ namespace FastRouting.Repositories.Repositories
         public async Task<Location> AddAsync(Location Location)
         {
             
-            if(Location.Transition == null)
+            if(Location.Transitions != null)
             {
-                _context.Transitions.Attach(Location.Transition);
+                _context.Transitions.Attach(Location.Transitions);
             }
-            if(Location.LocationTypes == null)
+            if(Location.LocationTypes != null)
             {
                 _context.LocationTypes.Attach(Location.LocationTypes);
             }

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace FastRouting.Repositories.Entities
 {
@@ -16,7 +17,19 @@ namespace FastRouting.Repositories.Entities
         public string LocationName { get; set; }//שם המיקום
         
         public int TransitionId { get; set; }
-        public Transition? Transition { get; set; }//מזהה מעבר
+
+        //private Subject? subject;
+
+        //public Subject Subject
+        //{
+        //    get { return subject; }
+        //    set
+        //    {
+        //        subject = null!;
+        //        subject = value;
+        //    }
+        //}
+        public Transition? Transitions { get; set; }//מזהה מעבר
         
         public int LocationTypesId { get; set; }
         public LocationTypes? LocationTypes { get; set; }//מזהה סוג מיקום
