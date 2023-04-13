@@ -54,13 +54,24 @@ namespace FastRouting.Api.Controllers
         //קשתות בעלות מרחק 0
 
         public async Task<bool> AddNewCenter([FromBody] List<dynamic> value)
-        {
-            string centerName= (string)value[0];
-            var theMallPhotosDTOList= value[1].ToObject<List<TheMallPhotosDTO>>();
-            var locationsList= value[2].ToObject<List<LocationsDTO>>();
+            {
+            string centerName = value[0].ToString();
+
+            var theMallPhotosDTOList = value[1];
+            var locationsList = value[2].ToObject<List<LocationsDTO>>();
+
             var IntersectionsList = value[3].ToObject<List<IntersectionsDTO>>();
-            var passCodes = value[4].ToObject<List<int>[]>();
-            var edgesCrossFloors = value[5].ToObject<List<dynamic>>();
+
+            var passCodes = value[4].ToObject<List<List<int>>>();
+            var edgesCrossFloors = value[5];
+
+            //string centerName=value[0].ToString();
+            //var theMallPhotosDTOList= value[1].ToObject<List<TheMallPhotosDTO>>();
+            //var locationsList= value[2].ToObject<List<LocationsDTO>>();
+            //var IntersectionsList = value[3].ToObject<List<IntersectionsDTO>>();
+            //var passCodes = value[4].ToObject<List<int>[]>();
+            //  var edgesCrossFloors = value[5].ToObject<List<dynamic>>();
+
 
 
             return await _shoppingMallsServiece.CreateNewMall(centerName, theMallPhotosDTOList, locationsList, IntersectionsList, passCodes, edgesCrossFloors);

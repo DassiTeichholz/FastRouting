@@ -20,13 +20,13 @@ namespace FastRouting.Repositories.Repositories
         public async Task<Location> AddAsync(Location Location)
         {
             
-            if(Location.Transitions != null)
+            if(Location.transitions != null)
             {
-                _context.Transitions.Attach(Location.Transitions);
+                _context.Transitions.Attach(Location.transitions);
             }
-            if(Location.LocationTypes != null)
+            if(Location.locationTypes != null)
             {
-                _context.LocationTypes.Attach(Location.LocationTypes);
+                _context.LocationTypes.Attach(Location.locationTypes);
             }
 
 
@@ -58,7 +58,7 @@ namespace FastRouting.Repositories.Repositories
         }
           public async Task<Location> GetByNameAsync(string name)
         {
-            return await  _context.Locations/*.Include(x=>x.Coordinate)*/.FirstOrDefaultAsync(x=>x.LocationName==name);
+            return await  _context.Locations/*.Include(x=>x.Coordinate)*/.FirstOrDefaultAsync(x=>x.locationName==name);
         }
 
         public async Task<Location> UpdateAsync(Location Locations)

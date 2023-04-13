@@ -13,32 +13,34 @@ namespace FastRouting.Api.Controllers
     public class nisuy_ : ControllerBase
     {
 
-        private readonly IntersectionsService _intersectionsService;
+       
 
-        public nisuy_(IntersectionsService shoppingMallsServiece)
+        private readonly IIntersectionsService _iEdgesService;
+
+        public nisuy_(IIntersectionsService shoppingMallsServiece)
         {
-            _intersectionsService = shoppingMallsServiece;
+            _iEdgesService = shoppingMallsServiece;
         }
 
         // GET: api/<nisuy_>
         [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        //public async Task<List<EdgesDTO>> Get()
+        //{
+        //    return await _iEdgesService.GetAllAsync();
+        //}
 
         // GET api/<nisuy_>/5
         [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+        //public  async Task<List<EdgesDTO>> Get(int id)
+        //{
+        //    return await _iEdgesService.GetByCenterIdAsync(id);
+        //}
 
         // POST api/<nisuy_>
         [HttpPost]
-        public async Task<bool> AddCoordy([FromBody] IntersectionsDTO item)
+        public async Task<bool> AddCoordy([FromBody] List<int>[] item)
         {
-            await _intersectionsService.AddAsync(item);
+           // await _iEdgesService.AddAsync(item);
             return true;
         }
 

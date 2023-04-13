@@ -22,7 +22,7 @@ namespace FastRouting.Services.Services
       }
 
     //באלגוריתם זה אני מוסיפה את הנקודות למסד הנתונים וכן את הקשתות
-    public static object BuildingEdges(List<LocationsDTO> Locations, List<IntersectionsDTO> Intersections, List<int>[] PassCodes)
+    public static object BuildingEdges(List<LocationsDTO> Locations, List<IntersectionsDTO> Intersections, List<List<int>> PassCodes)
         {
             try
             {
@@ -36,12 +36,12 @@ namespace FastRouting.Services.Services
                 //עובר על כל נקודות המיקום, ומוסיף את מזהה המיקום לליסט המתאים לו במילון המעברים
                 foreach (var location in Locations)
                 {
-                    int transitionId = location.Transitions.Id;
+                    int transitionId = location.transitions.id;
                     if (!locationIdsByTransitionId.ContainsKey(transitionId))
                     {
                         locationIdsByTransitionId[transitionId] = new List<int>();
                     }
-                    locationIdsByTransitionId[transitionId].Add(location.Coordinate.Id);
+                    locationIdsByTransitionId[transitionId].Add(location.coordinate.id);
                 }
 
                 //עובר על כל נקודות ההצטלבות, ומוסיף את מזהה הצטלבות לליסטים!!! (יכול להיות יותר מאחד) המתאימים לו במילון המעברים
@@ -56,7 +56,7 @@ namespace FastRouting.Services.Services
                         {
                             locationIdsByTransitionId[item] = new List<int>();
                         }
-                        locationIdsByTransitionId[item].Add(intersection.Coordinate.Id);
+                        locationIdsByTransitionId[item].Add(intersection.Coordinate.id);
 
                     }
                 }
@@ -76,27 +76,27 @@ namespace FastRouting.Services.Services
                             if (i!=j)
                             {
                                 
-                                if (Locations.Any(x => x.Coordinate.Id == locationIds[i]))
+                                if (Locations.Any(x => x.coordinate.id == locationIds[i]))
                                 {
-                                    xA=(Locations.Where(x => x.Coordinate.Id == locationIds[i]).Select(x=>x.Coordinate.X).First());
-                                    yA=(Locations.Where(x => x.Coordinate.Id == locationIds[i]).Select(x=>x.Coordinate.Y).First());
+                                    xA=(Locations.Where(x => x.coordinate.id == locationIds[i]).Select(x=>x.coordinate.x).First());
+                                    yA=(Locations.Where(x => x.coordinate.id == locationIds[i]).Select(x=>x.coordinate.y).First());
 
                                 }
                                 else
                                 {
-                                    xA=(Intersections.Where(x => x.Coordinate.Id == locationIds[i]).Select(x => x.Coordinate.X).First());
-                                    yA=(Intersections.Where(x => x.Coordinate.Id == locationIds[i]).Select(x => x.Coordinate.Y).First());
+                                    xA=(Intersections.Where(x => x.Coordinate.id == locationIds[i]).Select(x => x.Coordinate.x).First());
+                                    yA=(Intersections.Where(x => x.Coordinate.id == locationIds[i]).Select(x => x.Coordinate.y).First());
                                 }
-                                if (Locations.Any(x => x.Coordinate.Id == locationIds[j]))
+                                if (Locations.Any(x => x.coordinate.id == locationIds[j]))
                                 {
-                                    xB=(Locations.Where(x => x.Coordinate.Id == locationIds[j]).Select(x => x.Coordinate.X).First());
-                                    yB=(Locations.Where(x => x.Coordinate.Id == locationIds[j]).Select(x => x.Coordinate.Y).First());
+                                    xB=(Locations.Where(x => x.coordinate.id == locationIds[j]).Select(x => x.coordinate.x).First());
+                                    yB=(Locations.Where(x => x.coordinate.id == locationIds[j]).Select(x => x.coordinate.y).First());
 
                                 }
                                 else
                                 {
-                                    xB=(Intersections.Where(x => x.Coordinate.Id == locationIds[j]).Select(x => x.Coordinate.X).First());
-                                    yB=(Intersections.Where(x => x.Coordinate.Id == locationIds[j]).Select(x => x.Coordinate.Y).First());
+                                    xB=(Intersections.Where(x => x.Coordinate.id == locationIds[j]).Select(x => x.Coordinate.x).First());
+                                    yB=(Intersections.Where(x => x.Coordinate.id == locationIds[j]).Select(x => x.Coordinate.y).First());
                                 }
                                 EdgesDTO edge = new EdgesDTO
                                 {
@@ -111,7 +111,7 @@ namespace FastRouting.Services.Services
                     }
                     for (int i = 0; i < locationIds.Count; i++)
                     {
-                        if (Intersections.Any(x => x.Coordinate.Id == locationIds[i]))
+                        if (Intersections.Any(x => x.Coordinate.id == locationIds[i]))
                         {
                             TransitionsToIntersectionsDTO transitionsToIntersection = new TransitionsToIntersectionsDTO
                             {

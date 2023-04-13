@@ -23,22 +23,22 @@ namespace FastRouting.Context.Migrations
 
             modelBuilder.Entity("FastRouting.Repositories.Entities.Coordinate", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
-                    b.Property<double>("X")
+                    b.Property<double>("x")
                         .HasColumnType("float");
 
-                    b.Property<double>("Y")
+                    b.Property<double>("y")
                         .HasColumnType("float");
 
-                    b.Property<int>("Z")
+                    b.Property<int>("z")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.ToTable("Coordinate");
                 });
@@ -70,7 +70,7 @@ namespace FastRouting.Context.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IntersectionID"));
 
-                    b.Property<int>("CoordinateId")
+                    b.Property<int>("Coordinateid")
                         .HasColumnType("int");
 
                     b.Property<int>("centerId")
@@ -78,42 +78,42 @@ namespace FastRouting.Context.Migrations
 
                     b.HasKey("IntersectionID");
 
-                    b.HasIndex("CoordinateId");
+                    b.HasIndex("Coordinateid");
 
                     b.ToTable("Intersections");
                 });
 
             modelBuilder.Entity("FastRouting.Repositories.Entities.Location", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CoordinateId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("LocationName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("LocationTypesId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TransitionId")
-                        .HasColumnType("int");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
                     b.Property<int>("centerId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.Property<int>("coordinateid")
+                        .HasColumnType("int");
 
-                    b.HasIndex("CoordinateId");
+                    b.Property<string>("locationName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasIndex("LocationTypesId");
+                    b.Property<int>("locationTypesId")
+                        .HasColumnType("int");
 
-                    b.HasIndex("TransitionId");
+                    b.Property<int>("transitionId")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("coordinateid");
+
+                    b.HasIndex("locationTypesId");
+
+                    b.HasIndex("transitionId");
 
                     b.ToTable("Locations");
                 });
@@ -160,17 +160,17 @@ namespace FastRouting.Context.Migrations
 
             modelBuilder.Entity("FastRouting.Repositories.Entities.Transition", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
-                    b.Property<string>("TransitionsName")
+                    b.Property<string>("transitionsName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.ToTable("Transitions");
                 });
@@ -209,7 +209,7 @@ namespace FastRouting.Context.Migrations
                 {
                     b.HasOne("FastRouting.Repositories.Entities.Coordinate", "Coordinate")
                         .WithMany()
-                        .HasForeignKey("CoordinateId")
+                        .HasForeignKey("Coordinateid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -218,29 +218,29 @@ namespace FastRouting.Context.Migrations
 
             modelBuilder.Entity("FastRouting.Repositories.Entities.Location", b =>
                 {
-                    b.HasOne("FastRouting.Repositories.Entities.Coordinate", "Coordinate")
+                    b.HasOne("FastRouting.Repositories.Entities.Coordinate", "coordinate")
                         .WithMany()
-                        .HasForeignKey("CoordinateId")
+                        .HasForeignKey("coordinateid")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("FastRouting.Repositories.Entities.LocationTypes", "LocationTypes")
+                    b.HasOne("FastRouting.Repositories.Entities.LocationTypes", "locationTypes")
                         .WithMany()
-                        .HasForeignKey("LocationTypesId")
+                        .HasForeignKey("locationTypesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("FastRouting.Repositories.Entities.Transition", "Transition")
+                    b.HasOne("FastRouting.Repositories.Entities.Transition", "transitions")
                         .WithMany()
-                        .HasForeignKey("TransitionId")
+                        .HasForeignKey("transitionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Coordinate");
+                    b.Navigation("coordinate");
 
-                    b.Navigation("LocationTypes");
+                    b.Navigation("locationTypes");
 
-                    b.Navigation("Transition");
+                    b.Navigation("transitions");
                 });
 #pragma warning restore 612, 618
         }

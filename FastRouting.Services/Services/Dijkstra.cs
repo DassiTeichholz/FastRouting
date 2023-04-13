@@ -118,13 +118,13 @@ namespace FastRouting.Services.Services
 
                 foreach (var edgeOfGraph in listEdgeOfGraph)
                 {
-                    if(location.Coordinate.Id==edgeOfGraph.Edge.LocationIdA)
+                    if(location.coordinate.id==edgeOfGraph.Edge.LocationIdA)
                     {
                         edgeOfGraph.IndexA = index;
                     }
                     else
                     {
-                        if(location.Coordinate.Id==edgeOfGraph.Edge.LocationIdB){
+                        if(location.coordinate.id==edgeOfGraph.Edge.LocationIdB){
 
                             edgeOfGraph.IndexB = index;
                         }
@@ -133,7 +133,7 @@ namespace FastRouting.Services.Services
                     
                 }
 
-                VertexOfGraph VertexOfGraph = new VertexOfGraph(location.Coordinate, location.LocationTypes, location.LocationName/*, index*/);
+                VertexOfGraph VertexOfGraph = new VertexOfGraph(location.coordinate, location.locationTypes, location.locationName/*, index*/);
 
                 graph[index] = VertexOfGraph;
                 index++;
@@ -146,13 +146,13 @@ namespace FastRouting.Services.Services
 
                 foreach (var edgeOfGraph in listEdgeOfGraph)
                 {
-                    if (intersection.Coordinate.Id==edgeOfGraph.Edge.LocationIdA)
+                    if (intersection.Coordinate.id==edgeOfGraph.Edge.LocationIdA)
                     {
                         edgeOfGraph.IndexA = index;
                     }
                     else
                     {
-                        if (intersection.Coordinate.Id==edgeOfGraph.Edge.LocationIdB)
+                        if (intersection.Coordinate.id==edgeOfGraph.Edge.LocationIdB)
                         {
 
                             edgeOfGraph.IndexB = index;

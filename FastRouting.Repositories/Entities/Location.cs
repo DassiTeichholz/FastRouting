@@ -11,12 +11,12 @@ namespace FastRouting.Repositories.Entities
     public class Location
     {
         [Key]
-        public int Id { get; set; }
-        public Coordinate Coordinate { get; set; }
+        public int id { get; set; }
+        public Coordinate coordinate { get; set; }
         //public int AccessPointID { get; set; }//מזהה נקודת גישה 
-        public string LocationName { get; set; }//שם המיקום
+        public string locationName { get; set; }//שם המיקום
         
-        public int TransitionId { get; set; }
+        public int transitionId { get; set; }
 
         //private Subject? subject;
 
@@ -29,10 +29,10 @@ namespace FastRouting.Repositories.Entities
         //        subject = value;
         //    }
         //}
-        public Transition? Transitions { get; set; }//מזהה מעבר
+        public Transition? transitions { get; set; }//מזהה מעבר
         
-        public int LocationTypesId { get; set; }
-        public LocationTypes? LocationTypes { get; set; }//מזהה סוג מיקום
+        public int locationTypesId { get; set; }
+        public LocationTypes? locationTypes { get; set; }//מזהה סוג מיקום
                                                         //public shoppingMalls shoppingMalls { get; set; }
         public int centerId { get; set; }
     }

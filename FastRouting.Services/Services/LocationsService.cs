@@ -35,14 +35,14 @@ namespace FastRouting.Services.Services
             //{
             //    game.Subject =await _subjectService.GetByIdAsync(game.SubjectID);
             //}
-            if (Location.Transitions==null)
+            if (Location.transitions==null)
             {
-                Location.Transitions=await _transitionsService.GetByIdAsync(Location.TransitionId);
+                Location.transitions=await _transitionsService.GetByIdAsync(Location.transitionId);
             }
             
-            if (Location.LocationTypes==null)
+            if (Location.locationTypes==null)
             {
-                Location.LocationTypes=await _locationTypesService.GetByIdAsync(Location.LocationTypesId);
+                Location.locationTypes=await _locationTypesService.GetByIdAsync(Location.locationTypesId);
             }
             return _mapper.Map<LocationsDTO>(await _LocationsRepository.AddAsync(_mapper.Map<Location>(Location)));
 

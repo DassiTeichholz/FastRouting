@@ -68,8 +68,9 @@ namespace FastRouting.Services.Services
 
         }
 
-        public async Task<bool> CreateNewMall(string centerName, List<TheMallPhotosDTO> theMallPhotosDTOList,List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<int>[] passCodes, List<dynamic> edgesCrossFloors)
+        public async Task<bool> CreateNewMall(string centerName, List<TheMallPhotosDTO> theMallPhotosDTOList,List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<List<int>> passCodes, List<dynamic> edgesCrossFloors)
         {
+            //מעברים יוצרים בצד לקוח!!!
 
             try
             {
@@ -88,13 +89,13 @@ namespace FastRouting.Services.Services
                 foreach (var location in locations)
                 {
                     location.centerId = shoppingMallId;
-                    if (location.Transitions==null)
+                    if (location.transitions==null)
                     {
-                        location.Transitions=await _transitionsService.GetByIdAsync(location.TransitionId);
+                        location.transitions=await _transitionsService.GetByIdAsync(location.transitionId);
                     }
-                    if(location.LocationTypes==null)
+                    if(location.locationTypes==null)
                     {
-                        location.LocationTypes=await _locationTypesService.GetByIdAsync(location.LocationTypesId);
+                        location.locationTypes=await _locationTypesService.GetByIdAsync(location.locationTypesId);
                     }
                     locations2.Add(await _LocationsService.AddAsync(location));
                 }
@@ -159,9 +160,9 @@ namespace FastRouting.Services.Services
                 locations = await _LocationsService.GetByCenterIdAsync(centerId);
                 VertexOfGraph[] graph = Dijkstra.PreparingTheGraph(locations,intersections,edges);
                 var location = await _LocationsService.GetByNameAsync(sourceName);
-                int sourceNameId = location.Coordinate.Id;
+                int sourceNameId = location.coordinate.id;
                 location = await _LocationsService.GetByNameAsync(DestName);
-                int DestNameId = location.Coordinate.Id;
+                int DestNameId = location.coordinate.id;
                 List<VertexOfGraph> route = Dijkstra.DijkstraAlgorithm(sourceNameId, DestNameId, graph);
                 return route;
                 
@@ -178,12 +179,12 @@ namespace FastRouting.Services.Services
         {
             try
             {
-             var loc = await _LocationsService.GetByIDAsync(location.Id);
+             var loc = await _LocationsService.GetByIDAsync(location.id);
              int centerId = loc.centerId;
              List<EdgesDTO> edges = await _edgesService.GetByCenterIdAsync(centerId);
              foreach (EdgesDTO edge in edges)
                 {
-                    if (edge.LocationIdA==location.Coordinate.Id||edge.LocationIdB==location.Coordinate.Id)
+                    if (edge.LocationIdA==location.coordinate.id||edge.LocationIdB==location.coordinate.id)
                     {
                         await _edgesService.DeleteAsync(edge.LocationIdA);
                     }
