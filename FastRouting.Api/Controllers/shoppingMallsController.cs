@@ -53,16 +53,16 @@ namespace FastRouting.Api.Controllers
         //ליסט המעברים שמקביל לליט נקודות ההצטלבות
         //קשתות בעלות מרחק 0
 
-        public async Task<bool> AddNewCenter([FromBody] List<dynamic> value)
+        public async Task<bool> AddNewCenter(List<dynamic> value,List<LocationsDTO> value2)
             {
             string centerName = value[0].ToString();
 
             var theMallPhotosDTOList = value[1];
-            var locationsList = value[2].ToObject<List<LocationsDTO>>();
 
+            var locationsList = value[2].ToObject<LocationsDTO>();
             var IntersectionsList = value[3].ToObject<List<IntersectionsDTO>>();
 
-            var passCodes = value[4].ToObject<List<List<int>>>();
+            var passCodes = value[4].toObject<List<List<int>>>();
             var edgesCrossFloors = value[5];
 
             //string centerName=value[0].ToString();
