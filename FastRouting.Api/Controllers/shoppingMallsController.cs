@@ -53,29 +53,29 @@ namespace FastRouting.Api.Controllers
         //ליסט המעברים שמקביל לליט נקודות ההצטלבות
         //קשתות בעלות מרחק 0
 
-        public async Task<bool> AddNewCenter(List<dynamic> value,List<LocationsDTO> value2)
-            {
-            string centerName = value[0].ToString();
+        //public async Task<bool> AddNewCenter(List<dynamic> value,List<LocationsDTO> value2)
+        //    {
+        //    string centerName = value[0].ToString();
 
-            var theMallPhotosDTOList = value[1];
+        //    var theMallPhotosDTOList = value[1];
 
-            var locationsList = value[2].ToObject<LocationsDTO>();
-            var IntersectionsList = value[3].ToObject<List<IntersectionsDTO>>();
+        //    var locationsList = value[2].ToObject<LocationsDTO>();
+        //    var IntersectionsList = value[3].ToObject<List<IntersectionsDTO>>();
 
-            var passCodes = value[4].toObject<List<List<int>>>();
-            var edgesCrossFloors = value[5];
+        //    var passCodes = value[4].toObject<List<List<int>>>();
+        //    var edgesCrossFloors = value[5];
 
-            //string centerName=value[0].ToString();
-            //var theMallPhotosDTOList= value[1].ToObject<List<TheMallPhotosDTO>>();
-            //var locationsList= value[2].ToObject<List<LocationsDTO>>();
-            //var IntersectionsList = value[3].ToObject<List<IntersectionsDTO>>();
-            //var passCodes = value[4].ToObject<List<int>[]>();
-            //  var edgesCrossFloors = value[5].ToObject<List<dynamic>>();
+        //    //string centerName=value[0].ToString();
+        //    //var theMallPhotosDTOList= value[1].ToObject<List<TheMallPhotosDTO>>();
+        //    //var locationsList= value[2].ToObject<List<LocationsDTO>>();
+        //    //var IntersectionsList = value[3].ToObject<List<IntersectionsDTO>>();
+        //    //var passCodes = value[4].ToObject<List<int>[]>();
+        //    //  var edgesCrossFloors = value[5].ToObject<List<dynamic>>();
 
 
 
-            return await _shoppingMallsServiece.CreateNewMall(centerName, theMallPhotosDTOList, locationsList, IntersectionsList, passCodes, edgesCrossFloors);
-        }
+        //    return await _shoppingMallsServiece.CreateNewMall(centerName, theMallPhotosDTOList, locationsList, IntersectionsList, passCodes, edgesCrossFloors);
+        //}
 
         // PUT api/<shoppingMallsController>/5
         [HttpPut("{id}")]

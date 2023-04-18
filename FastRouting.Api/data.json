@@ -1,0 +1,87 @@
+{
+  "locationInTrasition": [
+    {
+      "trasitionNum": 0,
+      "transitionId": 14,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0
+          },
+          "locationName": "Location 1",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 1.0,
+            "y": 0.0,
+            "z": 0
+          },
+          "locationName": "Location 2",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 1,
+      "transitionId": 15,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 2.0,
+            "y": 1.0,
+            "z": 0
+          },
+          "locationName": "Location 3",
+          "locationTypesId": 2
+        },
+        {
+          "coordinate": {
+            "x": 3.0,
+            "y": 1.0,
+            "z": 0
+          },
+          "locationName": "Location 4",
+          "locationTypesId": 2
+        }
+      ]
+    }
+  ],
+  "intersection": [
+    {
+      "intersectionNum": 1,
+      "coordinate": {
+        "x": 1.0,
+        "y": 0.5,
+        "z": 0
+      },
+      "transitionsNums": [
+        0,
+        1
+      ]
+    },
+    {
+      "intersectionNum": 2,
+      "coordinate": {
+        "x": 2.5,
+        "y": 1.0,
+        "z": 0
+      },
+      "transitionsNums": [
+        1
+      ]
+    }
+  ],
+  "edgesCrossing": [
+    {
+      "firstEdgeName": "Edge 1",
+      "secondEdgeName": "Edge 2"
+    },
+    {
+      "firstEdgeName": "Edge 2",
+      "secondEdgeName": "Edge 3"
+    }
+  ]
+}

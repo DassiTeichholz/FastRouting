@@ -2,12 +2,15 @@
 using FastRouting.Common.DTO;
 using FastRouting.Repositories.Entities;
 using FastRouting.Repositories.Interfaces;
+using FastRouting.Repositories.Repositories;
 using FastRouting.Services.Interfaces;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace FastRouting.Services.Services
 {
@@ -32,6 +35,117 @@ namespace FastRouting.Services.Services
             _transitionsService=transitionsService;
             _locationTypesService=locationTypesService;
             _transitionsToIntersectionsService=transitionsToIntersectionsService;
+        }
+
+
+
+        public async Task DataPreparationFunc(string centerName)
+        {
+            //הליסטים שיוחזרו בסוף, אחרי שננתח את הקובץ
+            List<LocationsDTO> locationsList = new List<LocationsDTO>();
+            List<IntersectionsDTO> intersectionsList = new List<IntersectionsDTO>();
+            List<List<int>> passCodes = new List<List<int>>();
+
+
+
+
+            string jsonString = File.ReadAllText("data.json");
+            JObject jsonObject = JObject.Parse(jsonString);
+            var locationsInTrasitions = jsonObject["locationInTrasition"];
+            var edgesCrossing = jsonObject["edgesCrossing"];
+            var intersections = jsonObject["intersection"];
+            int num = 0;
+            ShoppingMallsDTO shoppingMall = new ShoppingMallsDTO
+            {
+
+                Id=0,
+                Name=centerName
+            };
+            ShoppingMallsDTO shoppingMall2= await AddAsync(shoppingMall);
+
+            //עובר על כל מעבר ומוסיף 
+            foreach (var item in locationsInTrasitions)
+            {
+                TransitionsDTO trasition = new TransitionsDTO
+                {
+
+                    id=0,
+                    transitionsName= "trasition number "+num
+
+                };
+                TransitionsDTO transition = await _transitionsService.AddAsync(trasition);
+                jsonObject["locationInTrasition"][num]["transitionId"]=transition.id;
+                num++;
+                var locations = item["locations"];
+                foreach (var loc in locations)
+                {
+                    LocationsDTO locationDTO = new LocationsDTO
+                    {
+
+                        id=0,
+                        coordinate= new CoordinateDTO
+                        {
+                            id= 0,
+                            x= (double)loc["coordinate"]["x"],
+                            y= (double)loc["coordinate"]["y"],
+                            z= (int)loc["coordinate"]["z"]
+                        },
+                        locationName=(string)loc["locationName"],
+                        transitionId=transition.id,
+                        transitions=null,
+                        locationTypesId=(int)loc["locationTypesId"],
+                        locationTypes=null,
+                        centerId=shoppingMall2.Id
+
+                    };
+                    locationsList.Add(locationDTO);
+                }
+            }
+                // Convert the JObject to a JSON string
+                jsonString = jsonObject.ToString();
+
+                // Write the updated JSON string back to the file
+                File.WriteAllText("data.json", jsonString);
+
+
+                 jsonString = File.ReadAllText("data.json");
+                 jsonObject = JObject.Parse(jsonString);
+                 locationsInTrasitions = jsonObject["locationInTrasition"];
+
+                List<int> tmp = new List<int>();
+                int x;
+                int y;
+
+                foreach (var intersec in intersections)
+                {
+                    IntersectionsDTO intersection = new IntersectionsDTO
+                    {
+                        IntersectionID=0,
+                        Coordinate=new CoordinateDTO
+                        {
+                            x= (double)intersec["coordinate"]["x"],
+                            y= (double)intersec["coordinate"]["y"],
+                            z= (int)intersec["coordinate"]["z"]
+                        },
+                        centerId=shoppingMall2.Id
+                    };
+                    intersectionsList.Add(intersection);
+                    var transitionsNums = intersec["transitionsNums"];
+                    foreach (var index in transitionsNums)
+                    {
+                        y = (int)index;
+                        x=(int)locationsInTrasitions[y]["transitionId"];
+                        tmp.Add(x);
+                    }
+                    passCodes.Add(tmp);
+                }
+
+              
+
+
+
+
+            
         }
 
         public async Task<ShoppingMallsDTO> AddAsync(ShoppingMallsDTO shoppingMalls)
@@ -175,28 +289,28 @@ namespace FastRouting.Services.Services
 
         }
 
-        public async Task<bool> DeleteALocation(LocationsDTO location)
-        {
-            try
-            {
-             var loc = await _LocationsService.GetByIDAsync(location.id);
-             int centerId = loc.centerId;
-             List<EdgesDTO> edges = await _edgesService.GetByCenterIdAsync(centerId);
-             foreach (EdgesDTO edge in edges)
-                {
-                    if (edge.LocationIdA==location.coordinate.id||edge.LocationIdB==location.coordinate.id)
-                    {
-                        await _edgesService.DeleteAsync(edge.LocationIdA);
-                    }
-                }
+        //public async Task<bool> DeleteALocation(LocationsDTO location)
+        //{
+        //    try
+        //    {
+        //     var loc = await _LocationsService.GetByIDAsync(location.id);
+        //     int centerId = loc.centerId;
+        //     List<EdgesDTO> edges = await _edgesService.GetByCenterIdAsync(centerId);
+        //     foreach (EdgesDTO edge in edges)
+        //        {
+        //            if (edge.LocationIdA==location.coordinate.id||edge.LocationIdB==location.coordinate.id)
+        //            {
+        //                await _edgesService.DeleteAsync(edge.LocationIdA);
+        //            }
+        //        }
 
-             //if the trasition of the location is unusing- delete its!
-             return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }
+        //     //if the trasition of the location is unusing- delete its!
+        //     return true;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return false;
+        //    }
+        //}
     }
 }

@@ -16,10 +16,12 @@ namespace FastRouting.Api.Controllers
        
 
         private readonly IIntersectionsService _iEdgesService;
+        private readonly IshoppingMallsService _iEdgesService2;
 
-        public nisuy_(IIntersectionsService shoppingMallsServiece)
+        public nisuy_(IIntersectionsService shoppingMallsServiece, IshoppingMallsService iEdgesService2)
         {
             _iEdgesService = shoppingMallsServiece;
+            _iEdgesService2=iEdgesService2;
         }
 
         // GET: api/<nisuy_>
@@ -38,11 +40,16 @@ namespace FastRouting.Api.Controllers
 
         // POST api/<nisuy_>
         [HttpPost]
-        public async Task<bool> AddCoordy([FromBody] List<int>[] item)
+        public async Task<bool> AddCoordy([FromBody] string flag)
         {
-           // await _iEdgesService.AddAsync(item);
+            await _iEdgesService2.DataPreparationFunc(flag);
             return true;
         }
+        //public async Task<bool> AddCoordy2([FromBody] LocationsDTO flag)
+        //{
+        //    await _iEdgesService2.AddAsync(flag);
+        //    return true;
+        //}
 
         // PUT api/<nisuy_>/5
         [HttpPut("{id}")]

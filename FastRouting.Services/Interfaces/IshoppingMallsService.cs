@@ -17,5 +17,6 @@ namespace FastRouting.Services.Interfaces
         Task<bool> CreateNewMall(string centerName, List<TheMallPhotosDTO> theMallPhotosDTOList, List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<List<int>> passCodes, List<object> edgesCrossFloors);
         Task<ShoppingMallsDTO> UpdateAsync(ShoppingMallsDTO shoppingMalls);
         Task DeleteAsync(int id);
+        Task DataPreparationFunc(string centerName);
     }
 }

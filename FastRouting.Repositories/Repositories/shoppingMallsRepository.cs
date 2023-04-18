@@ -17,9 +17,11 @@ namespace FastRouting.Repositories.Repositories
             _context = context;
         }
 
-        public Task<shoppingMalls> AddAsync(shoppingMalls shoppingMalls)
+        public async Task<shoppingMalls> AddAsync(shoppingMalls shoppingMalls)
         {
-            throw new NotImplementedException();
+            await _context.shoppingMalls.AddAsync(shoppingMalls);
+            await _context.SaveChangesAsync();
+            return shoppingMalls;
         }
 
         public Task DeleteAsync(int id)
