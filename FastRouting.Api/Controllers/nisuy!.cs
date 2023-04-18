@@ -1,6 +1,7 @@
 ﻿using FastRouting.Common.DTO;
 using FastRouting.Repositories.Interfaces;
 using FastRouting.Services.Interfaces;
+using FastRouting.Services.Interfaces.ILogic;
 using FastRouting.Services.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,9 +17,9 @@ namespace FastRouting.Api.Controllers
        
 
         private readonly IIntersectionsService _iEdgesService;
-        private readonly IshoppingMallsService _iEdgesService2;
+        private readonly IAddingACenter _iEdgesService2;
 
-        public nisuy_(IIntersectionsService shoppingMallsServiece, IshoppingMallsService iEdgesService2)
+        public nisuy_(IIntersectionsService shoppingMallsServiece, IAddingACenter iEdgesService2)
         {
             _iEdgesService = shoppingMallsServiece;
             _iEdgesService2=iEdgesService2;

@@ -1,6 +1,7 @@
 ﻿using FastRouting.Common.DTO;
 using FastRouting.Services.Interfaces;
 using FastRouting.Services.Services;
+using FastRouting.Services.Services.Logic;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -12,9 +13,9 @@ namespace FastRouting.Api.Controllers
     public class shoppingMallsController : ControllerBase
     {
 
-        private readonly IshoppingMallsService _shoppingMallsServiece;
+        private readonly ILocationsService _shoppingMallsServiece;
 
-        public shoppingMallsController(IshoppingMallsService shoppingMallsServiece)
+        public shoppingMallsController(ILocationsService shoppingMallsServiece)
         {
             _shoppingMallsServiece = shoppingMallsServiece;
         }
@@ -38,13 +39,12 @@ namespace FastRouting.Api.Controllers
 
         // POST api/<shoppingMallsController>
         [HttpPost]
-        //public bool AddCust([FromBody] List<dynamic> value)
-        //{
-        //    CustomersDTO c = value[1].ToObject<CustomersDTO>();
-        //    var city = (string)value[0];
-        //    return CustomersBLL.NewCust(c, city);
+        public async Task<bool> AddCust([FromBody] LocationsDTO value)
+        {
+            await _shoppingMallsServiece.AddAsync(value);
+            return true;
 
-        //}
+        }
         //הפונקציה מוסיפה מרכז חדש, הפונקציה מקבלת:
         //שם המרכז החדש
         //ליסט של אובייקטים מטיפוס "תמונות של מרכז" המרכז החדש

@@ -19,21 +19,28 @@ namespace FastRouting.Repositories.Repositories
 
         public async Task<Location> AddAsync(Location Location)
         {
-            
-            if(Location.transitions != null)
-            {
-                _context.Transitions.Attach(Location.transitions);
+            Transition trasition;
+            // Subject subject = _context.Subjects.FirstOrDefault(s => s.SubjectID == game.SubjectID);
+            try {
+                trasition= _context.Transitions.FirstOrDefault(t => t.id==Location.transitionId);
+                if (trasition != null)
+                {
+                    _context.Transitions.Attach(Location.transitions);
+                }
+                if (Location.locationTypes != null)
+                {
+                    _context.LocationTypes.Attach(Location.locationTypes);
+                }
+
+
+
+                await _context.Locations.AddAsync(Location);
+                await _context.SaveChangesAsync();
+                int x;
+                return Location;
             }
-            if(Location.locationTypes != null)
-            {
-                _context.LocationTypes.Attach(Location.locationTypes);
-            }
-
-
-
-            await _context.Locations.AddAsync(Location);
-            await _context.SaveChangesAsync();
-            return Location;
+            catch (Exception ex) { throw; }
+           
         }
 
         public async Task DeleteAsync(int Id)

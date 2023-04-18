@@ -1,6 +1,8 @@
 ﻿using FastRouting.Repositories;
 using FastRouting.Services.Interfaces;
+using FastRouting.Services.Interfaces.ILogic;
 using FastRouting.Services.Services;
+using FastRouting.Services.Services.Logic;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -26,6 +28,7 @@ namespace FastRouting.Services
             
             services.AddScoped<ITransitionsToIntersectionsService, TransitionsToIntersectionsServer>();
             services.AddScoped<ITheMallPhotosService, TheMallPhotosService>();
+            services.AddScoped<IAddingACenter, AddingACenter>();
 
             services.AddAutoMapper(typeof(MappingProfile));
 

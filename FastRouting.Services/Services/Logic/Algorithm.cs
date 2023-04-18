@@ -8,28 +8,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FastRouting.Services.Services
+namespace FastRouting.Services.Services.Logic
 {
     //הערה
     public static class Algorithm
     {
 
-        
-    
-      public static double CalcDistance(double x1, double y1, double x2, double y2)
-      {
-         return Math.Sqrt(Math.Pow(x1 - x2, 2) + Math.Pow(y1 - y2, 2));
-      }
 
-    //באלגוריתם זה אני מוסיפה את הנקודות למסד הנתונים וכן את הקשתות
-    public static object BuildingEdges(List<LocationsDTO> Locations, List<IntersectionsDTO> Intersections, List<List<int>> PassCodes)
+
+        public static double CalcDistance(double x1, double y1, double x2, double y2)
+        {
+            return Math.Sqrt(Math.Pow(x1 - x2, 2) + Math.Pow(y1 - y2, 2));
+        }
+
+        //באלגוריתם זה אני מוסיפה את הנקודות למסד הנתונים וכן את הקשתות
+        //מקבל את המיקומים וההצטלבויות אחרי שכבר הכנסנו למסד נתונים
+        public static object BuildingEdges(List<LocationsDTO> Locations, List<IntersectionsDTO> Intersections, List<List<int>> PassCodes)
         {
             try
             {
                 List<EdgesDTO> edges = new List<EdgesDTO>();
-               // List<IntersectionsDTO> intersections = new List<IntersectionsDTO>();
+                // List<IntersectionsDTO> intersections = new List<IntersectionsDTO>();
                 List<TransitionsToIntersectionsDTO> transitionsToIntersections = new List<TransitionsToIntersectionsDTO>();
-               // List<LocationsDTO> locations = new List<LocationsDTO>();
+                // List<LocationsDTO> locations = new List<LocationsDTO>();
                 //מילון של "מעברים", המפתח במילון הוא מס' המעבר והערך הוא ליסט של מזהים שנמצאים במעבר זה
                 var locationIdsByTransitionId = new Dictionary<int, List<int>>();
 
@@ -48,7 +49,7 @@ namespace FastRouting.Services.Services
 
                 foreach (var intersection in Intersections)
                 {
-                    int index = Intersections.FindIndex(a => a.IntersectionID==intersection.IntersectionID);
+                    int index = Intersections.FindIndex(a => a.IntersectionID == intersection.IntersectionID);
 
                     foreach (var item in PassCodes[index])
                     {
@@ -64,8 +65,8 @@ namespace FastRouting.Services.Services
                 double xB;
                 double yA;
                 double yB;
-               
-                      
+
+
                 foreach (var transitionIdAndLocationIds in locationIdsByTransitionId)
                 {
                     var locationIds = transitionIdAndLocationIds.Value;
@@ -73,36 +74,36 @@ namespace FastRouting.Services.Services
                     {
                         for (int j = 0; j < locationIds.Count; j++)
                         {
-                            if (i!=j)
+                            if (i != j)
                             {
-                                
+
                                 if (Locations.Any(x => x.coordinate.id == locationIds[i]))
                                 {
-                                    xA=(Locations.Where(x => x.coordinate.id == locationIds[i]).Select(x=>x.coordinate.x).First());
-                                    yA=(Locations.Where(x => x.coordinate.id == locationIds[i]).Select(x=>x.coordinate.y).First());
+                                    xA = Locations.Where(x => x.coordinate.id == locationIds[i]).Select(x => x.coordinate.x).First();
+                                    yA = Locations.Where(x => x.coordinate.id == locationIds[i]).Select(x => x.coordinate.y).First();
 
                                 }
                                 else
                                 {
-                                    xA=(Intersections.Where(x => x.Coordinate.id == locationIds[i]).Select(x => x.Coordinate.x).First());
-                                    yA=(Intersections.Where(x => x.Coordinate.id == locationIds[i]).Select(x => x.Coordinate.y).First());
+                                    xA = Intersections.Where(x => x.Coordinate.id == locationIds[i]).Select(x => x.Coordinate.x).First();
+                                    yA = Intersections.Where(x => x.Coordinate.id == locationIds[i]).Select(x => x.Coordinate.y).First();
                                 }
                                 if (Locations.Any(x => x.coordinate.id == locationIds[j]))
                                 {
-                                    xB=(Locations.Where(x => x.coordinate.id == locationIds[j]).Select(x => x.coordinate.x).First());
-                                    yB=(Locations.Where(x => x.coordinate.id == locationIds[j]).Select(x => x.coordinate.y).First());
+                                    xB = Locations.Where(x => x.coordinate.id == locationIds[j]).Select(x => x.coordinate.x).First();
+                                    yB = Locations.Where(x => x.coordinate.id == locationIds[j]).Select(x => x.coordinate.y).First();
 
                                 }
                                 else
                                 {
-                                    xB=(Intersections.Where(x => x.Coordinate.id == locationIds[j]).Select(x => x.Coordinate.x).First());
-                                    yB=(Intersections.Where(x => x.Coordinate.id == locationIds[j]).Select(x => x.Coordinate.y).First());
+                                    xB = Intersections.Where(x => x.Coordinate.id == locationIds[j]).Select(x => x.Coordinate.x).First();
+                                    yB = Intersections.Where(x => x.Coordinate.id == locationIds[j]).Select(x => x.Coordinate.y).First();
                                 }
                                 EdgesDTO edge = new EdgesDTO
                                 {
                                     LocationIdA = locationIds[i],
                                     LocationIdB = locationIds[j],
-                                    Distance = CalcDistance(xA,yA,xB,yB)
+                                    Distance = CalcDistance(xA, yA, xB, yB)
                                 };
                                 edges.Add(edge);
                             }
@@ -145,7 +146,7 @@ namespace FastRouting.Services.Services
 
             }
         }
-        
+
 
     }
 }

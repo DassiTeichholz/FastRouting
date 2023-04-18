@@ -2,49 +2,88 @@
   "locationInTrasition": [
     {
       "trasitionNum": 0,
-      "transitionId": 14,
+      "transitionId": 72,
       "locations": [
         {
           "coordinate": {
-            "x": 0.0,
-            "y": 0.0,
-            "z": 0
+            "x": 25,
+            "y": 25,
+            "z": 1
           },
-          "locationName": "Location 1",
+          "locationName": "zara",
           "locationTypesId": 1
         },
         {
           "coordinate": {
-            "x": 1.0,
-            "y": 0.0,
-            "z": 0
+            "x": 25,
+            "y": 70,
+            "z": 1
           },
-          "locationName": "Location 2",
+          "locationName": "H&M",
           "locationTypesId": 1
         }
       ]
     },
     {
       "trasitionNum": 1,
-      "transitionId": 15,
+      "transitionId": 73,
       "locations": [
         {
           "coordinate": {
-            "x": 2.0,
-            "y": 1.0,
-            "z": 0
+            "x": 70,
+            "y": 25,
+            "z": 1
           },
-          "locationName": "Location 3",
-          "locationTypesId": 2
+          "locationName": "fox",
+          "locationTypesId": 1
         },
         {
           "coordinate": {
-            "x": 3.0,
-            "y": 1.0,
-            "z": 0
+            "x": 70,
+            "y": 70,
+            "z": 1
           },
-          "locationName": "Location 4",
-          "locationTypesId": 2
+          "locationName": "levi",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 2,
+      "transitionId": 74,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 70,
+            "y": 25,
+            "z": 1
+          },
+          "locationName": "fox",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 25,
+            "y": 25,
+            "z": 1
+          },
+          "locationName": "zara",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 3,
+      "transitionId": 75,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 100,
+            "z": 1
+          },
+          "locationName": "tamnoon",
+          "locationTypesId": 1
         }
       ]
     }
@@ -53,24 +92,13 @@
     {
       "intersectionNum": 1,
       "coordinate": {
-        "x": 1.0,
-        "y": 0.5,
-        "z": 0
+        "x": 25,
+        "y": 80,
+        "z": 1
       },
       "transitionsNums": [
         0,
-        1
-      ]
-    },
-    {
-      "intersectionNum": 2,
-      "coordinate": {
-        "x": 2.5,
-        "y": 1.0,
-        "z": 0
-      },
-      "transitionsNums": [
-        1
+        3
       ]
     }
   ],

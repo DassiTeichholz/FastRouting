@@ -53,9 +53,9 @@ namespace FastRouting.Services.Services
             return _mapper.Map<IntersectionsDTO>(await _IntersectionsRepository.UpdateAsync(_mapper.Map<Intersections>(Intersections)));
 
         }
-        public async Task Bla(bool flag)
-        {
-            DataPreparation.DataPreparationFunc();
-        }
+        //public async Task Bla(bool flag)
+        //{
+        //    DataPreparation.DataPreparationFunc();
+        //}
     }
 }

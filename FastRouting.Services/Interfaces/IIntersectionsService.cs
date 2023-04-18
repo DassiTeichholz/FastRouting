@@ -16,7 +16,7 @@ namespace FastRouting.Services.Interfaces
         Task<IntersectionsDTO> AddAsync(IntersectionsDTO Intersections);
         Task<IntersectionsDTO> UpdateAsync(IntersectionsDTO Intersections);
         Task DeleteAsync(int IntersectionID);//מחיקה לפי מזהה הצטלבות
-        Task Bla(bool flag);
+       
 
     }
 }

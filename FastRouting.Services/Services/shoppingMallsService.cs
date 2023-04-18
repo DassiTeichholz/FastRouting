@@ -4,6 +4,7 @@ using FastRouting.Repositories.Entities;
 using FastRouting.Repositories.Interfaces;
 using FastRouting.Repositories.Repositories;
 using FastRouting.Services.Interfaces;
+using FastRouting.Services.Services.Logic;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -38,7 +39,7 @@ namespace FastRouting.Services.Services
         }
 
 
-
+        //ניתוח הjson בלבד
         public async Task DataPreparationFunc(string centerName)
         {
             //הליסטים שיוחזרו בסוף, אחרי שננתח את הקובץ
@@ -140,12 +141,18 @@ namespace FastRouting.Services.Services
                     passCodes.Add(tmp);
                 }
 
+            //טיפול בקשתות חוצות קומות
+            // location קשתות חוצות קומות יכולות להיות רק בין שני אובייקטים מטיפוס 
+            foreach (var edgeCrossing in edgesCrossing) 
+            { 
               
-
-
-
+            }
 
             
+
+
+
+
         }
 
         public async Task<ShoppingMallsDTO> AddAsync(ShoppingMallsDTO shoppingMalls)
@@ -182,7 +189,7 @@ namespace FastRouting.Services.Services
 
         }
 
-        public async Task<bool> CreateNewMall(string centerName, List<TheMallPhotosDTO> theMallPhotosDTOList,List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<List<int>> passCodes, List<dynamic> edgesCrossFloors)
+        public async Task<bool> CreateNewMall(ShoppingMallsDTO shoppingMall, List<TheMallPhotosDTO> theMallPhotosDTOList,List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<List<int>> passCodes, List<dynamic> edgesCrossFloors)
         {
             //מעברים יוצרים בצד לקוח!!!
 
@@ -190,32 +197,32 @@ namespace FastRouting.Services.Services
             {
                 List<LocationsDTO> locations2 = new List<LocationsDTO>();
                 List<IntersectionsDTO> intersections2 = new List<IntersectionsDTO>();
-                ShoppingMallsDTO shoppingMall = new ShoppingMallsDTO {
-                    Name=centerName
-                };
-                int shoppingMallId =  AddAsync(shoppingMall).Result.Id;
+                //ShoppingMallsDTO shoppingMall = new ShoppingMallsDTO {
+                //    Name=centerName
+                //};
+                //int shoppingMallId =  AddAsync(shoppingMall).Result.Id;
                 foreach(var mallPhoto in theMallPhotosDTOList)
                 {
-                    mallPhoto.Id= shoppingMallId;
+                   // mallPhoto.Id= shoppingMallId;
                     await _theMallPhotosService.AddAsync(mallPhoto);
                 }
                 //מה בקשר לקאורדיננטה בעצמה?
                 foreach (var location in locations)
                 {
-                    location.centerId = shoppingMallId;
-                    if (location.transitions==null)
-                    {
-                        location.transitions=await _transitionsService.GetByIdAsync(location.transitionId);
-                    }
-                    if(location.locationTypes==null)
-                    {
-                        location.locationTypes=await _locationTypesService.GetByIdAsync(location.locationTypesId);
-                    }
+                //    location.centerId = shoppingMallId;
+                //    if (location.transitions==null)
+                //    {
+                //        location.transitions=await _transitionsService.GetByIdAsync(location.transitionId);
+                //    }
+                //    if(location.locationTypes==null)
+                //    {
+                //        location.locationTypes=await _locationTypesService.GetByIdAsync(location.locationTypesId);
+                //    }
                     locations2.Add(await _LocationsService.AddAsync(location));
                 }
                 foreach(var intersection in intersections)
                 {
-                    intersection.centerId = shoppingMallId;
+                //    intersection.centerId = shoppingMallId;
                     intersections2.Add( await _IntersectionsService.AddAsync(intersection));
                 }
                 dynamic result = Algorithm.BuildingEdges(locations2, intersections2, passCodes);
@@ -230,7 +237,7 @@ namespace FastRouting.Services.Services
                 }
                 foreach (var edge in Edges)
                 {
-                    edge.centerId = shoppingMallId;
+                    edge.centerId = shoppingMall.Id;
                     await _edgesService.AddAsync(edge);
                 }
                 int idA;
