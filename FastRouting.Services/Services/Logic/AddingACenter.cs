@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace FastRouting.Services.Services.Logic
 {
-    public class AddingACenter: IAddingACenter
+    public class AddingACenter : IAddingACenter
     {
 
         private readonly IshoppingMallsService _shoppingMallService;
@@ -24,20 +24,20 @@ namespace FastRouting.Services.Services.Logic
         private readonly ITransitionsService _transitionsService;
         private readonly ILocationTypesService _locationTypesService;
         private readonly ITransitionsToIntersectionsService _transitionsToIntersectionsService;
-        public AddingACenter(IMapper mapper,IshoppingMallsService shoppingMallService , IEdgesService edgesService,ITheMallPhotosService theMallPhotosService, IIntersectionsService intersectionsService, ILocationsService locationsService, ITransitionsService transitionsService, ILocationTypesService locationTypesService, ITransitionsToIntersectionsService transitionsToIntersectionsService)
+        public AddingACenter(IMapper mapper, IshoppingMallsService shoppingMallService, IEdgesService edgesService, ITheMallPhotosService theMallPhotosService, IIntersectionsService intersectionsService, ILocationsService locationsService, ITransitionsService transitionsService, ILocationTypesService locationTypesService, ITransitionsToIntersectionsService transitionsToIntersectionsService)
         {
             _mapper = mapper;
             _shoppingMallService = shoppingMallService;
-            _edgesService= edgesService;
-            _theMallPhotosService =theMallPhotosService;
-            _IntersectionsService=intersectionsService;
-            _LocationsService=locationsService;
-            _transitionsService=transitionsService;
-            _locationTypesService=locationTypesService;
-            _transitionsToIntersectionsService=transitionsToIntersectionsService;
+            _edgesService = edgesService;
+            _theMallPhotosService = theMallPhotosService;
+            _IntersectionsService = intersectionsService;
+            _LocationsService = locationsService;
+            _transitionsService = transitionsService;
+            _locationTypesService = locationTypesService;
+            _transitionsToIntersectionsService = transitionsToIntersectionsService;
         }
 
-        public  async Task DataPreparationFunc(string centerName)
+        public async Task DataPreparationFunc(string centerName)
         {
             //הליסטים שיוחזרו בסוף, אחרי שננתח את הקובץ
             List<LocationsDTO> locationsList = new List<LocationsDTO>();
@@ -56,8 +56,8 @@ namespace FastRouting.Services.Services.Logic
             ShoppingMallsDTO shoppingMall = new ShoppingMallsDTO
             {
 
-                Id=0,
-                Name=centerName
+                Id = 0,
+                Name = centerName
             };
             ShoppingMallsDTO shoppingMall2 = await _shoppingMallService.AddAsync(shoppingMall);
 
@@ -67,12 +67,12 @@ namespace FastRouting.Services.Services.Logic
                 TransitionsDTO trasition = new TransitionsDTO
                 {
 
-                    id=0,
-                    transitionsName= "trasition number "+num
+                    id = 0,
+                    transitionsName = "trasition number " + num
 
                 };
                 TransitionsDTO transition = await _transitionsService.AddAsync(trasition);
-                jsonObject["locationInTrasition"][num]["transitionId"]=transition.id;
+                jsonObject["locationInTrasition"][num]["transitionId"] = transition.id;
                 num++;
                 var locations = item["locations"];
                 foreach (var loc in locations)
@@ -80,20 +80,20 @@ namespace FastRouting.Services.Services.Logic
                     LocationsDTO locationDTO = new LocationsDTO
                     {
 
-                        id=0,
-                        coordinate= new CoordinateDTO
+                        id = 0,
+                        coordinate = new CoordinateDTO
                         {
-                            id= 0,
-                            x= (double)loc["coordinate"]["x"],
-                            y= (double)loc["coordinate"]["y"],
-                            z= (int)loc["coordinate"]["z"]
+                            id = 0,
+                            x = (double)loc["coordinate"]["x"],
+                            y = (double)loc["coordinate"]["y"],
+                            z = (int)loc["coordinate"]["z"]
                         },
-                        locationName=(string)loc["locationName"],
-                        transitionId=transition.id,
-                        transitions=null,
-                        locationTypesId=(int)loc["locationTypesId"],
-                        locationTypes=null,
-                        centerId=shoppingMall2.Id
+                        locationName = (string)loc["locationName"],
+                        transitionId = transition.id,
+                        transitions = null,
+                        locationTypesId = (int)loc["locationTypesId"],
+                        locationTypes = null,
+                        centerId = shoppingMall2.Id
 
                     };
                     locationsList.Add(locationDTO);
@@ -118,21 +118,21 @@ namespace FastRouting.Services.Services.Logic
             {
                 IntersectionsDTO intersection = new IntersectionsDTO
                 {
-                    IntersectionID=0,
-                    Coordinate=new CoordinateDTO
+                    IntersectionID = 0,
+                    Coordinate = new CoordinateDTO
                     {
-                        x= (double)intersec["coordinate"]["x"],
-                        y= (double)intersec["coordinate"]["y"],
-                        z= (int)intersec["coordinate"]["z"]
+                        x = (double)intersec["coordinate"]["x"],
+                        y = (double)intersec["coordinate"]["y"],
+                        z = (int)intersec["coordinate"]["z"]
                     },
-                    centerId=shoppingMall2.Id
+                    centerId = shoppingMall2.Id
                 };
                 intersectionsList.Add(intersection);
                 var transitionsNums = intersec["transitionsNums"];
                 foreach (var index in transitionsNums)
                 {
                     y = (int)index;
-                    x=(int)locationsInTrasitions[y]["transitionId"];
+                    x = (int)locationsInTrasitions[y]["transitionId"];
                     tmp.Add(x);
                 }
                 passCodes.Add(tmp);
@@ -163,7 +163,7 @@ namespace FastRouting.Services.Services.Logic
             {
                 List<LocationsDTO> locations2 = new List<LocationsDTO>();
                 List<IntersectionsDTO> intersections2 = new List<IntersectionsDTO>();
-                
+
                 //foreach (var mallPhoto in theMallPhotosDTOList)
                 //{
                 //    await _theMallPhotosService.AddAsync(mallPhoto);
@@ -224,7 +224,7 @@ namespace FastRouting.Services.Services.Logic
 
 
 
-        public  double CalcDistance(double x1, double y1, double x2, double y2)
+        public double CalcDistance(double x1, double y1, double x2, double y2)
         {
             return Math.Sqrt(Math.Pow(x1 - x2, 2) + Math.Pow(y1 - y2, 2));
         }

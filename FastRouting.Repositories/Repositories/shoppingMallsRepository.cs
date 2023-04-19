@@ -19,6 +19,7 @@ namespace FastRouting.Repositories.Repositories
 
         public async Task<shoppingMalls> AddAsync(shoppingMalls shoppingMalls)
         {
+            var c = _context.shoppingMalls.FirstOrDefault(x => x.Name == "aa");
             await _context.shoppingMalls.AddAsync(shoppingMalls);
             await _context.SaveChangesAsync();
             return shoppingMalls;

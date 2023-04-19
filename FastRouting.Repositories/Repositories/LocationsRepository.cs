@@ -19,13 +19,14 @@ namespace FastRouting.Repositories.Repositories
 
         public async Task<Location> AddAsync(Location Location)
         {
-            Transition trasition;
+            Transition? trasition;
             // Subject subject = _context.Subjects.FirstOrDefault(s => s.SubjectID == game.SubjectID);
-            try {
-                trasition= _context.Transitions.FirstOrDefault(t => t.id==Location.transitionId);
+            try
+            {
+                trasition = await _context.Transitions.FirstOrDefaultAsync(t => t.id == Location.transitionId);
                 if (trasition != null)
                 {
-                    _context.Transitions.Attach(Location.transitions);
+                   _context.Transitions.Attach(Location.transitions);
                 }
                 if (Location.locationTypes != null)
                 {
@@ -40,7 +41,7 @@ namespace FastRouting.Repositories.Repositories
                 return Location;
             }
             catch (Exception ex) { throw; }
-           
+
         }
 
         public async Task DeleteAsync(int Id)
@@ -61,11 +62,11 @@ namespace FastRouting.Repositories.Repositories
         }
         public async Task<List<Location>> GetByCenterIdAsync(int id)
         {
-            return await _context.Locations.Where(x=>x.centerId==id).ToListAsync();
+            return await _context.Locations.Where(x => x.centerId == id).ToListAsync();
         }
-          public async Task<Location> GetByNameAsync(string name)
+        public async Task<Location> GetByNameAsync(string name)
         {
-            return await  _context.Locations/*.Include(x=>x.Coordinate)*/.FirstOrDefaultAsync(x=>x.locationName==name);
+            return await _context.Locations/*.Include(x=>x.Coordinate)*/.FirstOrDefaultAsync(x => x.locationName == name);
         }
 
         public async Task<Location> UpdateAsync(Location Locations)

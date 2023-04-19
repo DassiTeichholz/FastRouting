@@ -26,7 +26,7 @@ namespace FastRouting.Services.Services
             _mapper = mapper;
             _edgesService = edgesService;
             _transitionsService = transitionsService;
-            _locationTypesService = locationTypesService;   
+            _locationTypesService = locationTypesService;
         }
 
         public async Task<LocationsDTO> AddAsync(LocationsDTO Location)
@@ -35,14 +35,14 @@ namespace FastRouting.Services.Services
             //{
             //    game.Subject =await _subjectService.GetByIdAsync(game.SubjectID);
             //}
-            if (Location.transitions==null)
+            if (Location.transitions == null)
             {
-                Location.transitions=await _transitionsService.GetByIdAsync(Location.transitionId);
+                Location.transitions = await _transitionsService.GetByIdAsync(Location.transitionId);
             }
-            
-            if (Location.locationTypes==null)
+
+            if (Location.locationTypes == null)
             {
-                Location.locationTypes=await _locationTypesService.GetByIdAsync(Location.locationTypesId);
+                Location.locationTypes = await _locationTypesService.GetByIdAsync(Location.locationTypesId);
             }
             return _mapper.Map<LocationsDTO>(await _LocationsRepository.AddAsync(_mapper.Map<Location>(Location)));
 

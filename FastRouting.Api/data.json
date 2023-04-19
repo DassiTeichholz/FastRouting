@@ -2,7 +2,7 @@
   "locationInTrasition": [
     {
       "trasitionNum": 0,
-      "transitionId": 72,
+      "transitionId": 27,
       "locations": [
         {
           "coordinate": {
@@ -26,7 +26,7 @@
     },
     {
       "trasitionNum": 1,
-      "transitionId": 73,
+      "transitionId": 28,
       "locations": [
         {
           "coordinate": {
@@ -50,7 +50,7 @@
     },
     {
       "trasitionNum": 2,
-      "transitionId": 74,
+      "transitionId": 29,
       "locations": [
         {
           "coordinate": {
@@ -74,7 +74,7 @@
     },
     {
       "trasitionNum": 3,
-      "transitionId": 75,
+      "transitionId": 30,
       "locations": [
         {
           "coordinate": {
