@@ -24,13 +24,17 @@ namespace FastRouting.Repositories.Repositories
             try
             {
                 trasition = await _context.Transitions.FirstOrDefaultAsync(t => t.id == Location.transitionId);
+                
                 if (trasition != null)
                 {
-                   _context.Transitions.Attach(Location.transitions);
+                    Location.transitions = trasition;
+
+                   //_context.Transitions.Attach(Location.transitions);
                 }
                 if (Location.locationTypes != null)
                 {
-                    _context.LocationTypes.Attach(Location.locationTypes);
+                    
+                    //_context.LocationTypes.Attach(Location.locationTypes);
                 }
 
 
