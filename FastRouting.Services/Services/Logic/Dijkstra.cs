@@ -102,6 +102,7 @@ namespace FastRouting.Services.Services.Logic
             int index = 0;
             VertexOfGraph[] graph = new VertexOfGraph[locations.Count + intersections.Count];
             List<EdgeOfGraph> listEdgeOfGraph = new List<EdgeOfGraph>();
+            //מעבר על כל הקשתות והפיכתן ל "קשתות של גרף"
             foreach (var edge in edges)
             {
                 EdgeOfGraph edgeOfGraph = new EdgeOfGraph(edge);
