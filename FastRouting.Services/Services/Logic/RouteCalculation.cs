@@ -15,6 +15,9 @@ using System.Linq;
 using System.Xml.Linq;
 using System;
 using System.Collections.Generic;
+using FastRouting.Services.Interfaces.ILogic;
+using AutoMapper;
+using FastRouting.Services.Interfaces;
 
 namespace FastRouting.Services.Services.Logic
 {
@@ -94,14 +97,48 @@ namespace FastRouting.Services.Services.Logic
 
 
 
-    public static class Dijkstra
+    public  class RouteCalculation: IRouteCalculation
     {
-
-       // public static 
-
-
-        public static VertexOfGraph[] PreparingTheGraph(List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<EdgesDTO> edges)
+        private readonly IshoppingMallsService _shoppingMallService;
+        private readonly ILocationsService _locationsService;
+        private readonly IIntersectionsService _IntersectionsService;
+        private readonly ITheMallPhotosService _theMallPhotosService;
+        private readonly IMapper _mapper;
+        private readonly IEdgesService _edgesService;
+        private readonly ITransitionsService _transitionsService;
+        private readonly ILocationTypesService _locationTypesService;
+        private readonly ITransitionsToIntersectionsService _transitionsToIntersectionsService;
+        public RouteCalculation(IMapper mapper, IshoppingMallsService shoppingMallService, IEdgesService edgesService, ITheMallPhotosService theMallPhotosService, IIntersectionsService intersectionsService, ILocationsService locationsService, ITransitionsService transitionsService, ILocationTypesService locationTypesService, ITransitionsToIntersectionsService transitionsToIntersectionsService)
         {
+            _mapper = mapper;
+            _shoppingMallService = shoppingMallService;
+            _edgesService = edgesService;
+            _theMallPhotosService = theMallPhotosService;
+            _IntersectionsService = intersectionsService;
+            _locationsService = locationsService;
+            _transitionsService = transitionsService;
+            _locationTypesService = locationTypesService;
+            _transitionsToIntersectionsService = transitionsToIntersectionsService;
+        }
+        public  async Task<List<VertexOfGraph>> MainFunction(string nameSource,string nameDestination,int idCenter)
+        {
+            List<VertexOfGraph> vertexOfGraphs= new List<VertexOfGraph>();
+            List<LocationsDTO> locations = new List<LocationsDTO>();
+            List<IntersectionsDTO> intersections = new List<IntersectionsDTO>();
+            List<EdgesDTO> edges = new List<EdgesDTO>();
+            locations= await _locationsService.GetByCenterIdAsync(idCenter);
+            intersections=await _IntersectionsService.GetBycenterIdAsync(idCenter);
+            edges=await _edgesService.GetByCenterIdAsync(idCenter);
+            vertexOfGraphs= await PreparingTheGraph(locations, intersections, edges,nameSource,nameDestination);
+            return vertexOfGraphs;
+
+        }
+
+
+        public async Task<List<VertexOfGraph>> PreparingTheGraph(List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<EdgesDTO> edges, string nameSource, string nameDestination)
+        {
+            int src=0;
+            int dest=0;
             int index = 0;
             VertexOfGraph[] graph = new VertexOfGraph[locations.Count + intersections.Count];
             List<EdgeOfGraph> listEdgeOfGraph = new List<EdgeOfGraph>();
@@ -115,7 +152,14 @@ namespace FastRouting.Services.Services.Logic
 
             foreach (var location in locations)
             {
-                //List<EdgeOfGraph> listEdgeOfGraph = new List<EdgeOfGraph>();
+                if(location.locationName== nameSource)
+                {
+                    src= index;
+                }
+                if(location.locationName== nameDestination)
+                {
+                    dest= index;
+                }
 
                 foreach (var edgeOfGraph in listEdgeOfGraph)
                 {
@@ -176,13 +220,14 @@ namespace FastRouting.Services.Services.Logic
             }
 
 
-
-            return graph;
+            List<VertexOfGraph> vertexOfGraphs= new List<VertexOfGraph>();
+            vertexOfGraphs=await DijkstraAlgorithm(src,dest,graph);
+            return vertexOfGraphs;
         }
 
         //חשוב מאד!!
         //המקור והיעד הם האינדקסים של המקומות בגרף המבטאים מקור ויעד
-        public static List<VertexOfGraph> DijkstraAlgorithm(int src, int dest, VertexOfGraph[] graph)
+        public async Task<List<VertexOfGraph>> DijkstraAlgorithm(int src, int dest, VertexOfGraph[] graph)
         {
             List<VertexOfGraph> VertexOfGraph = new List<VertexOfGraph>();
             double[] distance = new double[graph.Length];
@@ -213,7 +258,7 @@ namespace FastRouting.Services.Services.Logic
 
                     if (distance[current.getVertex()] + n.Edge.Distance < distance[n.IndexB])
                     {
-                        distance[n.IndexB] = distance[current.getVertex()] + +n.Edge.Distance;
+                        distance[n.IndexB] = distance[current.getVertex()] + n.Edge.Distance;
                         parent[n.IndexB] = current.getVertex();
 
                         pq.Add(new AdjListNode(

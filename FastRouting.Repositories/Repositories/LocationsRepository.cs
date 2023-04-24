@@ -66,7 +66,7 @@ namespace FastRouting.Repositories.Repositories
         }
         public async Task<List<Location>> GetByCenterIdAsync(int id)
         {
-            return await _context.Locations.Where(x => x.centerId == id).ToListAsync();
+            return await _context.Locations.Include(c=>c.coordinate).Include(r=>r.locationTypes).Include(p=>p.transitions).Where(x => x.centerId == id).ToListAsync();
         }
         public async Task<Location> GetByNameAsync(string name)
         {

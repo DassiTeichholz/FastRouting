@@ -29,6 +29,7 @@ namespace FastRouting.Services
             services.AddScoped<ITransitionsToIntersectionsService, TransitionsToIntersectionsServer>();
             services.AddScoped<ITheMallPhotosService, TheMallPhotosService>();
             services.AddScoped<IAddingACenter, AddingACenter>();
+            services.AddScoped<IRouteCalculation, RouteCalculation>();
 
             services.AddAutoMapper(typeof(MappingProfile));
 

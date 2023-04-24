@@ -268,33 +268,33 @@ namespace FastRouting.Services.Services
            
 
         }
-        public async Task<List<VertexOfGraph>> GetRoute(string centerName, string sourceName, string DestName)
-        {
-            try
-            {
-                int centerId = _shoppingMallRepository.GetByNameAsync(centerName).Id;
-                List<EdgesDTO> edges;
-                List<IntersectionsDTO> intersections;
-                List<LocationsDTO> locations;
-                edges = await _edgesService.GetByCenterIdAsync(centerId);
-                intersections = await _IntersectionsService.GetBycenterIdAsync(centerId);
-                locations = await _LocationsService.GetByCenterIdAsync(centerId);
-                VertexOfGraph[] graph = Dijkstra.PreparingTheGraph(locations,intersections,edges);
-                var location = await _LocationsService.GetByNameAsync(sourceName);
-                int sourceNameId = location.coordinate.id;
-                location = await _LocationsService.GetByNameAsync(DestName);
-                int DestNameId = location.coordinate.id;
-                List<VertexOfGraph> route = Dijkstra.DijkstraAlgorithm(sourceNameId, DestNameId, graph);
-                return route;
+        //public async Task<List<VertexOfGraph>> GetRoute(string centerName, string sourceName, string DestName)
+        //{
+        //    try
+        //    {
+        //        int centerId = _shoppingMallRepository.GetByNameAsync(centerName).Id;
+        //        List<EdgesDTO> edges;
+        //        List<IntersectionsDTO> intersections;
+        //        List<LocationsDTO> locations;
+        //        edges = await _edgesService.GetByCenterIdAsync(centerId);
+        //        intersections = await _IntersectionsService.GetBycenterIdAsync(centerId);
+        //        locations = await _LocationsService.GetByCenterIdAsync(centerId);
+        //        VertexOfGraph[] graph = Dijkstra.PreparingTheGraph(locations,intersections,edges);
+        //        var location = await _LocationsService.GetByNameAsync(sourceName);
+        //        int sourceNameId = location.coordinate.id;
+        //        location = await _LocationsService.GetByNameAsync(DestName);
+        //        int DestNameId = location.coordinate.id;
+        //        List<VertexOfGraph> route = Dijkstra.DijkstraAlgorithm(sourceNameId, DestNameId, graph);
+        //        return route;
                 
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return null;
+        //    }
         
 
-        }
+        //}
 
         //public async Task<bool> DeleteALocation(LocationsDTO location)
         //{
