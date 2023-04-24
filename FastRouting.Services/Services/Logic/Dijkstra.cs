@@ -41,15 +41,17 @@ namespace FastRouting.Services.Services.Logic
         public CoordinateDTO coordinate { get; set; }
         public LocationTypesDTO LocationTypes { get; set; }
         public string name { get; set; }
+        public int trasition { get; set; }
         public List<EdgeOfGraph> EdgesOfGraphs { get; set; }
         //private int num;
 
-        public VertexOfGraph(CoordinateDTO coordinate, LocationTypesDTO LocationTypes, string name/*, int num*/)
+        public VertexOfGraph(CoordinateDTO coordinate, LocationTypesDTO LocationTypes, string name/*, int num*/, int trasition)
         {
             this.coordinate = coordinate;
             this.LocationTypes = LocationTypes;
             this.name = name;
             EdgesOfGraphs = new List<EdgeOfGraph>();
+            this.trasition = trasition;
             // this.num = num;
         }
         public VertexOfGraph(CoordinateDTO coordinate/*, int num*/)
@@ -58,6 +60,7 @@ namespace FastRouting.Services.Services.Logic
             this.coordinate = coordinate;
             LocationTypes = null;
             name = null;
+            
             EdgesOfGraphs = new List<EdgeOfGraph>();
 
         }
@@ -94,7 +97,7 @@ namespace FastRouting.Services.Services.Logic
     public static class Dijkstra
     {
 
-
+       // public static 
 
 
         public static VertexOfGraph[] PreparingTheGraph(List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<EdgesDTO> edges)
@@ -132,7 +135,7 @@ namespace FastRouting.Services.Services.Logic
 
                 }
 
-                VertexOfGraph VertexOfGraph = new VertexOfGraph(location.coordinate, location.locationTypes, location.locationName/*, index*/);
+                VertexOfGraph VertexOfGraph = new VertexOfGraph(location.coordinate, location.locationTypes, location.locationName/*, index*/,location.transitionId);
 
                 graph[index] = VertexOfGraph;
                 index++;

@@ -140,17 +140,17 @@ namespace FastRouting.Services.Services.Logic
 
             //טיפול בקשתות חוצות קומות
             // location קשתות חוצות קומות יכולות להיות רק בין שני אובייקטים מטיפוס 
-            foreach (var edgeCrossing in edgesCrossing)
-            {
+            //foreach (var edgeCrossing in edgesCrossing)
+            //{
 
-            }
+            //}
 
 
             //מה שנשאר לעשות כאן:
             //ליצור אובייקטים של קשתות
             //ליצור אובייקטים של תמונות
 
-            CreateNewMall(shoppingMall2, locationsList, intersectionsList, passCodes);
+            await CreateNewMall(shoppingMall2, locationsList, intersectionsList, passCodes);
 
         }
 
@@ -170,7 +170,7 @@ namespace FastRouting.Services.Services.Logic
                 //}
                 foreach (var location in locations)
                 {
-                    var n = await _LocationsService.AddAsync(location);
+                   // var n = await _LocationsService.AddAsync(location);
                     locations2.Add(await _LocationsService.AddAsync(location));
                 }
                 foreach (var intersection in intersections)

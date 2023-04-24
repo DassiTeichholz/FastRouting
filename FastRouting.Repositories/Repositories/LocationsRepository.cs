@@ -23,19 +23,19 @@ namespace FastRouting.Repositories.Repositories
             // Subject subject = _context.Subjects.FirstOrDefault(s => s.SubjectID == game.SubjectID);
             try
             {
-                trasition = await _context.Transitions.FirstOrDefaultAsync(t => t.id == Location.transitionId);
+                //trasition = await _context.Transitions.FirstOrDefaultAsync(t => t.id == Location.transitionId);
                 
-                if (trasition != null)
-                {
-                    Location.transitions = trasition;
+                //if (trasition != null)
+                //{
+                //   // Location.transitions = trasition;
 
-                   //_context.Transitions.Attach(Location.transitions);
-                }
-                if (Location.locationTypes != null)
-                {
+                //   _context.Transitions.Attach(Location.transitions);
+                //}
+                //if (Location.locationTypes != null)
+                //{
                     
-                    //_context.LocationTypes.Attach(Location.locationTypes);
-                }
+                //   _context.LocationTypes.Attach(Location.locationTypes);
+                //}
 
 
 

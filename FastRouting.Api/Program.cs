@@ -21,7 +21,8 @@ builder.Services.AddDbContext<IContext, DataContext>(options =>
     options.UseSqlServer("name=ConnectionStrings:FastRouting");
     options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
 
-});
+}, ServiceLifetime.Scoped);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

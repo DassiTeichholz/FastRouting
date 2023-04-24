@@ -32,16 +32,6 @@ namespace FastRouting.Repositories.Entities
         
         
         
-        //private Subject? subject;
-
-        //public Subject Subject
-        //{
-        //    get { return subject; }
-        //    set
-        //    {
-        //        subject = null!;
-        //        subject = value;
-        //    }
-        //}
+        
     }
 }

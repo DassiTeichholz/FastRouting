@@ -15,18 +15,18 @@ namespace FastRouting.Services.Services
     {
         private readonly ILocationsRepository _LocationsRepository;
         private readonly IMapper _mapper;
-        private readonly IEdgesService _edgesService;
-        private readonly ILocationTypesService _locationTypesService;
-        private readonly ITransitionsService _transitionsService;
+        //private readonly IEdgesService _edgesService;
+        //private readonly ILocationTypesService _locationTypesService;
+        //private readonly ITransitionsService _transitionsService;
 
 
         public LocationsService(ILocationsRepository LocationsRepository, IMapper mapper, IEdgesService edgesService, ITransitionsService transitionsService, ILocationTypesService locationTypesService)
         {
             _LocationsRepository = LocationsRepository;
             _mapper = mapper;
-            _edgesService = edgesService;
-            _transitionsService = transitionsService;
-            _locationTypesService = locationTypesService;
+            //_edgesService = edgesService;
+            //_transitionsService = transitionsService;
+            //_locationTypesService = locationTypesService;
         }
 
         public async Task<LocationsDTO> AddAsync(LocationsDTO Location)
@@ -35,15 +35,15 @@ namespace FastRouting.Services.Services
             //{
             //    game.Subject =await _subjectService.GetByIdAsync(game.SubjectID);
             //}
-            if (Location.transitions == null)
-            {
-                Location.transitions = await _transitionsService.GetByIdAsync(Location.transitionId);
-            }
+            //if (Location.transitions == null)
+            //{
+            //    Location.transitions = await _transitionsService.GetByIdAsync(Location.transitionId);
+            //}
 
-            if (Location.locationTypes == null)
-            {
-                Location.locationTypes = await _locationTypesService.GetByIdAsync(Location.locationTypesId);
-            }
+            //if (Location.locationTypes == null)
+            //{
+            //    Location.locationTypes = await _locationTypesService.GetByIdAsync(Location.locationTypesId);
+            //}
             return _mapper.Map<LocationsDTO>(await _LocationsRepository.AddAsync(_mapper.Map<Location>(Location)));
 
         }
