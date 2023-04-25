@@ -10,10 +10,10 @@ namespace FastRouting.Services.Interfaces.ILogic
 {
     public interface IRouteCalculation
     {
-        Task<List<VertexOfGraph>> MainFunction(string nameSource, string nameDestination,int idCenter);
-        Task<List<VertexOfGraph>> PreparingTheGraph(List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<EdgesDTO> edges, string nameSource, string nameDestination)
+        Task<List<Floor>> MainFunction(string nameSource, string nameDestination,int idCenter);
+        Task<List<Floor>> PreparingTheGraph(List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<EdgesDTO> edges, string nameSource, string nameDestination)
 ;
-        Task<List<VertexOfGraph>> DijkstraAlgorithm(int src, int dest, VertexOfGraph[] graph);
+        Task<List<Floor>> DijkstraAlgorithm(int src, int dest, VertexOfGraph[] graph);
 
     }
 }

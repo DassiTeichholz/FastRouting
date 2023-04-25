@@ -2,79 +2,7 @@
   "locationInTrasition": [
     {
       "trasitionNum": 0,
-      "transitionId": 100,
-      "locations": [
-        {
-          "coordinate": {
-            "x": 25,
-            "y": 25,
-            "z": 1
-          },
-          "locationName": "zara",
-          "locationTypesId": 1
-        },
-        {
-          "coordinate": {
-            "x": 25,
-            "y": 70,
-            "z": 1
-          },
-          "locationName": "H&M",
-          "locationTypesId": 1
-        }
-      ]
-    },
-    {
-      "trasitionNum": 1,
-      "transitionId": 101,
-      "locations": [
-        {
-          "coordinate": {
-            "x": 70,
-            "y": 25,
-            "z": 1
-          },
-          "locationName": "fox",
-          "locationTypesId": 1
-        },
-        {
-          "coordinate": {
-            "x": 70,
-            "y": 70,
-            "z": 1
-          },
-          "locationName": "levi",
-          "locationTypesId": 1
-        }
-      ]
-    },
-    {
-      "trasitionNum": 2,
-      "transitionId": 102,
-      "locations": [
-        {
-          "coordinate": {
-            "x": 70,
-            "y": 25,
-            "z": 1
-          },
-          "locationName": "fox",
-          "locationTypesId": 1
-        },
-        {
-          "coordinate": {
-            "x": 25,
-            "y": 25,
-            "z": 1
-          },
-          "locationName": "zara",
-          "locationTypesId": 1
-        }
-      ]
-    },
-    {
-      "trasitionNum": 3,
-      "transitionId": 103,
+      "transitionId": 128,
       "locations": [
         {
           "coordinate": {
@@ -82,7 +10,73 @@
             "y": 100,
             "z": 1
           },
-          "locationName": "tamnoon",
+          "locationName": "zara",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "H&M",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "zoya",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 1,
+      "transitionId": 129,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "fox",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "levi",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "CB",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 2,
+      "transitionId": 130,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 50,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "laline",
           "locationTypesId": 1
         }
       ]
@@ -92,13 +86,37 @@
     {
       "intersectionNum": 1,
       "coordinate": {
-        "x": 25,
-        "y": 80,
+        "x": 20,
+        "y": 100,
         "z": 1
       },
       "transitionsNums": [
         0,
-        3
+        2
+      ]
+    },
+    {
+      "intersectionNum": 2,
+      "coordinate": {
+        "x": 20,
+        "y": 40,
+        "z": 1
+      },
+      "transitionsNums": [
+        0,
+        1
+      ]
+    },
+    {
+      "intersectionNum": 3,
+      "coordinate": {
+        "x": 75,
+        "y": 40,
+        "z": 1
+      },
+      "transitionsNums": [
+        1,
+        2
       ]
     }
   ],

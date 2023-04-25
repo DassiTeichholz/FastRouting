@@ -136,6 +136,7 @@ namespace FastRouting.Services.Services.Logic
                     tmp.Add(x);
                 }
                 passCodes.Add(tmp);
+                tmp= new List<int>();
             }
 
             //טיפול בקשתות חוצות קומות

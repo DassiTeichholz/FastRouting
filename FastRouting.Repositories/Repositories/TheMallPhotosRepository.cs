@@ -37,6 +37,11 @@ namespace FastRouting.Repositories.Repositories
             return await _context.TheMallPhotos.ToListAsync();
 
         }
+        public async Task<List<TheMallPhotos>> GetByZAsync(int z)
+        {
+            return await _context.TheMallPhotos.Where(x=>x.floor==z).ToListAsync();
+
+        }
 
         public async Task<TheMallPhotos> GetByIdAsync(int id)
         {

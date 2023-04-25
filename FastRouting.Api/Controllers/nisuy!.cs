@@ -30,7 +30,7 @@ namespace FastRouting.Api.Controllers
 
         // GET: api/<nisuy_>
         [HttpGet]
-        public async Task<List<VertexOfGraph>> Get(string nameSource, string nameDestination, int idCenter)
+        public async Task<List<Floor>> Get(string nameSource, string nameDestination, int idCenter)
         {
             return await _routeCalculation.MainFunction(nameSource, nameDestination, idCenter);
         }

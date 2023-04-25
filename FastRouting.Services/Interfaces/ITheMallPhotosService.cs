@@ -10,6 +10,7 @@ namespace FastRouting.Services.Interfaces
     public interface ITheMallPhotosService
     {
         Task<List<TheMallPhotosDTO>> GetAllAsync();
+        Task<List<TheMallPhotosDTO>> GetByZAsync(int z);
         Task<TheMallPhotosDTO> GetByIDAsync(int ID);
         Task<TheMallPhotosDTO> AddAsync(TheMallPhotosDTO TheMallPhotosRepository);
         Task<TheMallPhotosDTO> UpdateAsync(TheMallPhotosDTO TheMallPhotosRepository);
