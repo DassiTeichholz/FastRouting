@@ -10,11 +10,9 @@ namespace FastRouting.Repositories.Entities
     public class Intersections
     {
         [Key]
-        public int IntersectionID { get; set; }//קוד הצלבות
-        public Coordinate Coordinate { get; set; }
-        //public int AccessPointID  { get; set; }//קוד נקודת גישה
-
-        //public shoppingMalls shoppingMalls { get; set; }
+        public int intersectionId { get; set; }//קוד הצלבות
+        public Coordinate coordinate { get; set; }
+       
         public int centerId { get; set; }
     }
 }

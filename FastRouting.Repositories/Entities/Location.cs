@@ -12,7 +12,7 @@ namespace FastRouting.Repositories.Entities
     public class Location
     {
         [Key]
-        public int id { get; set; }
+        public int locationId { get; set; }
         public Coordinate coordinate { get; set; }
         //public int AccessPointID { get; set; }//מזהה נקודת גישה 
         public string locationName { get; set; }//שם המיקום

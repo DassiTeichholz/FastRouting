@@ -13,9 +13,9 @@ namespace FastRouting.Repositories.Entities
     public  class TheMallPhotos
     {
         [Key]
-        public int Id { get; set; }
+        public int theMallPhotoId { get; set; }
         public int centerId { get; set; }
-        public byte[] Image { get; set; }
+        public byte[] image { get; set; }
         public int floor { get; set; }
 
     }

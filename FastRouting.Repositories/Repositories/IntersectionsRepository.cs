@@ -42,7 +42,7 @@ namespace FastRouting.Repositories.Repositories
         }
          public async Task<List<Intersections>> GetBycenterIdAsync(int id)
         {
-            return await _context.Intersections.Include(c=>c.Coordinate).Where(x=>x.centerId==id).ToListAsync();
+            return await _context.Intersections.Include(c=>c.coordinate).Where(x=>x.centerId==id).ToListAsync();
         }
 
         public async Task<Intersections> UpdateAsync(Intersections Intersections)

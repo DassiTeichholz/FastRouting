@@ -10,7 +10,7 @@ namespace FastRouting.Repositories.Entities
     public class Transition
     {
         [Key]
-        public int id { get; set; }
+        public int trasitionId { get; set; }
         public string transitionsName { get; set; }
     }
 }

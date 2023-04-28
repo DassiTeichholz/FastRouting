@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace FastRouting.Repositories.Entities
 {
-    [PrimaryKey("TransitionId", "IntersectionID")]
+    [PrimaryKey("transitionId", "intersectionId")]
     public class TransitionsToIntersections
     {
         
-        public int TransitionId { get; set; }//מזהה מעבר
+        public int transitionId { get; set; }//מזהה מעבר
        
-        public int IntersectionID { get; set; }//מזהה הצטלבות
+        public int intersectionId { get; set; }//מזהה הצטלבות
 
 
 

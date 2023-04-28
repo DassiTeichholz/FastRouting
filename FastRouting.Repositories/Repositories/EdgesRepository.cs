@@ -49,11 +49,11 @@ namespace FastRouting.Repositories.Repositories
 
         public async Task<Edges> GetByLocationIdAAsync(int Id)
         {
-            return  _context.Edges.FirstOrDefault(x=>x.LocationIdA==Id);
+            return  _context.Edges.FirstOrDefault(x=>x.locationIdA==Id);
         }
         public async Task<Edges> GetByLocationIdBAsync(int Id)
         {
-            return  _context.Edges.FirstOrDefault(x => x.LocationIdB == Id);
+            return  _context.Edges.FirstOrDefault(x => x.locationIdB == Id);
         }
         public async Task<Edges> UpdateAsync(Edges Edges)
         {

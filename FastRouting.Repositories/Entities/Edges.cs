@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace FastRouting.Repositories.Entities
 {
-    [PrimaryKey("LocationIdA", "LocationIdB")]
+    [PrimaryKey("locationIdA", "locationIdB")]
     public class Edges
     {
         
-        public int LocationIdA { get; set; }
+        public int locationIdA { get; set; }
        
-        public int LocationIdB { get; set; }
+        public int locationIdB { get; set; }
 
-        public double Distance { get; set; }
+        public double distance { get; set; }
         public int centerId { get; set; }
 
 

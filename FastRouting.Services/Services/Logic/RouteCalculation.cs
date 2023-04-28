@@ -18,6 +18,8 @@ using System.Collections.Generic;
 using FastRouting.Services.Interfaces.ILogic;
 using AutoMapper;
 using FastRouting.Services.Interfaces;
+using Newtonsoft.Json.Linq;
+using System.Collections;
 
 namespace FastRouting.Services.Services.Logic
 {
@@ -26,13 +28,13 @@ namespace FastRouting.Services.Services.Logic
 //קלאס זה מכיל את הקשתות המקוריות + תרגום מזהי המיקומים לאינדקס שלהם בגרף
     public class EdgeOfGraph
     {
-        public int IndexA { get; set; }
-        public int IndexB { get; set; }
+        public int indexA { get; set; }
+        public int indexB { get; set; }
 
-        public EdgesDTO Edge { get; set; }
+        public EdgesDTO edge { get; set; }
         public EdgeOfGraph(EdgesDTO edge)
         {
-            Edge = edge;
+            this.edge = edge;
         }
     }
 
@@ -64,18 +66,18 @@ namespace FastRouting.Services.Services.Logic
         //public int num { get; set; }
         //private int vertexNum;
         public CoordinateDTO coordinate { get; set; }
-        public LocationTypesDTO LocationTypes { get; set; }
+        public LocationTypesDTO locationTypes { get; set; }
         public string name { get; set; }
         public int trasition { get; set; }
-        public List<EdgeOfGraph> EdgesOfGraphs { get; set; }
+        public List<EdgeOfGraph> edgesOfGraphs { get; set; }
         //private int num;
 
         public VertexOfGraph(CoordinateDTO coordinate, LocationTypesDTO LocationTypes, string name/*, int num*/, int trasition)
         {
             this.coordinate = coordinate;
-            this.LocationTypes = LocationTypes;
+            this.locationTypes = LocationTypes;
             this.name = name;
-            EdgesOfGraphs = new List<EdgeOfGraph>();
+            edgesOfGraphs = new List<EdgeOfGraph>();
             this.trasition = trasition;
             // this.num = num;
         }
@@ -83,15 +85,16 @@ namespace FastRouting.Services.Services.Logic
         {
             // this.num = num;
             this.coordinate = coordinate;
-            LocationTypes = null;
+            locationTypes = null;
             name = null;
             
-            EdgesOfGraphs = new List<EdgeOfGraph>();
+            edgesOfGraphs = new List<EdgeOfGraph>();
 
         }
     }
     public class AdjListNode : IComparable<AdjListNode>
     {
+        public static bool flag;
         private int vertex;
         private double weight;
         public AdjListNode(int v, double w)
@@ -100,7 +103,9 @@ namespace FastRouting.Services.Services.Logic
             weight = w;
         }
         public int getVertex() { return vertex; }
+        public void setVertex(int v) { vertex = v; }
         public double getWeight() { return weight; }
+        public void setWeight(double v) { weight = v; }
         public int CompareTo(AdjListNode other)
         {
             double ans = weight - other.weight;
@@ -112,7 +117,12 @@ namespace FastRouting.Services.Services.Logic
             {
                 return 1;
             }
-            return 0;
+            else
+            {
+             flag= false;
+             return 0;
+            }
+            
         }
     }
 
@@ -185,16 +195,16 @@ public  class RouteCalculation: IRouteCalculation
 
                 foreach (var edgeOfGraph in listEdgeOfGraph)
                 {
-                    if (location.coordinate.id == edgeOfGraph.Edge.LocationIdA)
+                    if (location.coordinate.coordinateId == edgeOfGraph.edge.locationIdA)
                     {
-                        edgeOfGraph.IndexA = index;
+                        edgeOfGraph.indexA = index;
                     }
                     else
                     {
-                        if (location.coordinate.id == edgeOfGraph.Edge.LocationIdB)
+                        if (location.coordinate.coordinateId == edgeOfGraph.edge.locationIdB)
                         {
 
-                            edgeOfGraph.IndexB = index;
+                            edgeOfGraph.indexB = index;
                         }
                     }
 
@@ -214,23 +224,23 @@ public  class RouteCalculation: IRouteCalculation
 
                 foreach (var edgeOfGraph in listEdgeOfGraph)
                 {
-                    if (intersection.Coordinate.id == edgeOfGraph.Edge.LocationIdA)
+                    if (intersection.coordinate.coordinateId == edgeOfGraph.edge.locationIdA)
                     {
-                        edgeOfGraph.IndexA = index;
+                        edgeOfGraph.indexA = index;
                     }
                     else
                     {
-                        if (intersection.Coordinate.id == edgeOfGraph.Edge.LocationIdB)
+                        if (intersection.coordinate.coordinateId == edgeOfGraph.edge.locationIdB)
                         {
 
-                            edgeOfGraph.IndexB = index;
+                            edgeOfGraph.indexB = index;
                         }
                     }
 
 
                 }
 
-                VertexOfGraph VertexOfGraph = new VertexOfGraph(intersection.Coordinate);
+                VertexOfGraph VertexOfGraph = new VertexOfGraph(intersection.coordinate);
 
                 graph[index] = VertexOfGraph;
                 index++;
@@ -238,19 +248,20 @@ public  class RouteCalculation: IRouteCalculation
             }
             foreach (var egdeOfGraph in listEdgeOfGraph)
             {
-                graph[egdeOfGraph.IndexA].EdgesOfGraphs.Add(egdeOfGraph);
+                graph[egdeOfGraph.indexA].edgesOfGraphs.Add(egdeOfGraph);
             }
 
 
             List<Floor> vertexOfGraphs;
-            vertexOfGraphs=await DijkstraAlgorithm(src,dest,graph);
+            vertexOfGraphs=await DijkstraAlgorithm(src, dest, graph, locations[0].centerId);
             return vertexOfGraphs;
         }
 
         //חשוב מאד!!
         //המקור והיעד הם האינדקסים של המקומות בגרף המבטאים מקור ויעד
-        public async Task<List<Floor>> DijkstraAlgorithm(int src, int dest, VertexOfGraph[] graph)
+        public async Task<List<Floor>> DijkstraAlgorithm(int src, int dest, VertexOfGraph[] graph,int centerId)
         {
+            const double epsilon = 0.001;
             List<VertexOfGraph> VertexOfGraph = new List<VertexOfGraph>();
             double[] distance = new double[graph.Length];
             int[] parent = new int[graph.Length];
@@ -275,34 +286,46 @@ public  class RouteCalculation: IRouteCalculation
                 }
                 pq.Remove(current);
 
-                foreach (EdgeOfGraph n in graph[current.getVertex()].EdgesOfGraphs)
+                foreach (EdgeOfGraph n in graph[current.getVertex()].edgesOfGraphs)
                 {
 
-                    if ((distance[current.getVertex()] + n.Edge.Distance < distance[n.IndexB])/*||(((distance[current.getVertex()] + n.Edge.Distance) == distance[n.IndexB])&&(graph[current.getVertex()].name!=null))*/)
+                    if ((distance[current.getVertex()] + n.edge.distance < distance[n.indexB])/*||(((distance[current.getVertex()] + n.Edge.Distance) == distance[n.IndexB])&&(graph[current.getVertex()].name!=null))*/)
                     {
-                        distance[n.IndexB] = distance[current.getVertex()] + n.Edge.Distance;
-                        parent[n.IndexB] = current.getVertex();
-
-                        pq.Add(new AdjListNode(
-                          n.IndexB,
-                          distance[n.IndexB]));
+                        distance[n.indexB] = distance[current.getVertex()] + n.edge.distance;
+                        parent[n.indexB] = current.getVertex();
+                        AdjListNode a = new AdjListNode(
+                        n.indexB,
+                        distance[n.indexB]);
+                        AdjListNode.flag = true;
+                        bool containsWeight5 = pq.Any(adjListNode => adjListNode.getWeight() == a.getWeight());
+                        if(containsWeight5 )
+                        {
+                            a.setWeight(a.getWeight()+epsilon);
+                        }
+                        pq.Add(a);
+                        //while (AdjListNode.flag==false)
+                        //{
+                            
+                        //    pq.Add(a);
+                        //}
+                       
                     }
                 }
             }
             int currentVertexOfGraph = dest;
             while (currentVertexOfGraph != src)
             {
-                graph[currentVertexOfGraph].EdgesOfGraphs = null;
+                graph[currentVertexOfGraph].edgesOfGraphs = null;
                 VertexOfGraph.Insert(0, graph[currentVertexOfGraph]);
                 currentVertexOfGraph = parent[currentVertexOfGraph];
             }
-            graph[src].EdgesOfGraphs = null;
+            graph[src].edgesOfGraphs = null;
             VertexOfGraph.Insert(0, graph[src]);
 
 
 
 
-            return await  GetRoute(VertexOfGraph);
+            return await  GetRoute(VertexOfGraph, centerId);
         }
 
         
@@ -319,7 +342,7 @@ public  class RouteCalculation: IRouteCalculation
             return "continue straight to ";
         } 
 
-        public async Task<List<Floor>> GetRoute(List<VertexOfGraph> vertexsOfGraph)
+        public async Task<List<Floor>> GetRoute(List<VertexOfGraph> vertexsOfGraph,int centerId)
         {
             Floor floor;
             List<Floor> floors = new List<Floor>();
@@ -340,6 +363,22 @@ public  class RouteCalculation: IRouteCalculation
             int index = 0;
             int listLength = vertexsOfGraph.Count;
             int z= vertexsOfGraph[index].coordinate.z;
+            List<LocationsDTO> locations;
+            locations=await _locationsService.GetByCenterIdAsync(centerId);
+            LocationsDTO foundLocation;
+            foreach (VertexOfGraph vertex in vertexsOfGraph) 
+            {
+                if(vertex.name==null)
+                {
+                   foundLocation = locations.Find(obj => obj.coordinate.x== vertex.coordinate.x&& obj.coordinate.y == vertex.coordinate.y&&obj.locationName!=null);
+                   if(foundLocation!=null)
+                   {
+                        vertex.name=foundLocation.locationName;
+                   }
+                   
+                }
+            }
+
             //כל סיבוב לולאה בלולאה החיצונית, מבטא אובייקט "קומה" חדש
             while (index<listLength)
             {

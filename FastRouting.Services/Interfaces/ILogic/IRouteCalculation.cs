@@ -13,7 +13,8 @@ namespace FastRouting.Services.Interfaces.ILogic
         Task<List<Floor>> MainFunction(string nameSource, string nameDestination,int idCenter);
         Task<List<Floor>> PreparingTheGraph(List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<EdgesDTO> edges, string nameSource, string nameDestination)
 ;
-        Task<List<Floor>> DijkstraAlgorithm(int src, int dest, VertexOfGraph[] graph);
+        Task<List<Floor>> DijkstraAlgorithm(int src, int dest, VertexOfGraph[] graph,int centerId);
+        Task<List<Floor>> GetRoute(List<VertexOfGraph> vertexsOfGraph, int centerId);
 
     }
 }

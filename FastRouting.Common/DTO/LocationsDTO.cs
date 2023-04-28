@@ -8,7 +8,7 @@ namespace FastRouting.Common.DTO
 {
     public class LocationsDTO
     {
-        public int id { get; set; }
+        public int locationId { get; set; }
         public CoordinateDTO coordinate { get; set; }
         //public int AccessPointID { get; set; }//מזהה נקודת גישה 
         public string locationName { get; set; }//שם המיקום

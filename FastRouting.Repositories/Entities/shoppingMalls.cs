@@ -11,8 +11,8 @@ namespace FastRouting.Repositories.Entities
     public class shoppingMalls
     {
         [Key]
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public int shoppingMallId { get; set; }
+        public string name { get; set; }
        //public virtual ICollection<TheMallPhotos> TheMallPhotos { get; set; }
 
         //public TheMallPhotos TheMallPhotos { get; set; }
