@@ -70,6 +70,9 @@ namespace FastRouting.Context.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("intersectionId"));
 
+                    b.Property<bool>("IntersectionOnLocation")
+                        .HasColumnType("bit");
+
                     b.Property<int>("centerId")
                         .HasColumnType("int");
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -14,5 +15,6 @@ namespace FastRouting.Repositories.Entities
         public Coordinate coordinate { get; set; }
        
         public int centerId { get; set; }
+        public bool  IntersectionOnLocation { get; set; }
     }
 }

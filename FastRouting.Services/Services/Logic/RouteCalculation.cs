@@ -69,6 +69,7 @@ namespace FastRouting.Services.Services.Logic
         public LocationTypesDTO locationTypes { get; set; }
         public string name { get; set; }
         public int trasition { get; set; }
+        public bool  IntersectionOnLocation { get; set; }
         public List<EdgeOfGraph> edgesOfGraphs { get; set; }
         //private int num;
 
@@ -79,12 +80,13 @@ namespace FastRouting.Services.Services.Logic
             this.name = name;
             edgesOfGraphs = new List<EdgeOfGraph>();
             this.trasition = trasition;
-            // this.num = num;
+            this.IntersectionOnLocation= false;
         }
-        public VertexOfGraph(CoordinateDTO coordinate/*, int num*/)
+        public VertexOfGraph(CoordinateDTO coordinate, bool intersectionOnLocation)
         {
             // this.num = num;
             this.coordinate = coordinate;
+            this.IntersectionOnLocation = intersectionOnLocation;
             locationTypes = null;
             name = null;
             
@@ -240,7 +242,7 @@ public  class RouteCalculation: IRouteCalculation
 
                 }
 
-                VertexOfGraph VertexOfGraph = new VertexOfGraph(intersection.coordinate);
+                VertexOfGraph VertexOfGraph = new VertexOfGraph(intersection.coordinate,intersection.IntersectionOnLocation);
 
                 graph[index] = VertexOfGraph;
                 index++;
@@ -297,11 +299,16 @@ public  class RouteCalculation: IRouteCalculation
                         n.indexB,
                         distance[n.indexB]);
                         AdjListNode.flag = true;
-                        bool containsWeight5 = pq.Any(adjListNode => adjListNode.getWeight() == a.getWeight());
-                        if(containsWeight5 )
+                        bool containsWeight = pq.Any(adjListNode => adjListNode.getWeight() == a.getWeight());
+                        while(containsWeight)
                         {
                             a.setWeight(a.getWeight()+epsilon);
+                            containsWeight = pq.Any(adjListNode => adjListNode.getWeight() == a.getWeight());
                         }
+                        //if(containsWeight5 )
+                        //{
+                        //    a.setWeight(a.getWeight()+epsilon);
+                        //}
                         pq.Add(a);
                         //while (AdjListNode.flag==false)
                         //{
@@ -322,7 +329,42 @@ public  class RouteCalculation: IRouteCalculation
             graph[src].edgesOfGraphs = null;
             VertexOfGraph.Insert(0, graph[src]);
 
+            for (int i = 0; i < (VertexOfGraph.Count)-1; i++)
+            {
+                if (VertexOfGraph[i].coordinate.x==VertexOfGraph[i+1].coordinate.x&&
+                    VertexOfGraph[i].coordinate.y==VertexOfGraph[i+1].coordinate.y&&
+                    VertexOfGraph[i].coordinate.z==VertexOfGraph[i+1].coordinate.z)
+                {
+                    if (VertexOfGraph[i].name!=null)
+                    {
+                        VertexOfGraph.RemoveAt(i+1);
+                    }
+                    else
+                    {
+                        VertexOfGraph.RemoveAt(i);
+                    }
+                    i++;
+                }
+            }
 
+
+            List<LocationsDTO> locations;
+            LocationsDTO foundLocation;
+            locations=await _locationsService.GetByCenterIdAsync(centerId);
+            foreach (VertexOfGraph vertex in VertexOfGraph)
+            {
+                if (vertex.name==null&&vertex.IntersectionOnLocation==true)
+                {
+                    foundLocation = locations.Find(obj => obj.coordinate.x== vertex.coordinate.x
+                    && obj.coordinate.y == vertex.coordinate.y
+                    && obj.coordinate.z == vertex.coordinate.z&&obj.locationName!=null);
+                    if (foundLocation!=null)
+                    {
+                        vertex.name=foundLocation.locationName;
+                    }
+
+                }
+            }
 
 
             return await  GetRoute(VertexOfGraph, centerId);
@@ -336,10 +378,9 @@ public  class RouteCalculation: IRouteCalculation
             double angle = angle2 - angle1;
             if (angle < -180) angle += 360;
             if (angle > 180) angle -= 360;
-
-            if (angle < -30) return "turn left to ";
-            if (angle > 30) return "turn right to ";
-            return "continue straight to ";
+            if (angle < -30) return "פנה שמאלה ל ";
+            if (angle > 30) return "פנה ימינה ל";
+            return "המשך ישר ל";
         } 
 
         public async Task<List<Floor>> GetRoute(List<VertexOfGraph> vertexsOfGraph,int centerId)
@@ -361,93 +402,174 @@ public  class RouteCalculation: IRouteCalculation
             Task<string> partOfTheDirection;
             string result;
             int index = 0;
+            int numOfVertexsInT = 0;
             int listLength = vertexsOfGraph.Count;
             int z= vertexsOfGraph[index].coordinate.z;
-            List<LocationsDTO> locations;
-            locations=await _locationsService.GetByCenterIdAsync(centerId);
-            LocationsDTO foundLocation;
-            foreach (VertexOfGraph vertex in vertexsOfGraph) 
-            {
-                if(vertex.name==null)
-                {
-                   foundLocation = locations.Find(obj => obj.coordinate.x== vertex.coordinate.x&& obj.coordinate.y == vertex.coordinate.y&&obj.locationName!=null);
-                   if(foundLocation!=null)
-                   {
-                        vertex.name=foundLocation.locationName;
-                   }
-                   
-                }
-            }
-
+            bool flag = true;
             //כל סיבוב לולאה בלולאה החיצונית, מבטא אובייקט "קומה" חדש
             while (index<listLength)
             {
-                z= vertexsOfGraph[index].coordinate.z;
+                numOfVertexsInT=0;
+                z = vertexsOfGraph[index].coordinate.z;
                 xPrev= vertexsOfGraph[index].coordinate.x;
                 yPrev= vertexsOfGraph[index].coordinate.y;
+                numOfVertexsInT++;
                 vertexsOfFloor.Add(vertexsOfGraph[index]);
                 trasition = vertexsOfGraph[index].trasition;
                 index++;
                 //טיפול נפרד במעבר הראשון בקומה, בו כיוון ההדרכה נמדד אחרת
-                if (vertexsOfGraph[index].name != null)
-                { 
-                 while (index<listLength&&z==vertexsOfGraph[index].coordinate.z&&(trasition==vertexsOfGraph[index].trasition||vertexsOfGraph[index].trasition==0))
-                 {
+                while (index<listLength&&z==vertexsOfGraph[index].coordinate.z
+                    &&(trasition==vertexsOfGraph[index].trasition))
+                {
+                    numOfVertexsInT++;
                     vertexsOfFloor.Add(vertexsOfGraph[index]);
-                    index++;
-                    if (index<listLength&&(z!=vertexsOfGraph[index].coordinate.z||vertexsOfGraph[index].trasition==0))
+                    if (vertexsOfGraph[index].name != null)
                     {
-                        locationName=vertexsOfGraph[index-1].name;
+                      locationName= vertexsOfGraph[index].name;
                     }
-                 }
-                    currentDirection=locationName+" התקדם לכוון";
-                    directions.Add(currentDirection);
+                    index++;
+                }
+               
+                // או שנגמר הליסט בודקת למה יצאנו מהלולאה, האם הגענו להצטלבות או למיקום
+                if (index==listLength)
+                {
+                    directions.Add("המשך ישר עד "+locationName);
                 }
                 else
                 {
-                    vertexsOfFloor.Add(vertexsOfGraph[index]);
-                    index++;
-                }
-                //if (vertexsOfFloor.Count>1)
-                //{
-                //    currentDirection=locationName+" התקדם לכוון";
-                //    directions.Add(currentDirection);
-                //}
-                
-                xCurrent =vertexsOfGraph[index-1].coordinate.x;
-                yCurrent=vertexsOfGraph[index-1].coordinate.y;
-                //trasition=vertexsOfGraph[index].trasition;
-                //כל סיבוב בלולאה זו, זה מעבר נוסף בקומה הנוכחית
-                while (index<listLength&&z==vertexsOfGraph[index].coordinate.z)
-                {
-                    trasition=vertexsOfGraph[index].trasition;
-
-                    while (index<listLength&&(trasition==vertexsOfGraph[index].trasition||vertexsOfGraph[index].trasition==0))
+                    if (z!=vertexsOfGraph[index].coordinate.z)
                     {
-                        vertexsOfFloor.Add(vertexsOfGraph[index]);
-                        index++;
-                        if (index>=listLength||(index<listLength&&(z!=vertexsOfGraph[index].coordinate.z||vertexsOfGraph[index].trasition==0)))
+                        if(numOfVertexsInT>1)
                         {
-                            locationName=vertexsOfGraph[index-1].name;
+                            directions.Add("המשך לכוון"+locationName);
+                        }
+                        directions.Add("המשך לקומה "+vertexsOfGraph[index].coordinate.z);
+                    }
+                    else
+                    {
+                        if (vertexsOfGraph[index].name==null)
+                        {
+                            if (numOfVertexsInT>1)
+                            {
+                                directions.Add("המשך עד "+locationName);
+
+                            }
+                            directions.Add("המשך מעט ");
+                            vertexsOfFloor.Add(vertexsOfFloor[index]);
+                            index++;
+                            while (index<listLength&& vertexsOfGraph[index].name==null)
+                            {
+                                vertexsOfFloor.Add(vertexsOfGraph[index]);
+                                index++;
+                                directions.Add("המשך עוד");
+                            }
+                        }
+                        else
+                        {
+                            directions.Add("המשך לכוון "+vertexsOfGraph[index].name);
+                        }
+                        xCurrent =vertexsOfGraph[index].coordinate.x;
+                        yCurrent=vertexsOfGraph[index].coordinate.y;
+
+                        //המשך טיפול בשאר הקודקודים הנמצאים בקומה זו
+                        while (index<listLength&&z==vertexsOfGraph[index].coordinate.z)
+                        {
+                            numOfVertexsInT=0;
+                            trasition =vertexsOfGraph[index].trasition;
+                            while (index<listLength&&z==vertexsOfGraph[index].coordinate.z
+                                &&trasition==vertexsOfGraph[index].trasition)
+                            {
+                                numOfVertexsInT++;
+                                vertexsOfFloor.Add(vertexsOfGraph[index]);
+                                if (vertexsOfGraph[index].name != null)
+                                {
+                                    locationName= vertexsOfGraph[index].name;
+                                }
+                                index++;
+                            }
+                            if (index==listLength)
+                            {
+                                if(numOfVertexsInT>1)
+                                {
+                                    xNext =vertexsOfGraph[index-1].coordinate.x;
+                                    yNext=vertexsOfGraph[index-1].coordinate.y;
+                                    partOfTheDirection=GetDirection(xPrev, yPrev, xCurrent, yCurrent, xNext, yNext);
+                                    result = await partOfTheDirection;
+                                    //locationName=vertexsOfGraph[index-1].name;
+                                    currentDirection=result+locationName;
+                                    directions.Add(currentDirection);
+                                }
+                                
+                            }
+                            else
+                            {
+                                xNext =vertexsOfGraph[index].coordinate.x;
+                                yNext=vertexsOfGraph[index].coordinate.y;
+                                if (z!=vertexsOfGraph[index].coordinate.z)
+                                {
+                                    if(numOfVertexsInT>1)
+                                    {
+                                        xNext =vertexsOfGraph[index-1].coordinate.x;
+                                        yNext=vertexsOfGraph[index-1].coordinate.y;
+                                        partOfTheDirection=GetDirection(xPrev, yPrev, xCurrent, yCurrent, xNext, yNext);
+                                        result = await partOfTheDirection;
+                                        //locationName=vertexsOfGraph[index-1].name;
+                                        currentDirection=result+locationName;
+                                        directions.Add(currentDirection);
+                                    }
+                                    directions.Add("המשך לקומה "+vertexsOfGraph[index].coordinate.z);
+                                    
+                                }
+                                else
+                                {
+                                    if (vertexsOfGraph[index].name==null)
+                                    {
+                                        if (numOfVertexsInT>1)
+                                        {
+                                            directions.Add("המשך עד "+locationName);
+
+                                        }
+                                        directions.Add("המשך מעט ");
+                                        vertexsOfFloor.Add(vertexsOfFloor[index]);
+                                        index++;
+                                        while (index<listLength&&vertexsOfGraph[index].name==null)
+                                        {
+                                            vertexsOfFloor.Add(vertexsOfGraph[index]);
+                                            index++;
+                                            directions.Add("המשך עוד");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        partOfTheDirection=GetDirection(xPrev, yPrev, xCurrent, yCurrent, xNext, yNext);
+                                        result = await partOfTheDirection;
+                                        locationName=vertexsOfGraph[index].name;
+                                        currentDirection=result+locationName;
+                                        directions.Add(currentDirection);
+
+                                    }
+                                    //xNext =vertexsOfGraph[index].coordinate.x;
+                                    //yNext=vertexsOfGraph[index].coordinate.y;
+
+                                   
+
+                                    xPrev=xCurrent;
+                                    yPrev=yCurrent;
+                                    xCurrent=xNext;
+                                    yCurrent=yNext;
+                                }
+                            }
                         }
                     }
-                    xNext=vertexsOfGraph[index-1].coordinate.x;
-                    yNext=vertexsOfGraph[index-1].coordinate.y;
-                    partOfTheDirection=GetDirection(xPrev, yPrev, xCurrent, yCurrent, xNext, yNext);
-                    result = await partOfTheDirection;
-                    currentDirection=result+locationName;
-                    directions.Add(currentDirection);
-                    xPrev=xCurrent;
-                    yPrev=yCurrent;
-                    xCurrent=xNext;
-                    yCurrent=yNext;
                 }
+               
                 theMallPhotos=await _theMallPhotosService.GetByZAsync(z);
-                floor=new Floor(vertexsOfFloor, directions,theMallPhotos);
+                floor=new Floor(vertexsOfFloor, directions, theMallPhotos);
                 floors.Add(floor);
                 directions=new List<string>();
                 vertexsOfFloor=new List<VertexOfGraph>();
                 theMallPhotos=new List<TheMallPhotosDTO>();
+
             }
             return floors;
 

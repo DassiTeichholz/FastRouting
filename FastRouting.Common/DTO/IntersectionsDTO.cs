@@ -12,5 +12,6 @@ namespace FastRouting.Common.DTO
         public CoordinateDTO coordinate { get; set; }
         // public ShoppingMallsDTO shoppingMalls { get; set; }
         public int centerId { get; set; }
+        public bool IntersectionOnLocation { get; set; }
     }
 }

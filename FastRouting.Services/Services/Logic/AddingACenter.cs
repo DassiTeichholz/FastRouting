@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FastRouting.Common.DTO;
+using FastRouting.Repositories.Entities;
 using FastRouting.Repositories.Interfaces;
 using FastRouting.Services.Interfaces;
 using FastRouting.Services.Interfaces.ILogic;
@@ -125,7 +126,8 @@ namespace FastRouting.Services.Services.Logic
                         y = (double)intersec["coordinate"]["y"],
                         z = (int)intersec["coordinate"]["z"]
                     },
-                    centerId = shoppingMall2.shoppingMallId
+                    centerId = shoppingMall2.shoppingMallId,
+                    IntersectionOnLocation=(bool)intersec["IntersectionOnLocation"]
                 };
                 intersectionsList.Add(intersection);
                 var transitionsNums = intersec["transitionsNums"];
@@ -151,12 +153,12 @@ namespace FastRouting.Services.Services.Logic
             //ליצור אובייקטים של קשתות
             //ליצור אובייקטים של תמונות
 
-            await CreateNewMall(shoppingMall2, locationsList, intersectionsList, passCodes);
+            await CreateNewMall(shoppingMall2, locationsList, intersectionsList, passCodes, edgesCrossing);
 
         }
 
 
-        public async Task<bool> CreateNewMall(ShoppingMallsDTO shoppingMall/*, List<TheMallPhotosDTO> theMallPhotosDTOList*/, List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<List<int>> passCodes/*, List<dynamic> edgesCrossFloors*/)
+        public async Task<bool> CreateNewMall(ShoppingMallsDTO shoppingMall/*, List<TheMallPhotosDTO> theMallPhotosDTOList*/, List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<List<int>> passCodes,JToken edgesCrossing/*, List<dynamic> edgesCrossFloors*/)
         {
             //מעברים יוצרים בצד לקוח!!!
 
@@ -179,11 +181,33 @@ namespace FastRouting.Services.Services.Logic
                     intersections2.Add(await _IntersectionsService.AddAsync(intersection));
                 }
                 dynamic result = Algorithm.BuildingEdges(locations2, intersections2, passCodes);
-
+               
 
                 List<TransitionsToIntersectionsDTO> TransitionsToIntersections = result.TransitionsToIntersections;
                 List<EdgesDTO> Edges = result.Edges;
-
+                LocationsDTO loc;
+                LocationsDTO loc2;
+                EdgesDTO e;
+                foreach (var edge in edgesCrossing)
+                {
+                    loc=locations2.FirstOrDefault(x => x.locationName==(string)edge["firstEdgeName"]);
+                    loc2=locations2.FirstOrDefault(x => x.locationName==(string)edge["secondEdgeName"]);
+                    e = new EdgesDTO
+                    {
+                        locationIdA = loc.coordinate.coordinateId,
+                        locationIdB = loc2.coordinate.coordinateId,
+                        distance = 0
+                    };
+                    Edges.Add(e);
+                    e = new EdgesDTO
+                    {
+                        locationIdA = loc2.coordinate.coordinateId,
+                        locationIdB = loc.coordinate.coordinateId,
+                        distance = 0
+                    };
+                    Edges.Add(e);
+                    
+                }
                 foreach (var item in TransitionsToIntersections)
                 {
                     await _transitionsToIntersectionsService.AddAsync(item);

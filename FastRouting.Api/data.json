@@ -2,7 +2,7 @@
   "locationInTrasition": [
     {
       "trasitionNum": 0,
-      "transitionId": 131,
+      "transitionId": 146,
       "locations": [
         {
           "coordinate": {
@@ -35,7 +35,7 @@
     },
     {
       "trasitionNum": 1,
-      "transitionId": 132,
+      "transitionId": 147,
       "locations": [
         {
           "coordinate": {
@@ -61,14 +61,14 @@
             "y": 40,
             "z": 1
           },
-          "locationName": "CB",
+          "locationName": "מדרגות נעות קומה 1",
           "locationTypesId": 1
         }
       ]
     },
     {
       "trasitionNum": 2,
-      "transitionId": 133,
+      "transitionId": 148,
       "locations": [
         {
           "coordinate": {
@@ -77,6 +77,39 @@
             "z": 1
           },
           "locationName": "laline",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 3,
+      "transitionId": 149,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "מדרגות נעות קומה 2",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "kitch",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "bell",
           "locationTypesId": 1
         }
       ]
@@ -90,6 +123,7 @@
         "y": 100,
         "z": 1
       },
+      "IntersectionOnLocation": true,
       "transitionsNums": [
         0,
         2
@@ -102,6 +136,7 @@
         "y": 40,
         "z": 1
       },
+      "IntersectionOnLocation": true,
       "transitionsNums": [
         0,
         1
@@ -114,6 +149,7 @@
         "y": 40,
         "z": 1
       },
+      "IntersectionOnLocation": true,
       "transitionsNums": [
         1,
         2
@@ -122,12 +158,8 @@
   ],
   "edgesCrossing": [
     {
-      "firstEdgeName": "Edge 1",
-      "secondEdgeName": "Edge 2"
-    },
-    {
-      "firstEdgeName": "Edge 2",
-      "secondEdgeName": "Edge 3"
+      "firstEdgeName": "מדרגות נעות קומה 2",
+      "secondEdgeName": "מדרגות נעות קומה 1"
     }
   ]
 }
