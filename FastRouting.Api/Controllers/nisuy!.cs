@@ -44,9 +44,10 @@ namespace FastRouting.Api.Controllers
 
         // POST api/<nisuy_>
         [HttpPost]
-        public async Task<bool> AddCoordy([FromBody] string flag)
+        public async Task<bool> AddCoordy([FromBody] List<dynamic> flag)
         {
-            await _iEdgesService2.DataPreparationFunc(flag);
+            var flagStr = flag;
+            await _iEdgesService2.DataPreparationFunc("");
             return true;
         }
         //public async Task<bool> AddCoordy2([FromBody] LocationsDTO flag)
