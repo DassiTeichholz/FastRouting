@@ -5,6 +5,8 @@ using FastRouting.Services.Interfaces.ILogic;
 using FastRouting.Services.Services;
 using FastRouting.Services.Services.Logic;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -44,12 +46,23 @@ namespace FastRouting.Api.Controllers
 
         // POST api/<nisuy_>
         [HttpPost]
-        public async Task<bool> AddCoordy([FromBody] List<dynamic> flag)
+        [HttpPost]
+        public async Task<IActionResult> Post([FromForm] List<IFormFile> imagesArr, [FromForm] string centerName, [FromForm] string jsonFile)
         {
-            var flagStr = flag;
-            await _iEdgesService2.DataPreparationFunc("");
-            return true;
+            // טפל בנתונים המגיעים מהלקוח כאן
+            // המידע מסוג JSON מגיע במשתנה jsonFile ויש להמיר אותו לאובייקט באמצעות JsonConvert.DeserializeObject
+            // התמונות מגיעות ברשימה imagesArr ויש לטפל בהן כך שיוכלו להישמר במקום המתאים בשרת
+            // לדוגמה, כדי להכניס אותן לתיקיית Images, ניתן להשתמש במקור הבא:
+            // string imagePath = Path.Combine("Images", imagesArr[i].FileName);
+            // using (var stream = new FileStream(imagePath, FileMode.Create))
+            // {
+            //    await imagesArr[i].CopyToAsync(stream);
+            // }
+
+            // החזר את התשובה המתאימה לפי הצורך
+            return Ok();
         }
+
         //public async Task<bool> AddCoordy2([FromBody] LocationsDTO flag)
         //{
         //    await _iEdgesService2.AddAsync(flag);
