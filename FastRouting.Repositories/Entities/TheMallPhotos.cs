@@ -10,7 +10,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FastRouting.Repositories.Entities
 {
-    public  class TheMallPhotos
+    public  class TheCenterPhoto
     {
         [Key]
         public int theMallPhotoId { get; set; }

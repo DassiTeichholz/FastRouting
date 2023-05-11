@@ -16,33 +16,41 @@ namespace FastRouting.Services.Services.Logic
     public class AddingACenter : IAddingACenter
     {
 
-        private readonly IshoppingMallsService _shoppingMallService;
+        private readonly ICentersService _Centerservice;
         private readonly ILocationsService _LocationsService;
         private readonly IIntersectionsService _IntersectionsService;
-        private readonly ITheMallPhotosService _theMallPhotosService;
+        private readonly ITheCenterPhotoService _TheCenterPhotoService;
         private readonly IMapper _mapper;
         private readonly IEdgesService _edgesService;
         private readonly ITransitionsService _transitionsService;
         private readonly ILocationTypesService _locationTypesService;
         private readonly ITransitionsToIntersectionsService _transitionsToIntersectionsService;
-        public AddingACenter(IMapper mapper, IshoppingMallsService shoppingMallService, IEdgesService edgesService, ITheMallPhotosService theMallPhotosService, IIntersectionsService intersectionsService, ILocationsService locationsService, ITransitionsService transitionsService, ILocationTypesService locationTypesService, ITransitionsToIntersectionsService transitionsToIntersectionsService)
+        public AddingACenter(IMapper mapper, ICentersService Centerservice, IEdgesService edgesService, ITheCenterPhotoService TheCenterPhotoService, IIntersectionsService intersectionsService, ILocationsService locationsService, ITransitionsService transitionsService, ILocationTypesService locationTypesService, ITransitionsToIntersectionsService transitionsToIntersectionsService)
         {
             _mapper = mapper;
-            _shoppingMallService = shoppingMallService;
+            _Centerservice = Centerservice;
             _edgesService = edgesService;
-            _theMallPhotosService = theMallPhotosService;
+            _TheCenterPhotoService = TheCenterPhotoService;
             _IntersectionsService = intersectionsService;
             _LocationsService = locationsService;
             _transitionsService = transitionsService;
             _locationTypesService = locationTypesService;
             _transitionsToIntersectionsService = transitionsToIntersectionsService;
         }
+        
 
+
+
+        //פונקציה זו מכינה את הנתונים,
+        //היא עוברת על קובץ הג'ייסון, ומכינה מהם אובייקטים של נקודות מעבר ונקודות הצטלבות
         public async Task DataPreparationFunc(string centerName)
         {
             //הליסטים שיוחזרו בסוף, אחרי שננתח את הקובץ
             List<LocationsDTO> locationsList = new List<LocationsDTO>();
             List<IntersectionsDTO> intersectionsList = new List<IntersectionsDTO>();
+            //ליסט זה, מקביל לליסט נקודות ההצטלבות, כל איבר בו הוא ליסט בעצמו, 
+            //לדוגמא, הליסט שנמצא באינדקס 0 מכיל את מזהי נקודות המעבר
+            //שנקודת ההצטלבות שנמצאת באינדקס 0 בליסט ההצטלבויות, נמצאת בתוכם
             List<List<int>> passCodes = new List<List<int>>();
 
 
@@ -50,21 +58,26 @@ namespace FastRouting.Services.Services.Logic
 
             string jsonString = File.ReadAllText("data.json");
             JObject jsonObject = JObject.Parse(jsonString);
+            //נקודות המיקום במרכז
             var locationsInTrasitions = jsonObject["locationInTrasition"];
+            //קשתות חוצות קומות במרכז
             var edgesCrossing = jsonObject["edgesCrossing"];
+            //נקודות הצטלבות במרכז
             var intersections = jsonObject["intersection"];
             int num = 0;
-            ShoppingMallsDTO shoppingMall = new ShoppingMallsDTO
+            //ראשית נוסיף את המרכז החדש למערכת
+            CentersDTO shoppingMall = new CentersDTO
             {
 
                 shoppingMallId = 0,
                 Name = centerName
             };
-            ShoppingMallsDTO shoppingMall2 = await _shoppingMallService.AddAsync(shoppingMall);
+            CentersDTO shoppingMall2 = await _Centerservice.AddAsync(shoppingMall);
 
-            //עובר על כל מעבר ומוסיף 
+            //עובר על כל מעבר במרכז  
             foreach (var item in locationsInTrasitions)
             {
+                //ראשית יוצר מעבר חדש
                 TransitionsDTO trasition = new TransitionsDTO
                 {
 
@@ -72,12 +85,16 @@ namespace FastRouting.Services.Services.Logic
                     transitionsName = "trasition number " + num
 
                 };
+                //db מוסיף את המעבר החדש ל
                 TransitionsDTO transition = await _transitionsService.AddAsync(trasition);
+                //מעדכן את קוד המעבר בג'ייסון, לקוד המעבר האמיתי , עד עכשיו קוד המעבר היה 0
                 jsonObject["locationInTrasition"][num]["transitionId"] = transition.trasitionId;
                 num++;
+                //שולף את נקודות המיקום שנמצאות במעבר הנוכחי
                 var locations = item["locations"];
                 foreach (var loc in locations)
                 {
+                    //יוצר אובייקט מיקום מכל נקודת מיקום במעבר
                     LocationsDTO locationDTO = new LocationsDTO
                     {
 
@@ -97,16 +114,17 @@ namespace FastRouting.Services.Services.Logic
                         centerId = shoppingMall2.shoppingMallId
 
                     };
+                    //מוסיף את האובייקט החדש לליסט נקודות המיקום
                     locationsList.Add(locationDTO);
                 }
             }
-            // Convert the JObject to a JSON string
+            //JObject ממיר את
+            //JSON string לסוג טיפוס
             jsonString = jsonObject.ToString();
 
-            // Write the updated JSON string back to the file
+            // נעשו שינויים בקובץ הג'ייסון, מעדכן את השינויים
             File.WriteAllText("data.json", jsonString);
-
-
+            //קורא את קובץ הג'ייסון שנית
             jsonString = File.ReadAllText("data.json");
             jsonObject = JObject.Parse(jsonString);
             locationsInTrasitions = jsonObject["locationInTrasition"];
@@ -114,9 +132,10 @@ namespace FastRouting.Services.Services.Logic
             List<int> tmp = new List<int>();
             int x;
             int y;
-
+            //עובר על כל נקודות ההצטלבות שבקובץ הג'ייסון
             foreach (var intersec in intersections)
             {
+                //יוצר נקודת הצטלבות חדשה
                 IntersectionsDTO intersection = new IntersectionsDTO
                 {
                     intersectionId = 0,
@@ -129,7 +148,9 @@ namespace FastRouting.Services.Services.Logic
                     centerId = shoppingMall2.shoppingMallId,
                     IntersectionOnLocation=(bool)intersec["IntersectionOnLocation"]
                 };
+                //מוסיף את האובייקט החדש לליסט נקודות ההצטלבות
                 intersectionsList.Add(intersection);
+                //מערך זה מבטא את האינדקסים של המעברים בקובץ הג'ייסון, בהם נמצאת נקודת ההצטלבות
                 var transitionsNums = intersec["transitionsNums"];
                 foreach (var index in transitionsNums)
                 {
@@ -137,6 +158,7 @@ namespace FastRouting.Services.Services.Logic
                     x = (int)locationsInTrasitions[y]["transitionId"];
                     tmp.Add(x);
                 }
+                //מוסיפים לנקודת ההצטלבות את הליסט המכיל מזהי מעבר שנקודת ההצטלבות נמצאת בתוכם
                 passCodes.Add(tmp);
                 tmp= new List<int>();
             }
@@ -153,12 +175,13 @@ namespace FastRouting.Services.Services.Logic
             //ליצור אובייקטים של קשתות
             //ליצור אובייקטים של תמונות
 
-            await CreateNewMall(shoppingMall2, locationsList, intersectionsList, passCodes, edgesCrossing);
+            //שליחת הנתונים לפונקציה שמוסיפה מרכז חדש
+            await CreateNewCenter(shoppingMall2, locationsList, intersectionsList, passCodes, edgesCrossing);
 
         }
 
 
-        public async Task<bool> CreateNewMall(ShoppingMallsDTO shoppingMall/*, List<TheMallPhotosDTO> theMallPhotosDTOList*/, List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<List<int>> passCodes,JToken edgesCrossing/*, List<dynamic> edgesCrossFloors*/)
+        public async Task<bool> CreateNewCenter(CentersDTO shoppingMall/*, List<TheCenterPhotoDTO> TheCenterPhotoDTOList*/, List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<List<int>> passCodes,JToken edgesCrossing/*, List<dynamic> edgesCrossFloors*/)
         {
             //מעברים יוצרים בצד לקוח!!!
 
@@ -167,27 +190,33 @@ namespace FastRouting.Services.Services.Logic
                 List<LocationsDTO> locations2 = new List<LocationsDTO>();
                 List<IntersectionsDTO> intersections2 = new List<IntersectionsDTO>();
 
-                //foreach (var mallPhoto in theMallPhotosDTOList)
+                //foreach (var mallPhoto in TheCenterPhotoDTOList)
                 //{
-                //    await _theMallPhotosService.AddAsync(mallPhoto);
+                //    await _TheCenterPhotoService.AddAsync(mallPhoto);
                 //}
+                //db הוספת כל נקודות המיקום ל
                 foreach (var location in locations)
                 {
                    // var n = await _LocationsService.AddAsync(location);
+                   //קליטת הנקודות בחזרה
                     locations2.Add(await _LocationsService.AddAsync(location));
                 }
+                //bd הוספת כל נקודות ההצטלבות ל
                 foreach (var intersection in intersections)
                 {
+                    //קליטת הנקודות בחזרה
                     intersections2.Add(await _IntersectionsService.AddAsync(intersection));
                 }
-                dynamic result = Algorithm.BuildingEdges(locations2, intersections2, passCodes);
+                //  שליחת ליסט המיקומים, ההצטלבויות וליסט הליסטים לפונקציה שבונה את הקשתות לגרף 
+                dynamic result = BuildingEdges(locations2, intersections2, passCodes);
                
-
+                //שליפת ליסט אובייקטי טבלת הקשר וליסט הקשתות של הגרף ממה שהוחזר מפונקציית בניית הקשתות
                 List<TransitionsToIntersectionsDTO> TransitionsToIntersections = result.TransitionsToIntersections;
                 List<EdgesDTO> Edges = result.Edges;
                 LocationsDTO loc;
                 LocationsDTO loc2;
                 EdgesDTO e;
+                //מעבר על רשימת קשתות חוצות קומה- המרחק בינהן יהיה אפס תמיד
                 foreach (var edge in edgesCrossing)
                 {
                     loc=locations2.FirstOrDefault(x => x.locationName==(string)edge["firstEdgeName"]);
@@ -208,10 +237,12 @@ namespace FastRouting.Services.Services.Logic
                     Edges.Add(e);
                     
                 }
+                //db הוספת אובייקטי טבלת הקשר ל
                 foreach (var item in TransitionsToIntersections)
                 {
                     await _transitionsToIntersectionsService.AddAsync(item);
                 }
+                //db הוספת קשתות הגרף ל
                 foreach (var edge in Edges)
                 {
                     edge.centerId = shoppingMall.shoppingMallId;
@@ -219,23 +250,7 @@ namespace FastRouting.Services.Services.Logic
                 }
                 int idA;
                 int idB;
-                //foreach (var obj in edgesCrossFloors)
-                //{
-                //    var location = await _LocationsService.GetByNameAsync(obj[0]);
-                //    idA = location.Coordinate.Id;
-
-                //    location = await _LocationsService.GetByNameAsync(obj[1]);
-                //    idB = location.Coordinate.Id;
-                //    EdgesDTO edge = new EdgesDTO
-                //    {
-                //        LocationIdA=idA,
-                //        LocationIdB=idB,
-                //        Distance=0
-
-                //    };
-                //    await _edgesService.AddAsync(edge);
-                //}
-
+               
 
                 return true;
             }
@@ -260,26 +275,31 @@ namespace FastRouting.Services.Services.Logic
         {
             try
             {
+                //ליסט המוכן לקליטת קשתות
                 List<EdgesDTO> edges = new List<EdgesDTO>();
-                // List<IntersectionsDTO> intersections = new List<IntersectionsDTO>();
+                //ליסט המוכן לקליטת אובייקטי טבלת הקשר-מעברים להצטלבויות
                 List<TransitionsToIntersectionsDTO> transitionsToIntersections = new List<TransitionsToIntersectionsDTO>();
-                // List<LocationsDTO> locations = new List<LocationsDTO>();
-                //מילון של "מעברים", המפתח במילון הוא מס' המעבר והערך הוא ליסט של מזהים שנמצאים במעבר זה
+                //מילון של "מעברים", המפתח במילון הוא מס' המעבר והערך הוא ליסט של מזהים (של נקודות מיקום או נקודות הצטלבות) שנמצאים במעבר זה
                 var locationIdsByTransitionId = new Dictionary<int, List<int>>();
 
                 //עובר על כל נקודות המיקום, ומוסיף את מזהה המיקום לליסט המתאים לו במילון המעברים
                 foreach (var location in Locations)
                 {
+                    //בודק באיזה מעבר נמצא המיקום
                     int transitionId = location.transitions.trasitionId;
+                    //אם לא קיים מפתח -מזהה מעבר, המתאים למזהה המעבר של המיקום, אז
                     if (!locationIdsByTransitionId.ContainsKey(transitionId))
                     {
+                        //יוצר מפתח חדש- מזהה מעבר חדש
                         locationIdsByTransitionId[transitionId] = new List<int>();
                     }
+                    //בכל אופן מכניס את מזהה המיקום לליסט שנמצא במפתח המתאים
                     locationIdsByTransitionId[transitionId].Add(location.coordinate.coordinateId);
                 }
 
-                //עובר על כל נקודות ההצטלבות, ומוסיף את מזהה הצטלבות לליסטים!!! (יכול להיות יותר מאחד) המתאימים לו במילון המעברים
 
+                //עובר על כל נקודות ההצטלבות, ומוסיף את מזהה הצטלבות לליסטים!!! (יכול להיות יותר מאחד) המתאימים לו במילון המעברים
+                //נקודת הצטלבות יכולה להיות בכמה מעברים
                 foreach (var intersection in Intersections)
                 {
                     int index = Intersections.FindIndex(a => a.intersectionId == intersection.intersectionId);
@@ -299,7 +319,7 @@ namespace FastRouting.Services.Services.Logic
                 double yA;
                 double yB;
 
-
+                //מעבר על המילון ויצירת קשתות , בין כל נקודה (הצטלבות/מיקום) לבין כל חברותיה למעבר 
                 foreach (var transitionIdAndLocationIds in locationIdsByTransitionId)
                 {
                     var locationIds = transitionIdAndLocationIds.Value;
@@ -332,17 +352,20 @@ namespace FastRouting.Services.Services.Logic
                                     xB = Intersections.Where(x => x.coordinate.coordinateId == locationIds[j]).Select(x => x.coordinate.x).First();
                                     yB = Intersections.Where(x => x.coordinate.coordinateId == locationIds[j]).Select(x => x.coordinate.y).First();
                                 }
+                                //יצירת אובייקט מסוג קשת בגרף
                                 EdgesDTO edge = new EdgesDTO
                                 {
                                     locationIdA = locationIds[i],
                                     locationIdB = locationIds[j],
                                     distance = CalcDistance(xA, yA, xB, yB)
                                 };
+                                //הוספת הקשת לליסט הקשתות
                                 edges.Add(edge);
                             }
 
                         }
                     }
+                    //יצירת אובייקטים לטבלת הקשר-מיקומים להצטלבויות
                     for (int i = 0; i < locationIds.Count; i++)
                     {
                         if (Intersections.Any(x => x.coordinate.coordinateId == locationIds[i]))
@@ -359,7 +382,9 @@ namespace FastRouting.Services.Services.Logic
                     }
                 }
 
-
+                //שליחת 2 משתנים:
+                //רשימת אובייקטי טבלת הקשר מיקומים להצטלבויות-
+                //רשימת אובייקטי הקשתות של הגרף-
                 var result = new
                 {
                     TransitionsToIntersections = transitionsToIntersections,
@@ -367,17 +392,132 @@ namespace FastRouting.Services.Services.Logic
                 };
 
                 return result;
-
-
-
-
-                //return edges;
             }
             catch (Exception e)
             {
                 return null;
 
             }
+            //try
+            //{
+            //    List<EdgesDTO> edges = new List<EdgesDTO>();
+            //    // List<IntersectionsDTO> intersections = new List<IntersectionsDTO>();
+            //    List<TransitionsToIntersectionsDTO> transitionsToIntersections = new List<TransitionsToIntersectionsDTO>();
+            //    // List<LocationsDTO> locations = new List<LocationsDTO>();
+            //    //מילון של "מעברים", המפתח במילון הוא מס' המעבר והערך הוא ליסט של מזהים שנמצאים במעבר זה
+            //    var locationIdsByTransitionId = new Dictionary<int, List<int>>();
+
+            //    //עובר על כל נקודות המיקום, ומוסיף את מזהה המיקום לליסט המתאים לו במילון המעברים
+            //    foreach (var location in Locations)
+            //    {
+            //        int transitionId = location.transitions.trasitionId;
+            //        if (!locationIdsByTransitionId.ContainsKey(transitionId))
+            //        {
+            //            locationIdsByTransitionId[transitionId] = new List<int>();
+            //        }
+            //        locationIdsByTransitionId[transitionId].Add(location.coordinate.coordinateId);
+            //    }
+
+            //    //עובר על כל נקודות ההצטלבות, ומוסיף את מזהה הצטלבות לליסטים!!! (יכול להיות יותר מאחד) המתאימים לו במילון המעברים
+
+            //    foreach (var intersection in Intersections)
+            //    {
+            //        int index = Intersections.FindIndex(a => a.intersectionId == intersection.intersectionId);
+
+            //        foreach (var item in PassCodes[index])
+            //        {
+            //            if (!locationIdsByTransitionId.ContainsKey(item))
+            //            {
+            //                locationIdsByTransitionId[item] = new List<int>();
+            //            }
+            //            locationIdsByTransitionId[item].Add(intersection.coordinate.coordinateId);
+
+            //        }
+            //    }
+            //    double xA;
+            //    double xB;
+            //    double yA;
+            //    double yB;
+
+
+            //    foreach (var transitionIdAndLocationIds in locationIdsByTransitionId)
+            //    {
+            //        var locationIds = transitionIdAndLocationIds.Value;
+            //        for (int i = 0; i < locationIds.Count; i++)
+            //        {
+            //            for (int j = 0; j < locationIds.Count; j++)
+            //            {
+            //                if (i != j)
+            //                {
+
+            //                    if (Locations.Any(x => x.coordinate.coordinateId == locationIds[i]))
+            //                    {
+            //                        xA = Locations.Where(x => x.coordinate.coordinateId == locationIds[i]).Select(x => x.coordinate.x).First();
+            //                        yA = Locations.Where(x => x.coordinate.coordinateId == locationIds[i]).Select(x => x.coordinate.y).First();
+
+            //                    }
+            //                    else
+            //                    {
+            //                        xA = Intersections.Where(x => x.coordinate.coordinateId == locationIds[i]).Select(x => x.coordinate.x).First();
+            //                        yA = Intersections.Where(x => x.coordinate.coordinateId == locationIds[i]).Select(x => x.coordinate.y).First();
+            //                    }
+            //                    if (Locations.Any(x => x.coordinate.coordinateId == locationIds[j]))
+            //                    {
+            //                        xB = Locations.Where(x => x.coordinate.coordinateId == locationIds[j]).Select(x => x.coordinate.x).First();
+            //                        yB = Locations.Where(x => x.coordinate.coordinateId == locationIds[j]).Select(x => x.coordinate.y).First();
+
+            //                    }
+            //                    else
+            //                    {
+            //                        xB = Intersections.Where(x => x.coordinate.coordinateId == locationIds[j]).Select(x => x.coordinate.x).First();
+            //                        yB = Intersections.Where(x => x.coordinate.coordinateId == locationIds[j]).Select(x => x.coordinate.y).First();
+            //                    }
+            //                    EdgesDTO edge = new EdgesDTO
+            //                    {
+            //                        locationIdA = locationIds[i],
+            //                        locationIdB = locationIds[j],
+            //                        distance = CalcDistance(xA, yA, xB, yB)
+            //                    };
+            //                    edges.Add(edge);
+            //                }
+
+            //            }
+            //        }
+            //        for (int i = 0; i < locationIds.Count; i++)
+            //        {
+            //            if (Intersections.Any(x => x.coordinate.coordinateId == locationIds[i]))
+            //            {
+            //                TransitionsToIntersectionsDTO transitionsToIntersection = new TransitionsToIntersectionsDTO
+            //                {
+            //                    intersectionId = locationIds[i],
+            //                    transitionId = transitionIdAndLocationIds.Key
+
+            //                };
+            //                transitionsToIntersections.Add(transitionsToIntersection);
+
+            //            }
+            //        }
+            //    }
+
+
+            //    var result = new
+            //    {
+            //        TransitionsToIntersections = transitionsToIntersections,
+            //        Edges = edges
+            //    };
+
+            //    return result;
+
+
+
+
+            //    //return edges;
+            //}
+            //catch (Exception e)
+            //{
+            //    return null;
+
+            //}
         }
 
 

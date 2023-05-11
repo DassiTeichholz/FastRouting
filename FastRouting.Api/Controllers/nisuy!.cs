@@ -23,9 +23,9 @@ namespace FastRouting.Api.Controllers
         private readonly IAddingACenter _iEdgesService2;
         private readonly IRouteCalculation _routeCalculation;
 
-        public nisuy_(IIntersectionsService shoppingMallsServiece, IAddingACenter iEdgesService2, IRouteCalculation routeCalculation)
+        public nisuy_(IIntersectionsService CentersServiece, IAddingACenter iEdgesService2, IRouteCalculation routeCalculation)
         {
-            _iEdgesService = shoppingMallsServiece;
+            _iEdgesService = CentersServiece;
             _iEdgesService2=iEdgesService2;
             _routeCalculation=routeCalculation;
         }
@@ -46,8 +46,8 @@ namespace FastRouting.Api.Controllers
 
         // POST api/<nisuy_>
         [HttpPost]
-        [HttpPost]
-        public async Task<IActionResult> Post([FromForm] List<IFormFile> imagesArr, [FromForm] string centerName, [FromForm] string jsonFile)
+       
+        public async Task<bool> Post([FromBody] List<dynamic> value)
         {
             // טפל בנתונים המגיעים מהלקוח כאן
             // המידע מסוג JSON מגיע במשתנה jsonFile ויש להמיר אותו לאובייקט באמצעות JsonConvert.DeserializeObject
@@ -60,8 +60,14 @@ namespace FastRouting.Api.Controllers
             // }
 
             // החזר את התשובה המתאימה לפי הצורך
-            return Ok();
+            return true; 
         }
+        //[FromBody] List<TheCenterPhotoDTO> TheCenterPhoto
+
+
+
+
+        /*[FromForm] List<IFormFile> imagesArr, [FromForm] string centerName, [FromForm] string jsonFile*/
 
         //public async Task<bool> AddCoordy2([FromBody] LocationsDTO flag)
         //{

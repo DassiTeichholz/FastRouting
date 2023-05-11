@@ -20,8 +20,8 @@ namespace FastRouting.Repositories
             services.AddScoped<ILocationTypesRepository, LocationTypesRepository>();
             services.AddScoped<ITransitionsRepository, TransitionsRepository>();
             services.AddScoped<ITransitionsToIntersectionsRepository, TransitionsToIntersectionsRepository>();
-            services.AddScoped<IshoppingMallsRepository, shoppingMallsRepository>();
-            services.AddScoped<ITheMallPhotosRepository, TheMallPhotosRepository>();
+            services.AddScoped<ICentersRepository, CentersRepository>();
+            services.AddScoped<ITheCenterPhotoRepository, TheCenterPhotoRepository>();
             return services;
         }
     }

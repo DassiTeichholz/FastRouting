@@ -138,7 +138,7 @@ namespace FastRouting.Context.Migrations
                     b.ToTable("LocationTypes");
                 });
 
-            modelBuilder.Entity("FastRouting.Repositories.Entities.TheMallPhotos", b =>
+            modelBuilder.Entity("FastRouting.Repositories.Entities.TheCenterPhoto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -158,7 +158,7 @@ namespace FastRouting.Context.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TheMallPhotos");
+                    b.ToTable("TheCenterPhoto");
                 });
 
             modelBuilder.Entity("FastRouting.Repositories.Entities.Transition", b =>
@@ -191,7 +191,7 @@ namespace FastRouting.Context.Migrations
                     b.ToTable("TransitionsToIntersections");
                 });
 
-            modelBuilder.Entity("FastRouting.Repositories.Entities.shoppingMalls", b =>
+            modelBuilder.Entity("FastRouting.Repositories.Entities.Centers", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -205,7 +205,7 @@ namespace FastRouting.Context.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("shoppingMalls");
+                    b.ToTable("Centers");
                 });
 
             modelBuilder.Entity("FastRouting.Repositories.Entities.Intersections", b =>

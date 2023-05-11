@@ -23,36 +23,42 @@ using System.Collections;
 
 namespace FastRouting.Services.Services.Logic
 {
-   
+    //קלאס זה מכיל את הקשתות המקוריות + תרגום מזהי המיקומים לאינדקס שלהם בגרף
 
-//קלאס זה מכיל את הקשתות המקוריות + תרגום מזהי המיקומים לאינדקס שלהם בגרף
+
+    //קלאס זה מבטא קשת של גרף
     public class EdgeOfGraph
     {
+        //האינדקס בגרף שבו נמצא קודקוד  ראשון של הקשת
         public int indexA { get; set; }
+        //האינדקס בגרף שבו נמצא קודקוד שני של הקשת
         public int indexB { get; set; }
-
+        //אובייקט הקשת המקורי
         public EdgesDTO edge { get; set; }
         public EdgeOfGraph(EdgesDTO edge)
         {
             this.edge = edge;
         }
     }
-
+    //ליסט של אוביקטי "קומה", יוחזר בסופו של דבר ללקוח
     public class Floor
     {
+        //ליסט של קודקודים המרכיבים את קטע המסלול בקומה מסוימת
         public List<VertexOfGraph> vertexsOfFloor  { get; set; }
+        //ליסט של משפטי הכוון למשתמש איך לצעוד בקומה מסוימת
         public List<string> directions { get; set; }
-        public List<TheMallPhotosDTO> theMallPhotosDTO  { get; set; }
+        //ליסט של תמונות הקשורות לקומה מסוימת
+        public List<TheCenterPhotoDTO> TheCenterPhotoDTO  { get; set; }
 
         public Floor()
         {
             this.vertexsOfFloor = new List<VertexOfGraph>();
             this.directions = new List<string>();
-            this.theMallPhotosDTO= new List<TheMallPhotosDTO>();
+            this.TheCenterPhotoDTO= new List<TheCenterPhotoDTO>();
         }
-        public Floor(List<VertexOfGraph> vertexsOfFloor, List<string> directions, List<TheMallPhotosDTO> theMallPhotosDTO)
+        public Floor(List<VertexOfGraph> vertexsOfFloor, List<string> directions, List<TheCenterPhotoDTO> TheCenterPhotoDTO)
         {
-            this.theMallPhotosDTO = theMallPhotosDTO;
+            this.TheCenterPhotoDTO = TheCenterPhotoDTO;
             this.directions=directions;
             this.vertexsOfFloor=vertexsOfFloor;
             
@@ -60,7 +66,8 @@ namespace FastRouting.Services.Services.Logic
     }
 
 
-
+    //קלאס זה מבטא קודקוד בגרף
+    //הנקודות בו יכולות להיות מסוג מיקומים או מסוג הצטלבויות
     public class VertexOfGraph
     {
         //public int num { get; set; }
@@ -69,10 +76,11 @@ namespace FastRouting.Services.Services.Logic
         public LocationTypesDTO locationTypes { get; set; }
         public string name { get; set; }
         public int trasition { get; set; }
+        //האם זו הצטלבות שיש גם מיקום באותה קאורדיננטה?
         public bool  IntersectionOnLocation { get; set; }
+        //כל הקודקודים השכנים לקודקוד מסוים
         public List<EdgeOfGraph> edgesOfGraphs { get; set; }
-        //private int num;
-
+        //בנאי למקרה שהנקודה היא נקודת מיקום
         public VertexOfGraph(CoordinateDTO coordinate, LocationTypesDTO LocationTypes, string name/*, int num*/, int trasition)
         {
             this.coordinate = coordinate;
@@ -82,6 +90,7 @@ namespace FastRouting.Services.Services.Logic
             this.trasition = trasition;
             this.IntersectionOnLocation= false;
         }
+        //בנאי למקרה שהנקודה היא נקודת הצטלבות
         public VertexOfGraph(CoordinateDTO coordinate, bool intersectionOnLocation)
         {
             // this.num = num;
@@ -94,6 +103,7 @@ namespace FastRouting.Services.Services.Logic
 
         }
     }
+    //קלאס 
     public class AdjListNode : IComparable<AdjListNode>
     {
         public static bool flag;
@@ -133,21 +143,21 @@ namespace FastRouting.Services.Services.Logic
 
 public  class RouteCalculation: IRouteCalculation
     {
-        private readonly IshoppingMallsService _shoppingMallService;
+        private readonly ICentersService _Centerservice;
         private readonly ILocationsService _locationsService;
         private readonly IIntersectionsService _IntersectionsService;
-        private readonly ITheMallPhotosService _theMallPhotosService;
+        private readonly ITheCenterPhotoService _TheCenterPhotoService;
         private readonly IMapper _mapper;
         private readonly IEdgesService _edgesService;
         private readonly ITransitionsService _transitionsService;
         private readonly ILocationTypesService _locationTypesService;
         private readonly ITransitionsToIntersectionsService _transitionsToIntersectionsService;
-        public RouteCalculation(IMapper mapper, IshoppingMallsService shoppingMallService, IEdgesService edgesService, ITheMallPhotosService theMallPhotosService, IIntersectionsService intersectionsService, ILocationsService locationsService, ITransitionsService transitionsService, ILocationTypesService locationTypesService, ITransitionsToIntersectionsService transitionsToIntersectionsService)
+        public RouteCalculation(IMapper mapper, ICentersService Centerservice, IEdgesService edgesService, ITheCenterPhotoService TheCenterPhotoService, IIntersectionsService intersectionsService, ILocationsService locationsService, ITransitionsService transitionsService, ILocationTypesService locationTypesService, ITransitionsToIntersectionsService transitionsToIntersectionsService)
         {
             _mapper = mapper;
-            _shoppingMallService = shoppingMallService;
+            _Centerservice = Centerservice;
             _edgesService = edgesService;
-            _theMallPhotosService = theMallPhotosService;
+            _TheCenterPhotoService = TheCenterPhotoService;
             _IntersectionsService = intersectionsService;
             _locationsService = locationsService;
             _transitionsService = transitionsService;
@@ -389,7 +399,7 @@ public  class RouteCalculation: IRouteCalculation
             List<Floor> floors = new List<Floor>();
             List<string> directions=new List<string>();
             List<VertexOfGraph> vertexsOfFloor=new List<VertexOfGraph>();
-            List<TheMallPhotosDTO> theMallPhotos=new List<TheMallPhotosDTO>();
+            List<TheCenterPhotoDTO> TheCenterPhoto=new List<TheCenterPhotoDTO>();
             double xPrev;
             double yPrev;
             double xCurrent;
@@ -563,12 +573,12 @@ public  class RouteCalculation: IRouteCalculation
                     }
                 }
                
-                theMallPhotos=await _theMallPhotosService.GetByZAsync(z);
-                floor=new Floor(vertexsOfFloor, directions, theMallPhotos);
+                TheCenterPhoto=await _TheCenterPhotoService.GetByZAsync(z);
+                floor=new Floor(vertexsOfFloor, directions, TheCenterPhoto);
                 floors.Add(floor);
                 directions=new List<string>();
                 vertexsOfFloor=new List<VertexOfGraph>();
-                theMallPhotos=new List<TheMallPhotosDTO>();
+                TheCenterPhoto=new List<TheCenterPhotoDTO>();
 
             }
             return floors;

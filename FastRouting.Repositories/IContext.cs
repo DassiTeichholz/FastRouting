@@ -22,8 +22,8 @@ namespace FastRouting.Repositories
         DbSet<Transition> Transitions { get; set; }
 
         DbSet<TransitionsToIntersections> TransitionsToIntersections { get; set; }
-        DbSet<shoppingMalls> shoppingMalls { get; set; }
-        DbSet<TheMallPhotos> TheMallPhotos { get; set; }
+        DbSet<Centers> Centers { get; set; }
+        DbSet<TheCenterPhoto> TheCenterPhoto { get; set; }
 
 
         int SaveChanges();

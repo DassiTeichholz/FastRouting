@@ -13,8 +13,8 @@ namespace FastRouting.Context
         public DbSet<LocationTypes> LocationTypes { get; set; }
         public DbSet<Transition> Transitions { get; set; }
         public DbSet<TransitionsToIntersections> TransitionsToIntersections { get; set; }
-        public DbSet<shoppingMalls> shoppingMalls { get; set; }
-        public DbSet<TheMallPhotos> TheMallPhotos { get ; set ; }
+        public DbSet<Centers> Centers { get; set; }
+        public DbSet<TheCenterPhoto> TheCenterPhoto { get ; set ; }
 
         public DataContext(DbContextOptions<DataContext> options)
        : base(options)

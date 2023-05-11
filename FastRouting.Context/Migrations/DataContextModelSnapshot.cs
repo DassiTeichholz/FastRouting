@@ -21,6 +21,23 @@ namespace FastRouting.Context.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("FastRouting.Repositories.Entities.Centers", b =>
+                {
+                    b.Property<int>("shoppingMallId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("shoppingMallId"));
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("shoppingMallId");
+
+                    b.ToTable("Centers");
+                });
+
             modelBuilder.Entity("FastRouting.Repositories.Entities.Coordinate", b =>
                 {
                     b.Property<int>("coordinateId")
@@ -138,7 +155,7 @@ namespace FastRouting.Context.Migrations
                     b.ToTable("LocationTypes");
                 });
 
-            modelBuilder.Entity("FastRouting.Repositories.Entities.TheMallPhotos", b =>
+            modelBuilder.Entity("FastRouting.Repositories.Entities.TheCenterPhoto", b =>
                 {
                     b.Property<int>("theMallPhotoId")
                         .ValueGeneratedOnAdd()
@@ -158,7 +175,7 @@ namespace FastRouting.Context.Migrations
 
                     b.HasKey("theMallPhotoId");
 
-                    b.ToTable("TheMallPhotos");
+                    b.ToTable("TheCenterPhoto");
                 });
 
             modelBuilder.Entity("FastRouting.Repositories.Entities.Transition", b =>
@@ -189,23 +206,6 @@ namespace FastRouting.Context.Migrations
                     b.HasKey("transitionId", "intersectionId");
 
                     b.ToTable("TransitionsToIntersections");
-                });
-
-            modelBuilder.Entity("FastRouting.Repositories.Entities.shoppingMalls", b =>
-                {
-                    b.Property<int>("shoppingMallId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("shoppingMallId"));
-
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("shoppingMallId");
-
-                    b.ToTable("shoppingMalls");
                 });
 
             modelBuilder.Entity("FastRouting.Repositories.Entities.Intersections", b =>

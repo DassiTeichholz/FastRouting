@@ -22,12 +22,12 @@ namespace FastRouting.Services
             services.AddScoped<IIntersectionsService, IntersectionsService>();
             services.AddScoped<ILocationsService, LocationsService>();
             services.AddScoped<ILocationTypesService, LocationTypesService>();
-            services.AddScoped<IshoppingMallsService, shoppingMallsService>();
+            services.AddScoped<ICentersService, CentersService>();
 
             services.AddScoped<ITransitionsService, TransitionsService>();
             
             services.AddScoped<ITransitionsToIntersectionsService, TransitionsToIntersectionsServer>();
-            services.AddScoped<ITheMallPhotosService, TheMallPhotosService>();
+            services.AddScoped<ITheCenterPhotoService, TheCenterPhotoService>();
             services.AddScoped<IAddingACenter, AddingACenter>();
             services.AddScoped<IRouteCalculation, RouteCalculation>();
 

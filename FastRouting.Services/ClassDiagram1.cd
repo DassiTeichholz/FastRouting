@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FastRouting.Services.MappingProfile" Collapsed="true">
+    <Position X="7.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MappingProfile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Services.ServiceCollectionExtension" Collapsed="true">
+    <Position X="7.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceCollectionExtension.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Services.Services.Logic.AddingACenter" BaseTypeListCollapsed="true">
+    <Position X="7.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgFEQgAATAAAAAABEAAAQAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Services\Logic\AddingACenter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FastRouting.Services.Services.Logic.Algorithm" Collapsed="true">
+    <Position X="3.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\Logic\Algorithm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Services.Services.Logic.EdgeOfGraph">
+    <Position X="5.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAABAAA=</HashCode>
+      <FileName>Services\Logic\RouteCalculation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Services.Services.Logic.Floor">
+    <Position X="3.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAIAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\Logic\RouteCalculation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Services.Services.Logic.VertexOfGraph">
+    <Position X="3.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAARAAAAQAAAEIAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Services\Logic\RouteCalculation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Services.Services.Logic.AdjListNode" BaseTypeListCollapsed="true">
+    <Position X="5.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACBABwAAYAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Services\Logic\RouteCalculation.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FastRouting.Services.Services.Logic.RouteCalculation" BaseTypeListCollapsed="true">
+    <Position X="2" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgFAQgAKREAAAgABAAAAAAIAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Services\Logic\RouteCalculation.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FastRouting.Services.Services.CentersService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAgFAQAAARAAAAAABAAEAAAAAAAgAAAAoAAQAIIA=</HashCode>
+      <FileName>Services\CentersService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FastRouting.Services.Services.CoordinateService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAkAAAAAAAAAAAAAAAABAAEAAAAAAAgAAAAAAAAAIIA=</HashCode>
+      <FileName>Services\CoordinateService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FastRouting.Services.Services.EdgesService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAAAAAAAAAAAAAAABAAEAAAAAAAgAAAAAAgAAAIA=</HashCode>
+      <FileName>Services\EdgesService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FastRouting.Services.Services.IntersectionsService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAAAAAAAAAAAAAAABAAEAAAAAAAgAAAACAAAAIIA=</HashCode>
+      <FileName>Services\IntersectionsService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FastRouting.Services.Services.LocationsService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEiAAAAAAAAAAAAAAABAAEAAAAAAAgAAAAAAAQAAIg=</HashCode>
+      <FileName>Services\LocationsService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FastRouting.Services.Services.LocationTypesService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="2.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAABAAEEAAAAAAgAAAAAAAAAIIA=</HashCode>
+      <FileName>Services\LocationTypesService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FastRouting.Services.Services.TheCenterPhotoService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEgIAAAAAAAAAAAAAABAAEAAAAAAAgAEAAAAAAAAIA=</HashCode>
+      <FileName>Services\TheCenterPhotoService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FastRouting.Services.Services.TransitionsService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAACAAABAAEAAAAAAAgAAAAAAAAAIIA=</HashCode>
+      <FileName>Services\TransitionsService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FastRouting.Services.Services.TransitionsToIntersectionsServer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIEAAAAAAAAAAAAAAAABAAEAAAAACAgAAIAAAAAAAAA=</HashCode>
+      <FileName>Services\TransitionsToIntersectionsServer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="FastRouting.Services.Interfaces.ILogic.IAddingACenter">
+    <Position X="5.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAACAAAAAAAEAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\ILogic\IAddingACenter.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FastRouting.Services.Interfaces.ILogic.IRouteCalculation">
+    <Position X="7.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAEAAAgAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\ILogic\IRouteCalculation.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FastRouting.Services.Interfaces.ICentersService">
+    <Position X="2.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAEAAAAAAAgAAAAAAAQAIIA=</HashCode>
+      <FileName>Interfaces\ICentersService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FastRouting.Services.Interfaces.ICoordinateService">
+    <Position X="5" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAEAAAAAAAgAAAAAAAAAIIA=</HashCode>
+      <FileName>Interfaces\ICoordinateService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FastRouting.Services.Interfaces.IEdgesService">
+    <Position X="7.5" Y="14.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAAAAAAAAAAAAAAAAAAEAAAAAAAgAAAAAAAAAAIA=</HashCode>
+      <FileName>Interfaces\IEdgesService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FastRouting.Services.Interfaces.IIntersectionsService">
+    <Position X="9.25" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAAAAAAAAAAAAAAAAAAEAAAAAAAgAAAAAAAAAIIA=</HashCode>
+      <FileName>Interfaces\IIntersectionsService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FastRouting.Services.Interfaces.ILocationsService">
+    <Position X="1" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEiAAAAAAAAAAAAAAAAAAEAAAAAAAgAAAAAAAQAAIA=</HashCode>
+      <FileName>Interfaces\ILocationsService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FastRouting.Services.Interfaces.ILocationTypesService">
+    <Position X="5" Y="15.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAEAAAAAAAgAAAAAAAAAIIA=</HashCode>
+      <FileName>Interfaces\ILocationTypesService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FastRouting.Services.Interfaces.ITheCenterPhotoService">
+    <Position X="6.5" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEgAAAAAAAAAAAAAAAAAAEAAAAAAAgAEAAAAAAAAIA=</HashCode>
+      <FileName>Interfaces\ITheCenterPhotoService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FastRouting.Services.Interfaces.ITransitionsService">
+    <Position X="9" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAEAAAAAAAgAAAAAAAAAIIA=</HashCode>
+      <FileName>Interfaces\ITransitionsService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FastRouting.Services.Interfaces.ITransitionsToIntersectionsService">
+    <Position X="4" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAEAAAAACAgAAIAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\ITransitionsToIntersectionsService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

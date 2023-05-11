@@ -53,7 +53,7 @@ namespace FastRouting.Context.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "shoppingMalls",
+                name: "Centers",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -62,11 +62,11 @@ namespace FastRouting.Context.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_shoppingMalls", x => x.Id);
+                    table.PrimaryKey("PK_Centers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "TheMallPhotos",
+                name: "TheCenterPhoto",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -77,7 +77,7 @@ namespace FastRouting.Context.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TheMallPhotos", x => x.Id);
+                    table.PrimaryKey("PK_TheCenterPhoto", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -194,10 +194,10 @@ namespace FastRouting.Context.Migrations
                 name: "Locations");
 
             migrationBuilder.DropTable(
-                name: "shoppingMalls");
+                name: "Centers");
 
             migrationBuilder.DropTable(
-                name: "TheMallPhotos");
+                name: "TheCenterPhoto");
 
             migrationBuilder.DropTable(
                 name: "TransitionsToIntersections");

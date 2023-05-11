@@ -15,38 +15,43 @@ namespace FastRouting.Services.Services.Logic
     {
 
 
-
+        //פונקציה לחישוב מרחק בין שתי קאורדיננטות
         public static double CalcDistance(double x1, double y1, double x2, double y2)
         {
          return Math.Sqrt(Math.Pow(x1 - x2, 2) + Math.Pow(y1 - y2, 2));
         }
 
-    //באלגוריתם זה אני מוסיפה את הנקודות למסד הנתונים וכן את הקשתות
-    //מקבל את המיקומים וההצטלבויות אחרי שכבר הכנסנו למסד נתונים
-    public static object BuildingEdges(List<LocationsDTO> Locations, List<IntersectionsDTO> Intersections, List<List<int>> PassCodes)
-    {
+       // תפקידה של פונקציה זו, ליצור קשתות לפי נקודות המיקום, ההצטלבות, וליסט של ליסטים של מזהי מעברים
+       // הנחת האלגוריתם- כל הנקודות הנמצאות באותו מעבר, צריך ליצור בינהן קשתות ישירות, כל נקודה, ליצור בינה קשת לבין כל אחת מחברותיה למעבר
+      public static object BuildingEdges(List<LocationsDTO> Locations, List<IntersectionsDTO> Intersections, List<List<int>> PassCodes)
+      {
         try
         {
+            //ליסט המוכן לקליטת קשתות
             List<EdgesDTO> edges = new List<EdgesDTO>();
-            // List<IntersectionsDTO> intersections = new List<IntersectionsDTO>();
+            //ליסט המוכן לקליטת אובייקטי טבלת הקשר-מעברים להצטלבויות
             List<TransitionsToIntersectionsDTO> transitionsToIntersections = new List<TransitionsToIntersectionsDTO>();
-            // List<LocationsDTO> locations = new List<LocationsDTO>();
-            //מילון של "מעברים", המפתח במילון הוא מס' המעבר והערך הוא ליסט של מזהים שנמצאים במעבר זה
+            //מילון של "מעברים", המפתח במילון הוא מס' המעבר והערך הוא ליסט של מזהים (של נקודות מיקום או נקודות הצטלבות) שנמצאים במעבר זה
             var locationIdsByTransitionId = new Dictionary<int, List<int>>();
 
             //עובר על כל נקודות המיקום, ומוסיף את מזהה המיקום לליסט המתאים לו במילון המעברים
             foreach (var location in Locations)
             {
+                //בודק באיזה מעבר נמצא המיקום
                 int transitionId = location.transitions.trasitionId;
+                //אם לא קיים מפתח -מזהה מעבר, המתאים למזהה המעבר של המיקום
                 if (!locationIdsByTransitionId.ContainsKey(transitionId))
                 {
+                    //יוצר מפתח חדש- מזהה מעבר חדש
                     locationIdsByTransitionId[transitionId] = new List<int>();
                 }
+                //בכל אופן מכניס את מזהה המיקום לליסט שנמצא במפתח המתאים
                 locationIdsByTransitionId[transitionId].Add(location.coordinate.coordinateId);
             }
 
+            
             //עובר על כל נקודות ההצטלבות, ומוסיף את מזהה הצטלבות לליסטים!!! (יכול להיות יותר מאחד) המתאימים לו במילון המעברים
-
+            //נקודת הצטלבות יכולה להיות בכמה מעברים
             foreach (var intersection in Intersections)
             {
                 int index = Intersections.FindIndex(a => a.intersectionId == intersection.intersectionId);
@@ -66,7 +71,7 @@ namespace FastRouting.Services.Services.Logic
             double yA;
             double yB;
 
-
+            //מעבר על המילון ויצירת קשתות , בין כל נקודה (הצטלבות/מיקום) לבין כל חברותיה למעבר 
             foreach (var transitionIdAndLocationIds in locationIdsByTransitionId)
             {
                 var locationIds = transitionIdAndLocationIds.Value;
@@ -99,17 +104,20 @@ namespace FastRouting.Services.Services.Logic
                                 xB = Intersections.Where(x => x.coordinate.coordinateId == locationIds[j]).Select(x => x.coordinate.x).First();
                                 yB = Intersections.Where(x => x.coordinate.coordinateId == locationIds[j]).Select(x => x.coordinate.y).First();
                             }
+                            //יצירת אובייקט מסוג קשת בגרף
                             EdgesDTO edge = new EdgesDTO
                             {
                                 locationIdA = locationIds[i],
                                 locationIdB = locationIds[j],
                                 distance = CalcDistance(xA, yA, xB, yB)
                             };
+                            //הוספת הקשת לליסט הקשתות
                             edges.Add(edge);
                         }
 
                     }
                 }
+                //יצירת אובייקטים לטבלת הקשר-מיקומים להצטלבויות
                 for (int i = 0; i < locationIds.Count; i++)
                 {
                     if (Intersections.Any(x => x.coordinate.coordinateId == locationIds[i]))
@@ -126,7 +134,9 @@ namespace FastRouting.Services.Services.Logic
                 }
             }
 
-
+            //שליחת 2 משתנים:
+            //רשימת אובייקטי טבלת הקשר מיקומים להצטלבויות-
+            //רשימת אובייקטי הקשתות של הגרף-
             var result = new
             {
                 TransitionsToIntersections = transitionsToIntersections,
@@ -134,18 +144,13 @@ namespace FastRouting.Services.Services.Logic
             };
 
             return result;
-
-
-
-
-            //return edges;
         }
         catch (Exception e)
         {
             return null;
 
         }
-    }
+      }
 
 
     }

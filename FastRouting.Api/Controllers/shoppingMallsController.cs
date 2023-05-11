@@ -10,26 +10,26 @@ namespace FastRouting.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class shoppingMallsController : ControllerBase
+    public class CentersController : ControllerBase
     {
 
-        private readonly ILocationsService _shoppingMallsServiece;
+        private readonly ILocationsService _CentersServiece;
 
-        public shoppingMallsController(ILocationsService shoppingMallsServiece)
+        public CentersController(ILocationsService CentersServiece)
         {
-            _shoppingMallsServiece = shoppingMallsServiece;
+            _CentersServiece = CentersServiece;
         }
 
 
 
-        // GET: api/<shoppingMallsController>
+        // GET: api/<CentersController>
         [HttpGet]
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/<shoppingMallsController>/5
+        // GET api/<CentersController>/5
         [HttpGet("{id}")]
         public List<VertexOfGraph> GetRoute(string centerName,string sourceName, string DestinationName)
         {
@@ -37,11 +37,11 @@ namespace FastRouting.Api.Controllers
             return null;
         }
 
-        // POST api/<shoppingMallsController>
+        // POST api/<CentersController>
         [HttpPost]
         public async Task<bool> AddCust([FromBody] LocationsDTO value)
         {
-            await _shoppingMallsServiece.AddAsync(value);
+            await _CentersServiece.AddAsync(value);
             return true;
 
         }
@@ -57,7 +57,7 @@ namespace FastRouting.Api.Controllers
         //    {
         //    string centerName = value[0].ToString();
 
-        //    var theMallPhotosDTOList = value[1];
+        //    var TheCenterPhotoDTOList = value[1];
 
         //    var locationsList = value[2].ToObject<LocationsDTO>();
         //    var IntersectionsList = value[3].ToObject<List<IntersectionsDTO>>();
@@ -66,7 +66,7 @@ namespace FastRouting.Api.Controllers
         //    var edgesCrossFloors = value[5];
 
         //    //string centerName=value[0].ToString();
-        //    //var theMallPhotosDTOList= value[1].ToObject<List<TheMallPhotosDTO>>();
+        //    //var TheCenterPhotoDTOList= value[1].ToObject<List<TheCenterPhotoDTO>>();
         //    //var locationsList= value[2].ToObject<List<LocationsDTO>>();
         //    //var IntersectionsList = value[3].ToObject<List<IntersectionsDTO>>();
         //    //var passCodes = value[4].ToObject<List<int>[]>();
@@ -74,16 +74,16 @@ namespace FastRouting.Api.Controllers
 
 
 
-        //    return await _shoppingMallsServiece.CreateNewMall(centerName, theMallPhotosDTOList, locationsList, IntersectionsList, passCodes, edgesCrossFloors);
+        //    return await _CentersServiece.CreateNewMall(centerName, TheCenterPhotoDTOList, locationsList, IntersectionsList, passCodes, edgesCrossFloors);
         //}
 
-        // PUT api/<shoppingMallsController>/5
+        // PUT api/<CentersController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/<shoppingMallsController>/5
+        // DELETE api/<CentersController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

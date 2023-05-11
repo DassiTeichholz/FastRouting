@@ -35,22 +35,22 @@ namespace FastRouting.Context.Migrations
 
             migrationBuilder.RenameColumn(
                 name: "Image",
-                table: "TheMallPhotos",
+                table: "TheCenterPhoto",
                 newName: "image");
 
             migrationBuilder.RenameColumn(
                 name: "Id",
-                table: "TheMallPhotos",
+                table: "TheCenterPhoto",
                 newName: "theMallPhotoId");
 
             migrationBuilder.RenameColumn(
                 name: "Name",
-                table: "shoppingMalls",
+                table: "Centers",
                 newName: "name");
 
             migrationBuilder.RenameColumn(
                 name: "Id",
-                table: "shoppingMalls",
+                table: "Centers",
                 newName: "shoppingMallId");
 
             migrationBuilder.RenameColumn(
@@ -148,22 +148,22 @@ namespace FastRouting.Context.Migrations
 
             migrationBuilder.RenameColumn(
                 name: "image",
-                table: "TheMallPhotos",
+                table: "TheCenterPhoto",
                 newName: "Image");
 
             migrationBuilder.RenameColumn(
                 name: "theMallPhotoId",
-                table: "TheMallPhotos",
+                table: "TheCenterPhoto",
                 newName: "Id");
 
             migrationBuilder.RenameColumn(
                 name: "name",
-                table: "shoppingMalls",
+                table: "Centers",
                 newName: "Name");
 
             migrationBuilder.RenameColumn(
                 name: "shoppingMallId",
-                table: "shoppingMalls",
+                table: "Centers",
                 newName: "Id");
 
             migrationBuilder.RenameColumn(

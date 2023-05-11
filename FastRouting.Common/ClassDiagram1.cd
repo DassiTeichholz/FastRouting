@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FastRouting.Common.DTO.CentersDTO">
+    <Position X="6.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>DTO\CentersDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Common.DTO.CoordinateDTO">
+    <Position X="4.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAABgAQAAAAA=</HashCode>
+      <FileName>DTO\CoordinateDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Common.DTO.EdgesDTO">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAABAAAAAAEAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DTO\EdgesDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Common.DTO.IntersectionsDTO">
+    <Position X="8" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAEQAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>DTO\IntersectionsDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Common.DTO.LocationsDTO">
+    <Position X="4.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAACAAAAgAAAAQAAEEAAAAAIAAAAAAAAAAAAAg=</HashCode>
+      <FileName>DTO\LocationsDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Common.DTO.LocationTypesDTO">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DTO\LocationTypesDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Common.DTO.TheCenterPhotoDTO">
+    <Position X="2.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAIAAEAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DTO\TheCenterPhotoDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Common.DTO.TransitionsDTO">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>DTO\TransitionsDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Common.DTO.TransitionsToIntersectionsDTO">
+    <Position X="6.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>DTO\TransitionsToIntersectionsDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

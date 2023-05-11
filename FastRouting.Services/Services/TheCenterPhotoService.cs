@@ -11,16 +11,16 @@ using System.Threading.Tasks;
 
 namespace FastRouting.Services.Services
 {
-    public class TheMallPhotosService : ITheMallPhotosService
+    public class TheCenterPhotoService : ITheCenterPhotoService
     {
-        private readonly ITheMallPhotosRepository _theMallPhotosRepository;
+        private readonly ITheCenterPhotoRepository _TheCenterPhotoRepository;
         private readonly IMapper _mapper;
-        public TheMallPhotosService(ITheMallPhotosRepository theMallPhotosRepository, IMapper mapper)
+        public TheCenterPhotoService(ITheCenterPhotoRepository TheCenterPhotoRepository, IMapper mapper)
         {
-            _theMallPhotosRepository = theMallPhotosRepository;
+            _TheCenterPhotoRepository = TheCenterPhotoRepository;
             _mapper = mapper;
         }
-        public Task<TheMallPhotosDTO> AddAsync(TheMallPhotosDTO TheMallPhotosRepository)
+        public Task<TheCenterPhotoDTO> AddAsync(TheCenterPhotoDTO TheCenterPhotoRepository)
         {
             throw new NotImplementedException();
         }
@@ -30,21 +30,21 @@ namespace FastRouting.Services.Services
             throw new NotImplementedException();
         }
 
-        public Task<List<TheMallPhotosDTO>> GetAllAsync()
+        public Task<List<TheCenterPhotoDTO>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
-        public async Task<List<TheMallPhotosDTO>> GetByZAsync(int z)
+        public async Task<List<TheCenterPhotoDTO>> GetByZAsync(int z)
         {
-            return _mapper.Map<List<TheMallPhotosDTO>>(await _theMallPhotosRepository.GetByZAsync(z));
+            return _mapper.Map<List<TheCenterPhotoDTO>>(await _TheCenterPhotoRepository.GetByZAsync(z));
         }
 
-        public Task<TheMallPhotosDTO> GetByIDAsync(int ID)
+        public Task<TheCenterPhotoDTO> GetByIDAsync(int ID)
         {
             throw new NotImplementedException();
         }
 
-        public Task<TheMallPhotosDTO> UpdateAsync(TheMallPhotosDTO TheMallPhotosRepository)
+        public Task<TheCenterPhotoDTO> UpdateAsync(TheCenterPhotoDTO TheCenterPhotoRepository)
         {
             throw new NotImplementedException();
         }

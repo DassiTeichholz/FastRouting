@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FastRouting.Context.DataContext" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAACAAABAAAAAIABAABEAAAAAAAAAAACAIAAAA=</HashCode>
+      <FileName>DataContext.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FastRouting.Context.Migrations.migration2">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Migrations\20230313112700_migration2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Context.Migrations.migration3">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Migrations\20230313160131_migration3.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Context.Migrations.changedthedb" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Migrations\20230413115523_changedthedb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Context.Migrations.foreignkey" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Migrations\20230423153053_foreignkey.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Context.Migrations.data">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Migrations\20230424171316_data.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Context.Migrations.changingForeignKeys2">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Migrations\20230426073918_changingForeignKeys2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Context.Migrations.IntersectionOnLocation">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Migrations\20230430135137_IntersectionOnLocation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Context.Migrations.ggg">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Migrations\20230501065035_ggg,.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Context.Migrations.changeingNames" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Migrations\20230511073317_changeingNames.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Context.Migrations.DataContextModelSnapshot" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Migrations\DataContextModelSnapshot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Repositories.ServiceCollectionExtension" Collapsed="true">
+    <Position X="0.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Interface Name="FastRouting.Repositories.IContext" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

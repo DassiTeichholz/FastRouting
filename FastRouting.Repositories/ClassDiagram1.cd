@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FastRouting.Repositories.ServiceCollectionExtension" Collapsed="true">
+    <Position X="8.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ServiceCollectionExtension.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Repositories.Entities.Centers" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Entities\Centers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Repositories.Entities.Coordinate" Collapsed="true">
+    <Position X="0.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAABgAQAAAAA=</HashCode>
+      <FileName>Entities\Coordinate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Repositories.Entities.Edges" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAABAAAAAAEAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Edges.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Repositories.Entities.Intersections" Collapsed="true">
+    <Position X="0.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAEQAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Entities\Intersections.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Repositories.Entities.Location" Collapsed="true">
+    <Position X="0.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAACAAAAgAAAAQAAEEAAAAAIAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Entities\Location.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Repositories.Entities.LocationTypes" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\LocationTypes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Repositories.Entities.TheCenterPhoto" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAIAAEAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\TheMallPhotos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Repositories.Entities.Transition" Collapsed="true">
+    <Position X="0.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Transition.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Repositories.Entities.TransitionsToIntersections" Collapsed="true">
+    <Position X="0.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Entities\TransitionsToIntersections.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FastRouting.Repositories.Repositories.CentersRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAABAAAAAAAAAEAAAAAAAgAAAAAAAQAIIA=</HashCode>
+      <FileName>Repositories\CentersRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FastRouting.Repositories.Repositories.CoordinateRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAABAAAAAAAAAEAAAAAAAgAAAAAAAAAIIA=</HashCode>
+      <FileName>Repositories\CoordinateRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FastRouting.Repositories.Repositories.EdgesRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAAAAAAAABIAAAAAAAAEAAAAAAEgAAAAAAAAAAIA=</HashCode>
+      <FileName>Repositories\EdgesRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FastRouting.Repositories.Repositories.IntersectionsRepository" BaseTypeListCollapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAAAAAAAABAAAAAAAAAEAAAAAAAgAAAAAAAAAIIA=</HashCode>
+      <FileName>Repositories\IntersectionsRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FastRouting.Repositories.Repositories.LocationsRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEiAAAAAAAABAAAAAAAAAEAAAAAAAgAAAAAAAQAAIA=</HashCode>
+      <FileName>Repositories\LocationsRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FastRouting.Repositories.Repositories.LocationTypesRepository" BaseTypeListCollapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAABAAAAAAAAAEAAAAAAAgAAAAAAAAAIIA=</HashCode>
+      <FileName>Repositories\LocationTypesRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FastRouting.Repositories.Repositories.TheCenterPhotoRepository" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAABAAAAAAAAAEAAAAAAAgAEAAAAAAAIIA=</HashCode>
+      <FileName>Repositories\TheCenterPhotoRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FastRouting.Repositories.Repositories.TransitionsRepository" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAABAAAAAAAAAEAAAAAAAgAAAAAAAAAIIA=</HashCode>
+      <FileName>Repositories\TransitionsRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="FastRouting.Repositories.Repositories.TransitionsToIntersectionsRepository" BaseTypeListCollapsed="true">
+    <Position X="3" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAABAAAAAAAAAEAAAAACAgAAIAAAAAAAAA=</HashCode>
+      <FileName>Repositories\TransitionsToIntersectionsRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="FastRouting.Repositories.IContext">
+    <Position X="3.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAgAAACAAABEAAAAIABAABEAAAAAAAAAAACAIAAAA=</HashCode>
+      <FileName>IContext.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FastRouting.Repositories.Interfaces.ICentersRepository">
+    <Position X="1.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAEAAAAAAAgAAAAAAAQAIIA=</HashCode>
+      <FileName>Interfaces\ICentersRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FastRouting.Repositories.Interfaces.ICoordinateRepository">
+    <Position X="5.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAEAAAAAAAgAAAAAAAAAIIA=</HashCode>
+      <FileName>Interfaces\ICoordinateRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FastRouting.Repositories.Interfaces.IEdgesRepository">
+    <Position X="7" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAAAAAAAAAIAAAAAAAAEAAAAAAEgAAAAAAAAAAIA=</HashCode>
+      <FileName>Interfaces\IEdgesRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FastRouting.Repositories.Interfaces.IIntersectionsRepository">
+    <Position X="9" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAAAAAAAAAAAAAAAAAAEAAAAAAAgAAAAAAAAAIIA=</HashCode>
+      <FileName>Interfaces\IIntersectionsRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FastRouting.Repositories.Interfaces.ILocationsRepository">
+    <Position X="3.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEiAAAAAAAAAAAAAAAAAAEAAAAAAAgAAAAAAAQAAIA=</HashCode>
+      <FileName>Interfaces\ILocationsRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FastRouting.Repositories.Interfaces.ILocationTypesRepository">
+    <Position X="2" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAEAAAAAAAgAAAAAAAAAIIA=</HashCode>
+      <FileName>Interfaces\ILocationTypesRepository.cs.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FastRouting.Repositories.Interfaces.ITheCenterPhotoRepository">
+    <Position X="5.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAEAAAAAAAgAEAAAAAAAIIA=</HashCode>
+      <FileName>Interfaces\ITheCenterPhotoRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FastRouting.Repositories.Interfaces.ITransitionsRepository">
+    <Position X="7.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAEAAAAAAAgAAAAAAAAAIIA=</HashCode>
+      <FileName>Interfaces\ITransitionsRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="FastRouting.Repositories.Interfaces.ITransitionsToIntersectionsRepository">
+    <Position X="8.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAEAAAAACAgAAIAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\ITransitionsToIntersectionsRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
