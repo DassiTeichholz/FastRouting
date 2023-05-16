@@ -7,6 +7,10 @@ using FastRouting.Services.Services.Logic;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Threading.Tasks;
+using System.IO;
+using Microsoft.AspNetCore.Http;
+//using System.Web.Script.Serialization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -17,7 +21,7 @@ namespace FastRouting.Api.Controllers
     public class nisuy_ : ControllerBase
     {
 
-       
+
 
         private readonly IIntersectionsService _iEdgesService;
         private readonly IAddingACenter _iEdgesService2;
@@ -26,8 +30,8 @@ namespace FastRouting.Api.Controllers
         public nisuy_(IIntersectionsService CentersServiece, IAddingACenter iEdgesService2, IRouteCalculation routeCalculation)
         {
             _iEdgesService = CentersServiece;
-            _iEdgesService2=iEdgesService2;
-            _routeCalculation=routeCalculation;
+            _iEdgesService2 = iEdgesService2;
+            _routeCalculation = routeCalculation;
         }
 
         // GET: api/<nisuy_>
@@ -46,22 +50,99 @@ namespace FastRouting.Api.Controllers
 
         // POST api/<nisuy_>
         [HttpPost]
-       
-        public async Task<bool> Post([FromBody] List<dynamic> value)
+        public async Task<IActionResult> UploadData( ImageUploadData uploadData)
         {
-            // טפל בנתונים המגיעים מהלקוח כאן
-            // המידע מסוג JSON מגיע במשתנה jsonFile ויש להמיר אותו לאובייקט באמצעות JsonConvert.DeserializeObject
-            // התמונות מגיעות ברשימה imagesArr ויש לטפל בהן כך שיוכלו להישמר במקום המתאים בשרת
-            // לדוגמה, כדי להכניס אותן לתיקיית Images, ניתן להשתמש במקור הבא:
-            // string imagePath = Path.Combine("Images", imagesArr[i].FileName);
-            // using (var stream = new FileStream(imagePath, FileMode.Create))
-            // {
-            //    await imagesArr[i].CopyToAsync(stream);
-            // }
+            if (uploadData == null)
+            {
+                return BadRequest("Invalid request data");
+            }
 
-            // החזר את התשובה המתאימה לפי הצורך
-            return true; 
-        }
+            // Access the images
+            List<string> images = uploadData.Images;
+            foreach (string imageData in images)
+            {
+                // Process each image
+                byte[] imageBytes = Convert.FromBase64String(imageData);
+
+                // Perform any further processing with the image data
+                // Example: Save each image to disk with a unique filename
+                //string imagePath = $"path/to/save/image_{Guid.NewGuid()}.jpg";
+                //await System.IO.File.WriteAllBytesAsync(imagePath, imageBytes);
+            }
+
+            // Access the input string
+            string inputString = uploadData.InputString;
+
+            // Access the JSON object
+            JObject jsonObject = uploadData.JsonObject;
+            // Perform further operations with the JSON object
+
+            return Ok();
+                } 
+
+
+
+        //public async Task<bool> Post()
+        //{
+
+
+        //    var formCollection = await Request.ReadFormAsync();
+
+        //    // Access the images
+        //    var images = formCollection.Files.GetFiles("image");
+        //    foreach (var image in images)
+        //    {
+        //        if (image.Length == 0)
+        //        {
+        //            continue; // Skip empty files
+        //        }
+
+        //        // Process each uploaded image
+        //        using (var memoryStream = new MemoryStream())
+        //        {
+        //            await image.CopyToAsync(memoryStream);
+        //            byte[] imageData = memoryStream.ToArray();
+
+        //            // Perform any further processing with the image data
+        //            // Example: Save each image to disk with a unique filename
+        //            string imagePath = $"path/to/save/image_{Guid.NewGuid()}.jpg";
+        //            await System.IO.File.WriteAllBytesAsync(imagePath, imageData);
+        //        }
+        //    }
+
+        //    // Access the input string
+        //    var inputString = formCollection["inputString"];
+
+        //    // Access the JSON object
+        //    var jsonObject = formCollection["jsonObject"];
+        //    // Parse the JSON object if needed
+
+        //    // Perform further operations with the received data
+
+            
+        //    //var name = value[1].ToString();
+        //    //var centerPList = new List<TheCenterPhotoDTO>();
+        //    //foreach (var item in value[0])
+        //    //{
+        //    //    centerPList.Add(item);
+
+        //    //}
+        //    //var details=value[2].
+
+
+        //    // טפל בנתונים המגיעים מהלקוח כאן
+        //    // המידע מסוג JSON מגיע במשתנה jsonFile ויש להמיר אותו לאובייקט באמצעות JsonConvert.DeserializeObject
+        //    // התמונות מגיעות ברשימה imagesArr ויש לטפל בהן כך שיוכלו להישמר במקום המתאים בשרת
+        //    // לדוגמה, כדי להכניס אותן לתיקיית Images, ניתן להשתמש במקור הבא:
+        //    // string imagePath = Path.Combine("Images", imagesArr[i].FileName);
+        //    // using (var stream = new FileStream(imagePath, FileMode.Create))
+        //    // {
+        //    //    await imagesArr[i].CopyToAsync(stream);
+        //    // }
+
+        //    // החזר את התשובה המתאימה לפי הצורך
+        //    return true; 
+        //}
         //[FromBody] List<TheCenterPhotoDTO> TheCenterPhoto
 
 

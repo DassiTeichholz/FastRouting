@@ -1,5 +1,7 @@
-﻿using FastRouting.Repositories.Entities;
+﻿
 using FastRouting.Repositories.Interfaces;
+using FastRouting.Repositories.Entities;
+
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
