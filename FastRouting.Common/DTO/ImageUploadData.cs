@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace FastRouting.Common.DTO
 {
+   
     public class ImageUploadData
     {
-        public List<string> Images { get; set; }
+        public List<Image> Images { get; set; }
         public string InputString { get; set; }
         public JObject JsonObject { get; set; }
     }

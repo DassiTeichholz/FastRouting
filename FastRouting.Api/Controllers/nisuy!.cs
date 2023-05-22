@@ -49,36 +49,61 @@ namespace FastRouting.Api.Controllers
         //}
 
         // POST api/<nisuy_>
-        [HttpPost]
-        public async Task<IActionResult> UploadData( ImageUploadData uploadData)
+       [HttpPost("UploadData")]
+        public async Task<IActionResult> UploadData([FromForm] ImageUploadData uploadData)
         {
-            if (uploadData == null)
+            try
             {
-                return BadRequest("Invalid request data");
-            }
+                // Perform actions with the received data
+                List<Image> images = uploadData.Images;
+                string inputString = uploadData.InputString;
+                JObject jsonObject = uploadData.JsonObject;
 
-            // Access the images
-            List<string> images = uploadData.Images;
-            foreach (string imageData in images)
+                // Additional logic...
+
+                return Ok(); // or return any other appropriate response
+            }
+            catch (Exception ex)
             {
-                // Process each image
-                byte[] imageBytes = Convert.FromBase64String(imageData);
-
-                // Perform any further processing with the image data
-                // Example: Save each image to disk with a unique filename
-                //string imagePath = $"path/to/save/image_{Guid.NewGuid()}.jpg";
-                //await System.IO.File.WriteAllBytesAsync(imagePath, imageBytes);
+                return BadRequest(ex.Message); // or return any other appropriate error response
             }
+        }
+       
+        
+        //public async Task<bool> AddCoordy2([FromBody] string flag)
+        //{
+        //    await _iEdgesService2.DataPreparationFunc(flag);
+        //    return true;
+        //}
+        //public async Task<IActionResult> UploadData(ImageUploadData uploadData)
+        //{
+        //    if (uploadData == null)
+        //    {
+        //        return BadRequest("Invalid request data");
+        //    }
 
-            // Access the input string
-            string inputString = uploadData.InputString;
+        //    //// Access the images
+        //    //List<string> images = uploadData.Images;
+        //    //foreach (string imageData in images)
+        //    //{
+        //    //    // Process each image
+        //    //    byte[] imageBytes = Convert.FromBase64String(imageData);
 
-            // Access the JSON object
-            JObject jsonObject = uploadData.JsonObject;
-            // Perform further operations with the JSON object
+        //    //    // Perform any further processing with the image data
+        //    //    // Example: Save each image to disk with a unique filename
+        //    //    //string imagePath = $"path/to/save/image_{Guid.NewGuid()}.jpg";
+        //    //    //await System.IO.File.WriteAllBytesAsync(imagePath, imageBytes);
+        //    //}
 
-            return Ok();
-                } 
+        //    // Access the input string
+        //    string inputString = uploadData.InputString;
+
+        //    // Access the JSON object
+        //    JObject jsonObject = uploadData.JsonObject;
+        //    // Perform further operations with the JSON object
+
+        //    return Ok();
+        //}
 
 
 
@@ -119,7 +144,7 @@ namespace FastRouting.Api.Controllers
 
         //    // Perform further operations with the received data
 
-            
+
         //    //var name = value[1].ToString();
         //    //var centerPList = new List<TheCenterPhotoDTO>();
         //    //foreach (var item in value[0])

@@ -208,7 +208,7 @@ namespace FastRouting.Services.Services.Logic
                     intersections2.Add(await _IntersectionsService.AddAsync(intersection));
                 }
                 //  שליחת ליסט המיקומים, ההצטלבויות וליסט הליסטים לפונקציה שבונה את הקשתות לגרף 
-                dynamic result = BuildingEdges(locations2, intersections2, passCodes);
+                dynamic result = await BuildingEdges(locations2, intersections2, passCodes);
                
                 //שליפת ליסט אובייקטי טבלת הקשר וליסט הקשתות של הגרף ממה שהוחזר מפונקציית בניית הקשתות
                 List<TransitionsToIntersectionsDTO> TransitionsToIntersections = result.TransitionsToIntersections;
@@ -398,126 +398,7 @@ namespace FastRouting.Services.Services.Logic
                 return null;
 
             }
-            //try
-            //{
-            //    List<EdgesDTO> edges = new List<EdgesDTO>();
-            //    // List<IntersectionsDTO> intersections = new List<IntersectionsDTO>();
-            //    List<TransitionsToIntersectionsDTO> transitionsToIntersections = new List<TransitionsToIntersectionsDTO>();
-            //    // List<LocationsDTO> locations = new List<LocationsDTO>();
-            //    //מילון של "מעברים", המפתח במילון הוא מס' המעבר והערך הוא ליסט של מזהים שנמצאים במעבר זה
-            //    var locationIdsByTransitionId = new Dictionary<int, List<int>>();
-
-            //    //עובר על כל נקודות המיקום, ומוסיף את מזהה המיקום לליסט המתאים לו במילון המעברים
-            //    foreach (var location in Locations)
-            //    {
-            //        int transitionId = location.transitions.trasitionId;
-            //        if (!locationIdsByTransitionId.ContainsKey(transitionId))
-            //        {
-            //            locationIdsByTransitionId[transitionId] = new List<int>();
-            //        }
-            //        locationIdsByTransitionId[transitionId].Add(location.coordinate.coordinateId);
-            //    }
-
-            //    //עובר על כל נקודות ההצטלבות, ומוסיף את מזהה הצטלבות לליסטים!!! (יכול להיות יותר מאחד) המתאימים לו במילון המעברים
-
-            //    foreach (var intersection in Intersections)
-            //    {
-            //        int index = Intersections.FindIndex(a => a.intersectionId == intersection.intersectionId);
-
-            //        foreach (var item in PassCodes[index])
-            //        {
-            //            if (!locationIdsByTransitionId.ContainsKey(item))
-            //            {
-            //                locationIdsByTransitionId[item] = new List<int>();
-            //            }
-            //            locationIdsByTransitionId[item].Add(intersection.coordinate.coordinateId);
-
-            //        }
-            //    }
-            //    double xA;
-            //    double xB;
-            //    double yA;
-            //    double yB;
-
-
-            //    foreach (var transitionIdAndLocationIds in locationIdsByTransitionId)
-            //    {
-            //        var locationIds = transitionIdAndLocationIds.Value;
-            //        for (int i = 0; i < locationIds.Count; i++)
-            //        {
-            //            for (int j = 0; j < locationIds.Count; j++)
-            //            {
-            //                if (i != j)
-            //                {
-
-            //                    if (Locations.Any(x => x.coordinate.coordinateId == locationIds[i]))
-            //                    {
-            //                        xA = Locations.Where(x => x.coordinate.coordinateId == locationIds[i]).Select(x => x.coordinate.x).First();
-            //                        yA = Locations.Where(x => x.coordinate.coordinateId == locationIds[i]).Select(x => x.coordinate.y).First();
-
-            //                    }
-            //                    else
-            //                    {
-            //                        xA = Intersections.Where(x => x.coordinate.coordinateId == locationIds[i]).Select(x => x.coordinate.x).First();
-            //                        yA = Intersections.Where(x => x.coordinate.coordinateId == locationIds[i]).Select(x => x.coordinate.y).First();
-            //                    }
-            //                    if (Locations.Any(x => x.coordinate.coordinateId == locationIds[j]))
-            //                    {
-            //                        xB = Locations.Where(x => x.coordinate.coordinateId == locationIds[j]).Select(x => x.coordinate.x).First();
-            //                        yB = Locations.Where(x => x.coordinate.coordinateId == locationIds[j]).Select(x => x.coordinate.y).First();
-
-            //                    }
-            //                    else
-            //                    {
-            //                        xB = Intersections.Where(x => x.coordinate.coordinateId == locationIds[j]).Select(x => x.coordinate.x).First();
-            //                        yB = Intersections.Where(x => x.coordinate.coordinateId == locationIds[j]).Select(x => x.coordinate.y).First();
-            //                    }
-            //                    EdgesDTO edge = new EdgesDTO
-            //                    {
-            //                        locationIdA = locationIds[i],
-            //                        locationIdB = locationIds[j],
-            //                        distance = CalcDistance(xA, yA, xB, yB)
-            //                    };
-            //                    edges.Add(edge);
-            //                }
-
-            //            }
-            //        }
-            //        for (int i = 0; i < locationIds.Count; i++)
-            //        {
-            //            if (Intersections.Any(x => x.coordinate.coordinateId == locationIds[i]))
-            //            {
-            //                TransitionsToIntersectionsDTO transitionsToIntersection = new TransitionsToIntersectionsDTO
-            //                {
-            //                    intersectionId = locationIds[i],
-            //                    transitionId = transitionIdAndLocationIds.Key
-
-            //                };
-            //                transitionsToIntersections.Add(transitionsToIntersection);
-
-            //            }
-            //        }
-            //    }
-
-
-            //    var result = new
-            //    {
-            //        TransitionsToIntersections = transitionsToIntersections,
-            //        Edges = edges
-            //    };
-
-            //    return result;
-
-
-
-
-            //    //return edges;
-            //}
-            //catch (Exception e)
-            //{
-            //    return null;
-
-            //}
+            
         }
 
 
