@@ -10,6 +10,6 @@ namespace FastRouting.Common.DTO
     public class Image
     {
         public string image { get; set; }
-        public int floor { get; set; }
+        public string floor { get; set; }
     }
 }

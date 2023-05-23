@@ -47,29 +47,84 @@ namespace FastRouting.Api.Controllers
         //{
         //    return await _iEdgesService.GetByCenterIdAsync(id);
         //}
+        //[HttpPost]
+        //public IActionResult Post()
+        //{
+        //    int x = 5;
+        //    // Handle the POST request
+        //    return Ok("POST request received successfully");
+        //}
+
+        //עובד מצוין!!!
+        //[HttpPost]
+        //public IActionResult Post([FromBody] string jsonPayload)
+        //{
+        //    // Parse the JSON string back to an object if needed
+        //    var jsonObject = JsonConvert.DeserializeObject(jsonPayload);
+
+        //    // Handle the JSON object as required
+
+        //    return Ok("POST request received successfully");
+        //}
+
+
+        ////עובד מצוין!
+        //[HttpPost]
+        //public IActionResult Post([FromBody] List<Image> jsonPayload)
+        //{
+        //    // Parse the JSON string back to an object if needed
+        // //   var jsonObject = JsonConvert.DeserializeObject(jsonPayload);
+
+        //    // Handle the JSON object as required
+
+        //    return Ok("POST request received successfully");
+        //}
+
+
+
+        [HttpPost]
+        public IActionResult Post([FromBody] ImageUploadData image)
+        {
+            // Parse the JSON string back to an object if needed
+            //   var jsonObject = JsonConvert.DeserializeObject(jsonPayload);
+
+            // Handle the JSON object as required
+
+            return Ok("POST request received successfully");
+        }
+
+
+
+
+        //[HttpPost]
+        //public void Post([FromBody] JObject jsonObject)
+        //{
+        //    // Handle the JSON object received from the client
+        //    // You can access the properties of the JObject using jsonObject.Property("propertyName").Value
+        //}
 
         // POST api/<nisuy_>
-       [HttpPost("UploadData")]
-        public async Task<IActionResult> UploadData([FromForm] ImageUploadData uploadData)
-        {
-            try
-            {
-                // Perform actions with the received data
-                List<Image> images = uploadData.Images;
-                string inputString = uploadData.InputString;
-                JObject jsonObject = uploadData.JsonObject;
+        //[HttpPost("UploadData")]
+        //public async Task<IActionResult> UploadData([FromForm] ImageUploadData uploadData)
+        //{
+        //    try
+        //    {
+        //        Perform actions with the received data
+        //        List<Image> images = uploadData.Images;
+        //        string inputString = uploadData.InputString;
+        //        JObject jsonObject = uploadData.JsonObject;
 
-                // Additional logic...
+        //        Additional logic...
 
-                return Ok(); // or return any other appropriate response
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message); // or return any other appropriate error response
-            }
-        }
-       
-        
+        //        return Ok(); // or return any other appropriate response
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return BadRequest(ex.Message); // or return any other appropriate error response
+        //    }
+        //}
+
+
         //public async Task<bool> AddCoordy2([FromBody] string flag)
         //{
         //    await _iEdgesService2.DataPreparationFunc(flag);

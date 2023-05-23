@@ -12,8 +12,9 @@ namespace FastRouting.Common.DTO
     public class ImageUploadData
     {
         public List<Image> Images { get; set; }
+        //public string InputString { get; set; }
+        public string JsonObject { get; set; }
         public string InputString { get; set; }
-        public JObject JsonObject { get; set; }
     }
 
 }
