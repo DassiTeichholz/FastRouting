@@ -24,13 +24,13 @@ namespace FastRouting.Api.Controllers
 
 
         private readonly IIntersectionsService _iEdgesService;
-        private readonly IAddingACenter _iEdgesService2;
+        private readonly IAddingACenter _addingACenter;
         private readonly IRouteCalculation _routeCalculation;
 
-        public nisuy_(IIntersectionsService CentersServiece, IAddingACenter iEdgesService2, IRouteCalculation routeCalculation)
+        public nisuy_(IIntersectionsService CentersServiece, IAddingACenter addingACenter, IRouteCalculation routeCalculation)
         {
             _iEdgesService = CentersServiece;
-            _iEdgesService2 = iEdgesService2;
+            _addingACenter = addingACenter;
             _routeCalculation = routeCalculation;
         }
 
@@ -83,14 +83,14 @@ namespace FastRouting.Api.Controllers
 
 
         [HttpPost]
-        public IActionResult Post([FromBody] ImageUploadData image)
+        public async Task Post([FromBody] ImageUploadData image)
         {
             // Parse the JSON string back to an object if needed
             //   var jsonObject = JsonConvert.DeserializeObject(jsonPayload);
 
             // Handle the JSON object as required
-
-            return Ok("POST request received successfully");
+            await _addingACenter.DataPreparationFunc(image.InputString,image.JsonObject,image.Images);
+            
         }
 
 

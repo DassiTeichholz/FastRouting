@@ -12,11 +12,7 @@ namespace FastRouting.Services.Interfaces.ILogic
     {
         Task<object> BuildingEdges(List<LocationsDTO> Locations, List<IntersectionsDTO> Intersections, List<List<int>> PassCodes) ;
          double CalcDistance(double x1, double y1, double x2, double y2) ;
-         Task<bool> CreateNewCenter(CentersDTO shoppingMall/*, List<TheCenterPhotoDTO> TheCenterPhotoDTOList*/, List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<List<int>> passCodes/*, List<dynamic> edgesCrossFloors*/, JToken edgesCrossing);
-         Task DataPreparationFunc(string centerName);
-
-
-
-
+         Task<bool> CreateNewCenter(CentersDTO shoppingMall, List<TheCenterPhotoDTO> TheCenterPhotoDTOList, List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<List<int>> passCodes/*, List<dynamic> edgesCrossFloors*/, JToken edgesCrossing);
+         Task DataPreparationFunc(string centerName, string jsonString, List<Image> images);
     }
 }

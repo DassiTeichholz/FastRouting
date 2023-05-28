@@ -4,8 +4,11 @@ using FastRouting.Repositories.Entities;
 using FastRouting.Repositories.Interfaces;
 using FastRouting.Services.Interfaces;
 using FastRouting.Services.Interfaces.ILogic;
+using System.Text.RegularExpressions;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -43,7 +46,7 @@ namespace FastRouting.Services.Services.Logic
 
         //פונקציה זו מכינה את הנתונים,
         //היא עוברת על קובץ הג'ייסון, ומכינה מהם אובייקטים של נקודות מעבר ונקודות הצטלבות
-        public async Task DataPreparationFunc(string centerName)
+        public async Task DataPreparationFunc(string centerName,string jsonString,List<Image>images)
         {
             //הליסטים שיוחזרו בסוף, אחרי שננתח את הקובץ
             List<LocationsDTO> locationsList = new List<LocationsDTO>();
@@ -52,13 +55,39 @@ namespace FastRouting.Services.Services.Logic
             //לדוגמא, הליסט שנמצא באינדקס 0 מכיל את מזהי נקודות המעבר
             //שנקודת ההצטלבות שנמצאת באינדקס 0 בליסט ההצטלבויות, נמצאת בתוכם
             List<List<int>> passCodes = new List<List<int>>();
+            string centerName2 = centerName.Replace(" ", "");
 
+            string fileName = centerName2+"Data"+".json";
 
+            //jsonString = jsonString.Trim();
+            //jsonString = jsonString.Replace("\r", "").Replace("\n", "");
+            //jsonString = jsonString.Replace("\\r", "").Replace("\\n", "");
+            string cleanedJsonString = jsonString.Replace("/[\n\r\t]+/", "");
+            cleanedJsonString = jsonString.Replace("\r\n", "").Replace("\n", "").Replace("\r", "");
+            // cleanedJsonString = jsonString.Replace("\"", "");
 
+            //cleanedJsonString = string.Join("\n", jsonString.Split('\n').Select(line => line.TrimStart().TrimEnd()));
+            // Remove comments (optional)
+            // Here's a simple example that removes single-line comments starting with '//'
+            // jsonString = System.Text.RegularExpressions.Regex.Replace(jsonString, @"//.*", "");
+            //JObject jsonObject = JsonConvert.DeserializeObject<JObject>(cleanedJsonString);
 
-            string jsonString = File.ReadAllText("data.json");
-            JObject jsonObject = JObject.Parse(jsonString);
+            JObject jsonObject = JObject.Parse(cleanedJsonString);
+            //jsonString = jsonObject.ToString();
+            File.WriteAllText(fileName, jsonString);
+            //// Remove the extra wrapping from the JSON string
+            //string cleanedJsonString = jsonString.Trim('"');
+
+            //// Deserialize the JSON string to a dynamic object
+            //dynamic jsonObject2 = JsonConvert.DeserializeObject(cleanedJsonString);
+
+            //// Convert the dynamic object back to a JSON string
+            //string formattedJsonString = JsonConvert.SerializeObject(jsonObject2, Formatting.Indented);
+
+            //File.WriteAllText(fileName, formattedJsonString);
+            //string jsonString = File.ReadAllText("data.json");
             //נקודות המיקום במרכז
+            int xx = 55;
             var locationsInTrasitions = jsonObject["locationInTrasition"];
             //קשתות חוצות קומות במרכז
             var edgesCrossing = jsonObject["edgesCrossing"];
@@ -123,9 +152,9 @@ namespace FastRouting.Services.Services.Logic
             jsonString = jsonObject.ToString();
 
             // נעשו שינויים בקובץ הג'ייסון, מעדכן את השינויים
-            File.WriteAllText("data.json", jsonString);
+            File.WriteAllText(fileName, jsonString);
             //קורא את קובץ הג'ייסון שנית
-            jsonString = File.ReadAllText("data.json");
+            jsonString = File.ReadAllText(fileName);
             jsonObject = JObject.Parse(jsonString);
             locationsInTrasitions = jsonObject["locationInTrasition"];
 
@@ -174,14 +203,28 @@ namespace FastRouting.Services.Services.Logic
             //מה שנשאר לעשות כאן:
             //ליצור אובייקטים של קשתות
             //ליצור אובייקטים של תמונות
+            string base64Data;
+            byte[] imageBytes;
+            List<TheCenterPhotoDTO>centerPhotoDTOs= new List<TheCenterPhotoDTO>();
 
+            foreach (var image in images)
+            {
+                base64Data = (image.image).Substring((image.image).IndexOf(',') + 1);
+                imageBytes = Convert.FromBase64String(base64Data);
+                TheCenterPhotoDTO img = new TheCenterPhotoDTO
+                {
+                    image = imageBytes,
+                    floor =int.Parse(image.floor)
+                };
+                centerPhotoDTOs.Add(img);
+            }
             //שליחת הנתונים לפונקציה שמוסיפה מרכז חדש
-            await CreateNewCenter(shoppingMall2, locationsList, intersectionsList, passCodes, edgesCrossing);
+            await CreateNewCenter(shoppingMall2, centerPhotoDTOs, locationsList, intersectionsList, passCodes, edgesCrossing);
 
         }
 
 
-        public async Task<bool> CreateNewCenter(CentersDTO shoppingMall/*, List<TheCenterPhotoDTO> TheCenterPhotoDTOList*/, List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<List<int>> passCodes,JToken edgesCrossing/*, List<dynamic> edgesCrossFloors*/)
+        public async Task<bool> CreateNewCenter(CentersDTO shoppingMall, List<TheCenterPhotoDTO> TheCenterPhotoDTOList, List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<List<int>> passCodes,JToken edgesCrossing/*, List<dynamic> edgesCrossFloors*/)
         {
             //מעברים יוצרים בצד לקוח!!!
 
@@ -190,10 +233,10 @@ namespace FastRouting.Services.Services.Logic
                 List<LocationsDTO> locations2 = new List<LocationsDTO>();
                 List<IntersectionsDTO> intersections2 = new List<IntersectionsDTO>();
 
-                //foreach (var mallPhoto in TheCenterPhotoDTOList)
-                //{
-                //    await _TheCenterPhotoService.AddAsync(mallPhoto);
-                //}
+                foreach (var mallPhoto in TheCenterPhotoDTOList)
+                {
+                    await _TheCenterPhotoService.AddAsync(mallPhoto);
+                }
                 //db הוספת כל נקודות המיקום ל
                 foreach (var location in locations)
                 {
