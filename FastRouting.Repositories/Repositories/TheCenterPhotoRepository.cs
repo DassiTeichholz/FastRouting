@@ -39,9 +39,9 @@ namespace FastRouting.Repositories.Repositories
             return await _context.TheCenterPhoto.ToListAsync();
 
         }
-        public async Task<List<TheCenterPhoto>> GetByZAsync(int z)
+        public async Task<List<TheCenterPhoto>> GetByZAsync(int z, int centerId)
         {
-            return await _context.TheCenterPhoto.Where(x=>x.floor==z).ToListAsync();
+            return await _context.TheCenterPhoto.Where(x=>x.floor==z&&x.centerId==centerId).ToListAsync();
 
         }
 

@@ -85,7 +85,7 @@ namespace FastRouting.Services.Services.Logic
             //string formattedJsonString = JsonConvert.SerializeObject(jsonObject2, Formatting.Indented);
 
             //File.WriteAllText(fileName, formattedJsonString);
-            //string jsonString = File.ReadAllText("data.json");
+            //string jsonString = File.ReadAllText(fileName);
             //נקודות המיקום במרכז
             int xx = 55;
             var locationsInTrasitions = jsonObject["locationInTrasition"];
@@ -214,7 +214,8 @@ namespace FastRouting.Services.Services.Logic
                 TheCenterPhotoDTO img = new TheCenterPhotoDTO
                 {
                     image = imageBytes,
-                    floor =int.Parse(image.floor)
+                    floor =int.Parse(image.floor),
+                    centerId=shoppingMall2.shoppingMallId
                 };
                 centerPhotoDTOs.Add(img);
             }

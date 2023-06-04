@@ -10,7 +10,7 @@ namespace FastRouting.Repositories.Interfaces
     public interface ITheCenterPhotoRepository
     {
         Task<List<TheCenterPhoto>> GetAllAsync();
-        Task<List<TheCenterPhoto>> GetByZAsync(int z);
+        Task<List<TheCenterPhoto>> GetByZAsync(int z,int centerId);
         Task<TheCenterPhoto> GetByIdAsync(int id);
         Task<TheCenterPhoto> AddAsync(TheCenterPhoto TheCenterPhoto);
         Task<TheCenterPhoto> UpdateAsync(TheCenterPhoto TheCenterPhoto);

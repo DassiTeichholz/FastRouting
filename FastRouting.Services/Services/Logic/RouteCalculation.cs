@@ -573,7 +573,7 @@ public  class RouteCalculation: IRouteCalculation
                     }
                 }
                
-                TheCenterPhoto=await _TheCenterPhotoService.GetByZAsync(z);
+                TheCenterPhoto=await _TheCenterPhotoService.GetByZAsync(z, centerId);
                 floor=new Floor(vertexsOfFloor, directions, TheCenterPhoto);
                 floors.Add(floor);
                 directions=new List<string>();

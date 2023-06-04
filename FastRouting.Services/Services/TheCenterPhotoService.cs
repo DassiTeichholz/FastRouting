@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FastRouting.Common.DTO;
+using FastRouting.Repositories.Entities;
 using FastRouting.Repositories.Interfaces;
 using FastRouting.Repositories.Repositories;
 using FastRouting.Services.Interfaces;
@@ -20,9 +21,9 @@ namespace FastRouting.Services.Services
             _TheCenterPhotoRepository = TheCenterPhotoRepository;
             _mapper = mapper;
         }
-        public Task<TheCenterPhotoDTO> AddAsync(TheCenterPhotoDTO TheCenterPhotoRepository)
+        public async Task<TheCenterPhotoDTO> AddAsync(TheCenterPhotoDTO TheCenterPhotoRepository)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<TheCenterPhotoDTO>(await _TheCenterPhotoRepository.AddAsync(_mapper.Map<TheCenterPhoto>(TheCenterPhotoRepository)));
         }
 
         public Task DeleteAsync(int Id)
@@ -34,9 +35,9 @@ namespace FastRouting.Services.Services
         {
             throw new NotImplementedException();
         }
-        public async Task<List<TheCenterPhotoDTO>> GetByZAsync(int z)
+        public async Task<List<TheCenterPhotoDTO>> GetByZAsync(int z,int centerId)
         {
-            return _mapper.Map<List<TheCenterPhotoDTO>>(await _TheCenterPhotoRepository.GetByZAsync(z));
+            return _mapper.Map<List<TheCenterPhotoDTO>>(await _TheCenterPhotoRepository.GetByZAsync(z, centerId));
         }
 
         public Task<TheCenterPhotoDTO> GetByIDAsync(int ID)
