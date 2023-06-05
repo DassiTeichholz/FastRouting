@@ -30,9 +30,9 @@ namespace FastRouting.Repositories.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<List<Centers>> GetAllAsync()
+        public async Task<List<Centers>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _context.Centers.ToListAsync();
         }
 
         public Task<Centers> GetByIdAsync(int id)

@@ -9,6 +9,6 @@ namespace FastRouting.Common.DTO
     public class CentersDTO
     {
         public int shoppingMallId { get; set; }
-        public string Name { get; set; }
+        public string name { get; set; }
     }
 }

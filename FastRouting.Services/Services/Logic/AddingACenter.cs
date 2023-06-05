@@ -99,7 +99,7 @@ namespace FastRouting.Services.Services.Logic
             {
 
                 shoppingMallId = 0,
-                Name = centerName
+                name = centerName
             };
             CentersDTO shoppingMall2 = await _Centerservice.AddAsync(shoppingMall);
 
