@@ -2,7 +2,7 @@
   "locationInTrasition": [
     {
       "trasitionNum": 0,
-      "transitionId": 29,
+      "transitionId": 69,
       "locations": [
         {
           "coordinate": {
@@ -35,7 +35,7 @@
     },
     {
       "trasitionNum": 1,
-      "transitionId": 30,
+      "transitionId": 70,
       "locations": [
         {
           "coordinate": {
@@ -68,7 +68,7 @@
     },
     {
       "trasitionNum": 2,
-      "transitionId": 31,
+      "transitionId": 71,
       "locations": [
         {
           "coordinate": {
@@ -83,7 +83,7 @@
     },
     {
       "trasitionNum": 3,
-      "transitionId": 32,
+      "transitionId": 72,
       "locations": [
         {
           "coordinate": {
@@ -160,12 +160,6 @@
     {
       "firstEdgeName": "מדרגות נעות קומה 2",
       "secondEdgeName": "מדרגות נעות קומה 1"
-    }
-  ],
-  "edgesCrossTrasitions": [
-    {
-      "firstEdgeName": "",
-      "secondEdgeName": ""
     }
   ]
 }

@@ -21,10 +21,12 @@ namespace FastRouting.Api.Controllers
         private readonly IAddingACenter _addingACenter;
         private readonly IRouteCalculation _routeCalculation;
         private readonly ICentersService _centersService;
+        private readonly ILocationsService _locationsService;
 
-        public RouteCalculation(ICentersService centersService, IIntersectionsService intersectionsService, IAddingACenter addingACenter, IRouteCalculation routeCalculation)
+        public RouteCalculation(ILocationsService locationsService, ICentersService centersService, IIntersectionsService intersectionsService, IAddingACenter addingACenter, IRouteCalculation routeCalculation)
         {
-            _centersService= centersService;
+            _locationsService= locationsService;
+            _centersService = centersService;
             _intersectionsService = intersectionsService;
             _addingACenter = addingACenter;
             _routeCalculation = routeCalculation;
@@ -65,6 +67,17 @@ namespace FastRouting.Api.Controllers
             List<CentersDTO> centers = await _centersService.GetAllAsync();
 
             return centers;
+        }
+        [HttpGet]
+        [Route("GetLocations")]
+
+        public async Task<List<LocationsDTO>> GetLocationsByCenterId(int centerId)
+        {
+            // Logic to retrieve the desired resource
+            // Example:
+            List<LocationsDTO> locations = await _locationsService.GetByCenterIdAsync(centerId);
+
+            return locations;
         }
     }
 }

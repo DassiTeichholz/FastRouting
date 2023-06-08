@@ -2,12 +2,12 @@
   "locationInTrasition": [
     {
       "trasitionNum": 0,
-      "transitionId": 29,
+      "transitionId": 79,
       "locations": [
         {
           "coordinate": {
-            "x": 3593,
-            "y": 1193,
+            "x": 372,
+            "y": 123,
             "z": 1
           },
           "locationName": "אף של נעה",
@@ -15,8 +15,8 @@
         },
         {
           "coordinate": {
-            "x": 2482,
-            "y": 1501,
+            "x": 256,
+            "y": 158,
             "z": 1
           },
           "locationName": "אף של מלי",
@@ -26,28 +26,27 @@
     },
     {
       "trasitionNum": 1,
-      "transitionId": 30,
+      "transitionId": 80,
       "locations": [
         {
           "coordinate": {
-            "x": 5263,
-            "y": 2131,
+            "x": 548,
+            "y": 207,
             "z": 1
           },
           "locationName": "מרפק נעה",
           "locationTypesId": 1
         }
-
       ]
     },
     {
       "trasitionNum": 2,
-      "transitionId": 31,
+      "transitionId": 81,
       "locations": [
         {
           "coordinate": {
-            "x": 899,
-            "y": 2652,
+            "x": 91,
+            "y": 277,
             "z": 1
           },
           "locationName": "מרפק מלי",
@@ -60,8 +59,8 @@
     {
       "intersectionNum": 1,
       "coordinate": {
-        "x": 3593,
-        "y": 1193,
+        "x": 372,
+        "y": 123,
         "z": 1
       },
       "IntersectionOnLocation": true,
@@ -73,8 +72,8 @@
     {
       "intersectionNum": 2,
       "coordinate": {
-        "x": 2482,
-        "y": 1501,
+        "x": 256,
+        "y": 158,
         "z": 1
       },
       "IntersectionOnLocation": true,
@@ -84,7 +83,5 @@
       ]
     }
   ],
-  "edgesCrossing": [
-
-  ]
+  "edgesCrossing": []
 }

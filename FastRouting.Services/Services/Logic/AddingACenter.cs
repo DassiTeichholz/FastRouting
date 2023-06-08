@@ -93,6 +93,8 @@ namespace FastRouting.Services.Services.Logic
             var edgesCrossing = jsonObject["edgesCrossing"];
             //נקודות הצטלבות במרכז
             var intersections = jsonObject["intersection"];
+            //קשתות חוצות מעברים במרכז
+            var edgesCrossTrasitions = jsonObject["edgesCrossTrasitions"];
             int num = 0;
             //ראשית נוסיף את המרכז החדש למערכת
             CentersDTO shoppingMall = new CentersDTO
@@ -220,12 +222,12 @@ namespace FastRouting.Services.Services.Logic
                 centerPhotoDTOs.Add(img);
             }
             //שליחת הנתונים לפונקציה שמוסיפה מרכז חדש
-            await CreateNewCenter(shoppingMall2, centerPhotoDTOs, locationsList, intersectionsList, passCodes, edgesCrossing);
+            await CreateNewCenter(shoppingMall2, centerPhotoDTOs, locationsList, intersectionsList, passCodes, edgesCrossing, edgesCrossTrasitions);
 
         }
 
 
-        public async Task<bool> CreateNewCenter(CentersDTO shoppingMall, List<TheCenterPhotoDTO> TheCenterPhotoDTOList, List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<List<int>> passCodes,JToken edgesCrossing/*, List<dynamic> edgesCrossFloors*/)
+        public async Task<bool> CreateNewCenter(CentersDTO shoppingMall, List<TheCenterPhotoDTO> TheCenterPhotoDTOList, List<LocationsDTO> locations, List<IntersectionsDTO> intersections, List<List<int>> passCodes,JToken edgesCrossing,JToken edgesCrossTrasitions)
         {
             //מעברים יוצרים בצד לקוח!!!
 
@@ -280,6 +282,27 @@ namespace FastRouting.Services.Services.Logic
                     };
                     Edges.Add(e);
                     
+                }
+                //מעבר על קשתות חוצות מעבר:
+                foreach (var edgesCross in edgesCrossTrasitions)
+                {
+                    loc=locations2.FirstOrDefault(x => x.locationName==(string)edgesCross["firstEdgeName"]);
+                    loc2=locations2.FirstOrDefault(x => x.locationName==(string)edgesCross["secondEdgeName"]);
+                    e = new EdgesDTO
+                    {
+                        locationIdA = loc.coordinate.coordinateId,
+                        locationIdB = loc2.coordinate.coordinateId,
+                        distance = CalcDistance(loc2.coordinate.x, loc2.coordinate.y, loc.coordinate.x, loc.coordinate.y)
+                    };
+                    Edges.Add(e);
+                    e = new EdgesDTO
+                    {
+                        locationIdA = loc2.coordinate.coordinateId,
+                        locationIdB = loc.coordinate.coordinateId,
+                        distance = CalcDistance(loc2.coordinate.x, loc2.coordinate.y,loc.coordinate.x,loc.coordinate.y)
+                    };
+                    Edges.Add(e);
+
                 }
                 //db הוספת אובייקטי טבלת הקשר ל
                 foreach (var item in TransitionsToIntersections)

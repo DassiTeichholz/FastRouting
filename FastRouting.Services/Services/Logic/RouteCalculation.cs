@@ -397,9 +397,22 @@ public  class RouteCalculation: IRouteCalculation
         {
             Floor floor;
             List<Floor> floors = new List<Floor>();
-            List<string> directions=new List<string>();
-            List<VertexOfGraph> vertexsOfFloor=new List<VertexOfGraph>();
-            List<TheCenterPhotoDTO> TheCenterPhoto=new List<TheCenterPhotoDTO>();
+            List<string> directions = new List<string>();
+            List<VertexOfGraph> vertexsOfFloor = new List<VertexOfGraph>();
+            List<TheCenterPhotoDTO> TheCenterPhoto = new List<TheCenterPhotoDTO>();
+            if (vertexsOfGraph[0].coordinate.x==vertexsOfGraph[(vertexsOfGraph.Count)-1].coordinate.x&&
+                vertexsOfGraph[0].coordinate.y==vertexsOfGraph[(vertexsOfGraph.Count)-1].coordinate.y&&
+                vertexsOfGraph[0].coordinate.z==vertexsOfGraph[(vertexsOfGraph.Count)-1].coordinate.z)
+            {
+                TheCenterPhoto=await _TheCenterPhotoService.GetByZAsync(vertexsOfGraph[0].coordinate.z, centerId);
+                directions.Add("היעד נמצא למולך");
+                vertexsOfFloor=vertexsOfGraph;
+                floor=new Floor(vertexsOfFloor, directions, TheCenterPhoto);
+                floors.Add(floor);
+                return floors;
+
+            }
+
             double xPrev;
             double yPrev;
             double xCurrent;

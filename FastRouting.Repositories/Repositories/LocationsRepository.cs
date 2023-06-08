@@ -41,7 +41,6 @@ namespace FastRouting.Repositories.Repositories
 
                 await _context.Locations.AddAsync(Location);
                 await _context.SaveChangesAsync();
-                int x;
                 return Location;
             }
             catch (Exception ex) { throw; }
