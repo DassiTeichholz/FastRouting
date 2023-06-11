@@ -161,5 +161,5173 @@
       "firstEdgeName": "מדרגות נעות קומה 2",
       "secondEdgeName": "מדרגות נעות קומה 1"
     }
+
+  ],
+  "locationInTrasition": [
+    {
+      "trasitionNum": 0,
+      "transitionId": 49,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 100,
+            "z": 1
+          },
+          "locationName": "zara",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "H&M",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "zoya",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 1,
+      "transitionId": 50,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "fox",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "levi",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "מדרגות נעות קומה 1",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 2,
+      "transitionId": 51,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 50,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "laline",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 3,
+      "transitionId": 52,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "מדרגות נעות קומה 2",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "kitch",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "bell",
+          "locationTypesId": 1
+        }
+      ]
+    }
+  ],
+  "intersection": [
+    {
+      "intersectionNum": 1,
+      "coordinate": {
+        "x": 20,
+        "y": 100,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        2
+      ]
+    },
+    {
+      "intersectionNum": 2,
+      "coordinate": {
+        "x": 20,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        1
+      ]
+    },
+    {
+      "intersectionNum": 3,
+      "coordinate": {
+        "x": 75,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        1,
+        2
+      ]
+    }
+  ],
+  "edgesCrossing": [
+    {
+      "firstEdgeName": "מדרגות נעות קומה 2",
+      "secondEdgeName": "מדרגות נעות קומה 1"
+    }
+  ],
+  "locationInTrasition": [
+    {
+      "trasitionNum": 0,
+      "transitionId": 49,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 100,
+            "z": 1
+          },
+          "locationName": "zara",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "H&M",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "zoya",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 1,
+      "transitionId": 50,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "fox",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "levi",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "מדרגות נעות קומה 1",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 2,
+      "transitionId": 51,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 50,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "laline",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 3,
+      "transitionId": 52,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "מדרגות נעות קומה 2",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "kitch",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "bell",
+          "locationTypesId": 1
+        }
+      ]
+    }
+  ],
+  "intersection": [
+    {
+      "intersectionNum": 1,
+      "coordinate": {
+        "x": 20,
+        "y": 100,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        2
+      ]
+    },
+    {
+      "intersectionNum": 2,
+      "coordinate": {
+        "x": 20,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        1
+      ]
+    },
+    {
+      "intersectionNum": 3,
+      "coordinate": {
+        "x": 75,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        1,
+        2
+      ]
+    }
+  ],
+  "edgesCrossing": [
+    {
+      "firstEdgeName": "מדרגות נעות קומה 2",
+      "secondEdgeName": "מדרגות נעות קומה 1"
+    }
+  ],
+  "locationInTrasition": [
+    {
+      "trasitionNum": 0,
+      "transitionId": 49,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 100,
+            "z": 1
+          },
+          "locationName": "zara",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "H&M",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "zoya",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 1,
+      "transitionId": 50,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "fox",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "levi",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "מדרגות נעות קומה 1",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 2,
+      "transitionId": 51,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 50,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "laline",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 3,
+      "transitionId": 52,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "מדרגות נעות קומה 2",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "kitch",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "bell",
+          "locationTypesId": 1
+        }
+      ]
+    }
+  ],
+  "intersection": [
+    {
+      "intersectionNum": 1,
+      "coordinate": {
+        "x": 20,
+        "y": 100,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        2
+      ]
+    },
+    {
+      "intersectionNum": 2,
+      "coordinate": {
+        "x": 20,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        1
+      ]
+    },
+    {
+      "intersectionNum": 3,
+      "coordinate": {
+        "x": 75,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        1,
+        2
+      ]
+    }
+  ],
+  "edgesCrossing": [
+    {
+      "firstEdgeName": "מדרגות נעות קומה 2",
+      "secondEdgeName": "מדרגות נעות קומה 1"
+    }
+  ],
+  "locationInTrasition": [
+    {
+      "trasitionNum": 0,
+      "transitionId": 49,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 100,
+            "z": 1
+          },
+          "locationName": "zara",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "H&M",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "zoya",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 1,
+      "transitionId": 50,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "fox",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "levi",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "מדרגות נעות קומה 1",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 2,
+      "transitionId": 51,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 50,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "laline",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 3,
+      "transitionId": 52,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "מדרגות נעות קומה 2",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "kitch",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "bell",
+          "locationTypesId": 1
+        }
+      ]
+    }
+  ],
+  "intersection": [
+    {
+      "intersectionNum": 1,
+      "coordinate": {
+        "x": 20,
+        "y": 100,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        2
+      ]
+    },
+    {
+      "intersectionNum": 2,
+      "coordinate": {
+        "x": 20,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        1
+      ]
+    },
+    {
+      "intersectionNum": 3,
+      "coordinate": {
+        "x": 75,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        1,
+        2
+      ]
+    }
+  ],
+  "edgesCrossing": [
+    {
+      "firstEdgeName": "מדרגות נעות קומה 2",
+      "secondEdgeName": "מדרגות נעות קומה 1"
+    }
+  ],
+  "locationInTrasition": [
+    {
+      "trasitionNum": 0,
+      "transitionId": 49,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 100,
+            "z": 1
+          },
+          "locationName": "zara",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "H&M",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "zoya",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 1,
+      "transitionId": 50,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "fox",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "levi",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "מדרגות נעות קומה 1",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 2,
+      "transitionId": 51,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 50,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "laline",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 3,
+      "transitionId": 52,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "מדרגות נעות קומה 2",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "kitch",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "bell",
+          "locationTypesId": 1
+        }
+      ]
+    }
+  ],
+  "intersection": [
+    {
+      "intersectionNum": 1,
+      "coordinate": {
+        "x": 20,
+        "y": 100,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        2
+      ]
+    },
+    {
+      "intersectionNum": 2,
+      "coordinate": {
+        "x": 20,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        1
+      ]
+    },
+    {
+      "intersectionNum": 3,
+      "coordinate": {
+        "x": 75,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        1,
+        2
+      ]
+    }
+  ],
+  "edgesCrossing": [
+    {
+      "firstEdgeName": "מדרגות נעות קומה 2",
+      "secondEdgeName": "מדרגות נעות קומה 1"
+    }
+  ],
+  "locationInTrasition": [
+    {
+      "trasitionNum": 0,
+      "transitionId": 49,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 100,
+            "z": 1
+          },
+          "locationName": "zara",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "H&M",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "zoya",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 1,
+      "transitionId": 50,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "fox",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "levi",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "מדרגות נעות קומה 1",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 2,
+      "transitionId": 51,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 50,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "laline",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 3,
+      "transitionId": 52,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "מדרגות נעות קומה 2",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "kitch",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "bell",
+          "locationTypesId": 1
+        }
+      ]
+    }
+  ],
+  "intersection": [
+    {
+      "intersectionNum": 1,
+      "coordinate": {
+        "x": 20,
+        "y": 100,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        2
+      ]
+    },
+    {
+      "intersectionNum": 2,
+      "coordinate": {
+        "x": 20,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        1
+      ]
+    },
+    {
+      "intersectionNum": 3,
+      "coordinate": {
+        "x": 75,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        1,
+        2
+      ]
+    }
+  ],
+  "edgesCrossing": [
+    {
+      "firstEdgeName": "מדרגות נעות קומה 2",
+      "secondEdgeName": "מדרגות נעות קומה 1"
+    }
+  ],
+  "locationInTrasition": [
+    {
+      "trasitionNum": 0,
+      "transitionId": 49,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 100,
+            "z": 1
+          },
+          "locationName": "zara",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "H&M",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "zoya",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 1,
+      "transitionId": 50,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "fox",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "levi",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "מדרגות נעות קומה 1",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 2,
+      "transitionId": 51,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 50,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "laline",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 3,
+      "transitionId": 52,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "מדרגות נעות קומה 2",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "kitch",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "bell",
+          "locationTypesId": 1
+        }
+      ]
+    }
+  ],
+  "intersection": [
+    {
+      "intersectionNum": 1,
+      "coordinate": {
+        "x": 20,
+        "y": 100,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        2
+      ]
+    },
+    {
+      "intersectionNum": 2,
+      "coordinate": {
+        "x": 20,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        1
+      ]
+    },
+    {
+      "intersectionNum": 3,
+      "coordinate": {
+        "x": 75,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        1,
+        2
+      ]
+    }
+  ],
+  "edgesCrossing": [
+    {
+      "firstEdgeName": "מדרגות נעות קומה 2",
+      "secondEdgeName": "מדרגות נעות קומה 1"
+    }
+  ],
+  "locationInTrasition": [
+    {
+      "trasitionNum": 0,
+      "transitionId": 49,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 100,
+            "z": 1
+          },
+          "locationName": "zara",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "H&M",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "zoya",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 1,
+      "transitionId": 50,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "fox",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "levi",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "מדרגות נעות קומה 1",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 2,
+      "transitionId": 51,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 50,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "laline",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 3,
+      "transitionId": 52,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "מדרגות נעות קומה 2",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "kitch",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "bell",
+          "locationTypesId": 1
+        }
+      ]
+    }
+  ],
+  "intersection": [
+    {
+      "intersectionNum": 1,
+      "coordinate": {
+        "x": 20,
+        "y": 100,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        2
+      ]
+    },
+    {
+      "intersectionNum": 2,
+      "coordinate": {
+        "x": 20,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        1
+      ]
+    },
+    {
+      "intersectionNum": 3,
+      "coordinate": {
+        "x": 75,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        1,
+        2
+      ]
+    }
+  ],
+  "edgesCrossing": [
+    {
+      "firstEdgeName": "מדרגות נעות קומה 2",
+      "secondEdgeName": "מדרגות נעות קומה 1"
+    }
+  ],
+  "locationInTrasition": [
+    {
+      "trasitionNum": 0,
+      "transitionId": 49,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 100,
+            "z": 1
+          },
+          "locationName": "zara",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "H&M",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "zoya",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 1,
+      "transitionId": 50,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "fox",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "levi",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "מדרגות נעות קומה 1",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 2,
+      "transitionId": 51,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 50,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "laline",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 3,
+      "transitionId": 52,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "מדרגות נעות קומה 2",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "kitch",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "bell",
+          "locationTypesId": 1
+        }
+      ]
+    }
+  ],
+  "intersection": [
+    {
+      "intersectionNum": 1,
+      "coordinate": {
+        "x": 20,
+        "y": 100,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        2
+      ]
+    },
+    {
+      "intersectionNum": 2,
+      "coordinate": {
+        "x": 20,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        1
+      ]
+    },
+    {
+      "intersectionNum": 3,
+      "coordinate": {
+        "x": 75,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        1,
+        2
+      ]
+    }
+  ],
+  "edgesCrossing": [
+    {
+      "firstEdgeName": "מדרגות נעות קומה 2",
+      "secondEdgeName": "מדרגות נעות קומה 1"
+    }
+  ],
+  "locationInTrasition": [
+    {
+      "trasitionNum": 0,
+      "transitionId": 49,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 100,
+            "z": 1
+          },
+          "locationName": "zara",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "H&M",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "zoya",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 1,
+      "transitionId": 50,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "fox",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "levi",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "מדרגות נעות קומה 1",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 2,
+      "transitionId": 51,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 50,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "laline",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 3,
+      "transitionId": 52,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "מדרגות נעות קומה 2",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "kitch",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "bell",
+          "locationTypesId": 1
+        }
+      ]
+    }
+  ],
+  "intersection": [
+    {
+      "intersectionNum": 1,
+      "coordinate": {
+        "x": 20,
+        "y": 100,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        2
+      ]
+    },
+    {
+      "intersectionNum": 2,
+      "coordinate": {
+        "x": 20,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        1
+      ]
+    },
+    {
+      "intersectionNum": 3,
+      "coordinate": {
+        "x": 75,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        1,
+        2
+      ]
+    }
+  ],
+  "edgesCrossing": [
+    {
+      "firstEdgeName": "מדרגות נעות קומה 2",
+      "secondEdgeName": "מדרגות נעות קומה 1"
+    }
+  ],
+  "locationInTrasition": [
+    {
+      "trasitionNum": 0,
+      "transitionId": 49,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 100,
+            "z": 1
+          },
+          "locationName": "zara",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "H&M",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "zoya",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 1,
+      "transitionId": 50,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "fox",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "levi",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "מדרגות נעות קומה 1",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 2,
+      "transitionId": 51,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 50,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "laline",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 3,
+      "transitionId": 52,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "מדרגות נעות קומה 2",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "kitch",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "bell",
+          "locationTypesId": 1
+        }
+      ]
+    }
+  ],
+  "intersection": [
+    {
+      "intersectionNum": 1,
+      "coordinate": {
+        "x": 20,
+        "y": 100,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        2
+      ]
+    },
+    {
+      "intersectionNum": 2,
+      "coordinate": {
+        "x": 20,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        1
+      ]
+    },
+    {
+      "intersectionNum": 3,
+      "coordinate": {
+        "x": 75,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        1,
+        2
+      ]
+    }
+  ],
+  "edgesCrossing": [
+    {
+      "firstEdgeName": "מדרגות נעות קומה 2",
+      "secondEdgeName": "מדרגות נעות קומה 1"
+    }
+  ],
+  "locationInTrasition": [
+    {
+      "trasitionNum": 0,
+      "transitionId": 49,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 100,
+            "z": 1
+          },
+          "locationName": "zara",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "H&M",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "zoya",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 1,
+      "transitionId": 50,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "fox",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "levi",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "מדרגות נעות קומה 1",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 2,
+      "transitionId": 51,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 50,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "laline",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 3,
+      "transitionId": 52,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "מדרגות נעות קומה 2",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "kitch",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "bell",
+          "locationTypesId": 1
+        }
+      ]
+    }
+  ],
+  "intersection": [
+    {
+      "intersectionNum": 1,
+      "coordinate": {
+        "x": 20,
+        "y": 100,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        2
+      ]
+    },
+    {
+      "intersectionNum": 2,
+      "coordinate": {
+        "x": 20,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        1
+      ]
+    },
+    {
+      "intersectionNum": 3,
+      "coordinate": {
+        "x": 75,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        1,
+        2
+      ]
+    }
+  ],
+  "edgesCrossing": [
+    {
+      "firstEdgeName": "מדרגות נעות קומה 2",
+      "secondEdgeName": "מדרגות נעות קומה 1"
+    }
+  ],
+  "locationInTrasition": [
+    {
+      "trasitionNum": 0,
+      "transitionId": 29,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 100,
+            "z": 1
+          },
+          "locationName": "zara",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "H&M",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "zoya",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 1,
+      "transitionId": 30,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "fox",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "levi",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "מדרגות נעות קומה 1",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 2,
+      "transitionId": 31,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 50,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "laline",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 3,
+      "transitionId": 32,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "מדרגות נעות קומה 2",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "kitch",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "bell",
+          "locationTypesId": 1
+        }
+      ]
+    }
+  ],
+  "intersection": [
+    {
+      "intersectionNum": 1,
+      "coordinate": {
+        "x": 20,
+        "y": 100,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        2
+      ]
+    },
+    {
+      "intersectionNum": 2,
+      "coordinate": {
+        "x": 20,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        1
+      ]
+    },
+    {
+      "intersectionNum": 3,
+      "coordinate": {
+        "x": 75,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        1,
+        2
+      ]
+    }
+  ],
+  "edgesCrossing": [
+    {
+      "firstEdgeName": "מדרגות נעות קומה 2",
+      "secondEdgeName": "מדרגות נעות קומה 1"
+    }
+  ],
+  "edgesCrossTrasitions": [
+    {
+      "firstEdgeName": "",
+      "secondEdgeName": ""
+    }
+  ],
+  "locationInTrasition": [
+    {
+      "trasitionNum": 0,
+      "transitionId": 29,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 100,
+            "z": 1
+          },
+          "locationName": "zara",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "H&M",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "zoya",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 1,
+      "transitionId": 30,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "fox",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "levi",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "מדרגות נעות קומה 1",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 2,
+      "transitionId": 31,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 50,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "laline",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 3,
+      "transitionId": 32,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "מדרגות נעות קומה 2",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "kitch",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "bell",
+          "locationTypesId": 1
+        }
+      ]
+    }
+  ],
+  "intersection": [
+    {
+      "intersectionNum": 1,
+      "coordinate": {
+        "x": 20,
+        "y": 100,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        2
+      ]
+    },
+    {
+      "intersectionNum": 2,
+      "coordinate": {
+        "x": 20,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        1
+      ]
+    },
+    {
+      "intersectionNum": 3,
+      "coordinate": {
+        "x": 75,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        1,
+        2
+      ]
+    }
+  ],
+  "edgesCrossing": [
+    {
+      "firstEdgeName": "מדרגות נעות קומה 2",
+      "secondEdgeName": "מדרגות נעות קומה 1"
+    }
+  ],
+  "edgesCrossTrasitions": [
+    {
+      "firstEdgeName": "",
+      "secondEdgeName": ""
+    }
+  ],
+  "locationInTrasition": [
+    {
+      "trasitionNum": 0,
+      "transitionId": 29,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 100,
+            "z": 1
+          },
+          "locationName": "zara",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "H&M",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "zoya",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 1,
+      "transitionId": 30,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "fox",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "levi",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "מדרגות נעות קומה 1",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 2,
+      "transitionId": 31,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 50,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "laline",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 3,
+      "transitionId": 32,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "מדרגות נעות קומה 2",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "kitch",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "bell",
+          "locationTypesId": 1
+        }
+      ]
+    }
+  ],
+  "intersection": [
+    {
+      "intersectionNum": 1,
+      "coordinate": {
+        "x": 20,
+        "y": 100,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        2
+      ]
+    },
+    {
+      "intersectionNum": 2,
+      "coordinate": {
+        "x": 20,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        1
+      ]
+    },
+    {
+      "intersectionNum": 3,
+      "coordinate": {
+        "x": 75,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        1,
+        2
+      ]
+    }
+  ],
+  "edgesCrossing": [
+    {
+      "firstEdgeName": "מדרגות נעות קומה 2",
+      "secondEdgeName": "מדרגות נעות קומה 1"
+    }
+  ],
+  "edgesCrossTrasitions": [
+    {
+      "firstEdgeName": "",
+      "secondEdgeName": ""
+    }
+  ],
+  "locationInTrasition": [
+    {
+      "trasitionNum": 0,
+      "transitionId": 29,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 100,
+            "z": 1
+          },
+          "locationName": "zara",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "H&M",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "zoya",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 1,
+      "transitionId": 30,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "fox",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "levi",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "מדרגות נעות קומה 1",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 2,
+      "transitionId": 31,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 50,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "laline",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 3,
+      "transitionId": 32,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "מדרגות נעות קומה 2",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "kitch",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "bell",
+          "locationTypesId": 1
+        }
+      ]
+    }
+  ],
+  "intersection": [
+    {
+      "intersectionNum": 1,
+      "coordinate": {
+        "x": 20,
+        "y": 100,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        2
+      ]
+    },
+    {
+      "intersectionNum": 2,
+      "coordinate": {
+        "x": 20,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        1
+      ]
+    },
+    {
+      "intersectionNum": 3,
+      "coordinate": {
+        "x": 75,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        1,
+        2
+      ]
+    }
+  ],
+  "edgesCrossing": [
+    {
+      "firstEdgeName": "מדרגות נעות קומה 2",
+      "secondEdgeName": "מדרגות נעות קומה 1"
+    }
+  ],
+  "edgesCrossTrasitions": [
+    {
+      "firstEdgeName": "",
+      "secondEdgeName": ""
+    }
+  ],
+  "locationInTrasition": [
+    {
+      "trasitionNum": 0,
+      "transitionId": 29,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 100,
+            "z": 1
+          },
+          "locationName": "zara",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "H&M",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "zoya",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 1,
+      "transitionId": 30,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "fox",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "levi",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "מדרגות נעות קומה 1",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 2,
+      "transitionId": 31,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 50,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "laline",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 3,
+      "transitionId": 32,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "מדרגות נעות קומה 2",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "kitch",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "bell",
+          "locationTypesId": 1
+        }
+      ]
+    }
+  ],
+  "intersection": [
+    {
+      "intersectionNum": 1,
+      "coordinate": {
+        "x": 20,
+        "y": 100,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        2
+      ]
+    },
+    {
+      "intersectionNum": 2,
+      "coordinate": {
+        "x": 20,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        1
+      ]
+    },
+    {
+      "intersectionNum": 3,
+      "coordinate": {
+        "x": 75,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        1,
+        2
+      ]
+    }
+  ],
+  "edgesCrossing": [
+    {
+      "firstEdgeName": "מדרגות נעות קומה 2",
+      "secondEdgeName": "מדרגות נעות קומה 1"
+    }
+  ],
+  "edgesCrossTrasitions": [
+    {
+      "firstEdgeName": "",
+      "secondEdgeName": ""
+    }
+  ],
+  "locationInTrasition": [
+    {
+      "trasitionNum": 0,
+      "transitionId": 29,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 100,
+            "z": 1
+          },
+          "locationName": "zara",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "H&M",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "zoya",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 1,
+      "transitionId": 30,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "fox",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "levi",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "מדרגות נעות קומה 1",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 2,
+      "transitionId": 31,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 50,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "laline",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 3,
+      "transitionId": 32,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "מדרגות נעות קומה 2",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "kitch",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "bell",
+          "locationTypesId": 1
+        }
+      ]
+    }
+  ],
+  "intersection": [
+    {
+      "intersectionNum": 1,
+      "coordinate": {
+        "x": 20,
+        "y": 100,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        2
+      ]
+    },
+    {
+      "intersectionNum": 2,
+      "coordinate": {
+        "x": 20,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        1
+      ]
+    },
+    {
+      "intersectionNum": 3,
+      "coordinate": {
+        "x": 75,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        1,
+        2
+      ]
+    }
+  ],
+  "edgesCrossing": [
+    {
+      "firstEdgeName": "מדרגות נעות קומה 2",
+      "secondEdgeName": "מדרגות נעות קומה 1"
+    }
+  ],
+  "edgesCrossTrasitions": [
+    {
+      "firstEdgeName": "",
+      "secondEdgeName": ""
+    }
+  ],
+  "locationInTrasition": [
+    {
+      "trasitionNum": 0,
+      "transitionId": 29,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 100,
+            "z": 1
+          },
+          "locationName": "zara",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "H&M",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "zoya",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 1,
+      "transitionId": 30,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "fox",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "levi",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "מדרגות נעות קומה 1",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 2,
+      "transitionId": 31,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 50,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "laline",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 3,
+      "transitionId": 32,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "מדרגות נעות קומה 2",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "kitch",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "bell",
+          "locationTypesId": 1
+        }
+      ]
+    }
+  ],
+  "intersection": [
+    {
+      "intersectionNum": 1,
+      "coordinate": {
+        "x": 20,
+        "y": 100,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        2
+      ]
+    },
+    {
+      "intersectionNum": 2,
+      "coordinate": {
+        "x": 20,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        1
+      ]
+    },
+    {
+      "intersectionNum": 3,
+      "coordinate": {
+        "x": 75,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        1,
+        2
+      ]
+    }
+  ],
+  "edgesCrossing": [
+    {
+      "firstEdgeName": "מדרגות נעות קומה 2",
+      "secondEdgeName": "מדרגות נעות קומה 1"
+    }
+  ],
+  "edgesCrossTrasitions": [
+    {
+      "firstEdgeName": "",
+      "secondEdgeName": ""
+    }
+  ],
+  "locationInTrasition": [
+    {
+      "trasitionNum": 0,
+      "transitionId": 29,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 100,
+            "z": 1
+          },
+          "locationName": "zara",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "H&M",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "zoya",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 1,
+      "transitionId": 30,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "fox",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "levi",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "מדרגות נעות קומה 1",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 2,
+      "transitionId": 31,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 50,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "laline",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 3,
+      "transitionId": 32,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "מדרגות נעות קומה 2",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "kitch",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "bell",
+          "locationTypesId": 1
+        }
+      ]
+    }
+  ],
+  "intersection": [
+    {
+      "intersectionNum": 1,
+      "coordinate": {
+        "x": 20,
+        "y": 100,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        2
+      ]
+    },
+    {
+      "intersectionNum": 2,
+      "coordinate": {
+        "x": 20,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        1
+      ]
+    },
+    {
+      "intersectionNum": 3,
+      "coordinate": {
+        "x": 75,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        1,
+        2
+      ]
+    }
+  ],
+  "edgesCrossing": [
+    {
+      "firstEdgeName": "מדרגות נעות קומה 2",
+      "secondEdgeName": "מדרגות נעות קומה 1"
+    }
+  ],
+  "edgesCrossTrasitions": [
+    {
+      "firstEdgeName": "",
+      "secondEdgeName": ""
+    }
+  ],
+  "locationInTrasition": [
+    {
+      "trasitionNum": 0,
+      "transitionId": 29,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 100,
+            "z": 1
+          },
+          "locationName": "zara",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "H&M",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "zoya",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 1,
+      "transitionId": 30,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "fox",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "levi",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "מדרגות נעות קומה 1",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 2,
+      "transitionId": 31,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 50,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "laline",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 3,
+      "transitionId": 32,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "מדרגות נעות קומה 2",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "kitch",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "bell",
+          "locationTypesId": 1
+        }
+      ]
+    }
+  ],
+  "intersection": [
+    {
+      "intersectionNum": 1,
+      "coordinate": {
+        "x": 20,
+        "y": 100,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        2
+      ]
+    },
+    {
+      "intersectionNum": 2,
+      "coordinate": {
+        "x": 20,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        1
+      ]
+    },
+    {
+      "intersectionNum": 3,
+      "coordinate": {
+        "x": 75,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        1,
+        2
+      ]
+    }
+  ],
+  "edgesCrossing": [
+    {
+      "firstEdgeName": "מדרגות נעות קומה 2",
+      "secondEdgeName": "מדרגות נעות קומה 1"
+    }
+  ],
+  "edgesCrossTrasitions": [
+    {
+      "firstEdgeName": "",
+      "secondEdgeName": ""
+    }
+  ],
+  "locationInTrasition": [
+    {
+      "trasitionNum": 0,
+      "transitionId": 29,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 100,
+            "z": 1
+          },
+          "locationName": "zara",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "H&M",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "zoya",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 1,
+      "transitionId": 30,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "fox",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "levi",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "מדרגות נעות קומה 1",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 2,
+      "transitionId": 31,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 50,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "laline",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 3,
+      "transitionId": 32,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "מדרגות נעות קומה 2",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "kitch",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "bell",
+          "locationTypesId": 1
+        }
+      ]
+    }
+  ],
+  "intersection": [
+    {
+      "intersectionNum": 1,
+      "coordinate": {
+        "x": 20,
+        "y": 100,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        2
+      ]
+    },
+    {
+      "intersectionNum": 2,
+      "coordinate": {
+        "x": 20,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        1
+      ]
+    },
+    {
+      "intersectionNum": 3,
+      "coordinate": {
+        "x": 75,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        1,
+        2
+      ]
+    }
+  ],
+  "edgesCrossing": [
+    {
+      "firstEdgeName": "מדרגות נעות קומה 2",
+      "secondEdgeName": "מדרגות נעות קומה 1"
+    }
+  ],
+  "edgesCrossTrasitions": [
+    {
+      "firstEdgeName": "",
+      "secondEdgeName": ""
+    }
+  ],
+  "locationInTrasition": [
+    {
+      "trasitionNum": 0,
+      "transitionId": 29,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 100,
+            "z": 1
+          },
+          "locationName": "zara",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "H&M",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "zoya",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 1,
+      "transitionId": 30,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "fox",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "levi",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "מדרגות נעות קומה 1",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 2,
+      "transitionId": 31,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 50,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "laline",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 3,
+      "transitionId": 32,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "מדרגות נעות קומה 2",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "kitch",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "bell",
+          "locationTypesId": 1
+        }
+      ]
+    }
+  ],
+  "intersection": [
+    {
+      "intersectionNum": 1,
+      "coordinate": {
+        "x": 20,
+        "y": 100,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        2
+      ]
+    },
+    {
+      "intersectionNum": 2,
+      "coordinate": {
+        "x": 20,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        1
+      ]
+    },
+    {
+      "intersectionNum": 3,
+      "coordinate": {
+        "x": 75,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        1,
+        2
+      ]
+    }
+  ],
+  "edgesCrossing": [
+    {
+      "firstEdgeName": "מדרגות נעות קומה 2",
+      "secondEdgeName": "מדרגות נעות קומה 1"
+    }
+  ],
+  "edgesCrossTrasitions": [
+    {
+      "firstEdgeName": "",
+      "secondEdgeName": ""
+    }
+  ],
+  "locationInTrasition": [
+    {
+      "trasitionNum": 0,
+      "transitionId": 29,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 100,
+            "z": 1
+          },
+          "locationName": "zara",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "H&M",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "zoya",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 1,
+      "transitionId": 30,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "fox",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "levi",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "מדרגות נעות קומה 1",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 2,
+      "transitionId": 31,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 50,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "laline",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 3,
+      "transitionId": 32,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "מדרגות נעות קומה 2",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "kitch",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "bell",
+          "locationTypesId": 1
+        }
+      ]
+    }
+  ],
+  "intersection": [
+    {
+      "intersectionNum": 1,
+      "coordinate": {
+        "x": 20,
+        "y": 100,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        2
+      ]
+    },
+    {
+      "intersectionNum": 2,
+      "coordinate": {
+        "x": 20,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        1
+      ]
+    },
+    {
+      "intersectionNum": 3,
+      "coordinate": {
+        "x": 75,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        1,
+        2
+      ]
+    }
+  ],
+  "edgesCrossing": [
+    {
+      "firstEdgeName": "מדרגות נעות קומה 2",
+      "secondEdgeName": "מדרגות נעות קומה 1"
+    }
+  ],
+  "edgesCrossTrasitions": [
+    {
+      "firstEdgeName": "",
+      "secondEdgeName": ""
+    }
+  ],
+  "locationInTrasition": [
+    {
+      "trasitionNum": 0,
+      "transitionId": 29,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 100,
+            "z": 1
+          },
+          "locationName": "zara",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "H&M",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "zoya",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 1,
+      "transitionId": 30,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "fox",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "levi",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "מדרגות נעות קומה 1",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 2,
+      "transitionId": 31,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 50,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "laline",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 3,
+      "transitionId": 32,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "מדרגות נעות קומה 2",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "kitch",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "bell",
+          "locationTypesId": 1
+        }
+      ]
+    }
+  ],
+  "intersection": [
+    {
+      "intersectionNum": 1,
+      "coordinate": {
+        "x": 20,
+        "y": 100,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        2
+      ]
+    },
+    {
+      "intersectionNum": 2,
+      "coordinate": {
+        "x": 20,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        1
+      ]
+    },
+    {
+      "intersectionNum": 3,
+      "coordinate": {
+        "x": 75,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        1,
+        2
+      ]
+    }
+  ],
+  "edgesCrossing": [
+    {
+      "firstEdgeName": "מדרגות נעות קומה 2",
+      "secondEdgeName": "מדרגות נעות קומה 1"
+    }
+  ],
+  "edgesCrossTrasitions": [
+    {
+      "firstEdgeName": "",
+      "secondEdgeName": ""
+    }
+  ],
+  "locationInTrasition": [
+    {
+      "trasitionNum": 0,
+      "transitionId": 29,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 100,
+            "z": 1
+          },
+          "locationName": "zara",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "H&M",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "zoya",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 1,
+      "transitionId": 30,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "fox",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "levi",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "מדרגות נעות קומה 1",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 2,
+      "transitionId": 31,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 50,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "laline",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 3,
+      "transitionId": 32,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "מדרגות נעות קומה 2",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "kitch",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "bell",
+          "locationTypesId": 1
+        }
+      ]
+    }
+  ],
+  "intersection": [
+    {
+      "intersectionNum": 1,
+      "coordinate": {
+        "x": 20,
+        "y": 100,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        2
+      ]
+    },
+    {
+      "intersectionNum": 2,
+      "coordinate": {
+        "x": 20,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        1
+      ]
+    },
+    {
+      "intersectionNum": 3,
+      "coordinate": {
+        "x": 75,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        1,
+        2
+      ]
+    }
+  ],
+  "edgesCrossing": [
+    {
+      "firstEdgeName": "מדרגות נעות קומה 2",
+      "secondEdgeName": "מדרגות נעות קומה 1"
+    }
+  ],
+  "edgesCrossTrasitions": [
+    {
+      "firstEdgeName": "",
+      "secondEdgeName": ""
+    }
+  ],
+  "locationInTrasition": [
+    {
+      "trasitionNum": 0,
+      "transitionId": 29,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 100,
+            "z": 1
+          },
+          "locationName": "zara",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "H&M",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "zoya",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 1,
+      "transitionId": 30,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "fox",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "levi",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "מדרגות נעות קומה 1",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 2,
+      "transitionId": 31,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 50,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "laline",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 3,
+      "transitionId": 32,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "מדרגות נעות קומה 2",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "kitch",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "bell",
+          "locationTypesId": 1
+        }
+      ]
+    }
+  ],
+  "intersection": [
+    {
+      "intersectionNum": 1,
+      "coordinate": {
+        "x": 20,
+        "y": 100,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        2
+      ]
+    },
+    {
+      "intersectionNum": 2,
+      "coordinate": {
+        "x": 20,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        1
+      ]
+    },
+    {
+      "intersectionNum": 3,
+      "coordinate": {
+        "x": 75,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        1,
+        2
+      ]
+    }
+  ],
+  "edgesCrossing": [
+    {
+      "firstEdgeName": "מדרגות נעות קומה 2",
+      "secondEdgeName": "מדרגות נעות קומה 1"
+    }
+  ],
+  "edgesCrossTrasitions": [
+    {
+      "firstEdgeName": "",
+      "secondEdgeName": ""
+    }
+  ],
+  "locationInTrasition": [
+    {
+      "trasitionNum": 0,
+      "transitionId": 29,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 100,
+            "z": 1
+          },
+          "locationName": "zara",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "H&M",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "zoya",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 1,
+      "transitionId": 30,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "fox",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "levi",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "מדרגות נעות קומה 1",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 2,
+      "transitionId": 31,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 50,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "laline",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 3,
+      "transitionId": 32,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "מדרגות נעות קומה 2",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "kitch",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "bell",
+          "locationTypesId": 1
+        }
+      ]
+    }
+  ],
+  "intersection": [
+    {
+      "intersectionNum": 1,
+      "coordinate": {
+        "x": 20,
+        "y": 100,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        2
+      ]
+    },
+    {
+      "intersectionNum": 2,
+      "coordinate": {
+        "x": 20,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        1
+      ]
+    },
+    {
+      "intersectionNum": 3,
+      "coordinate": {
+        "x": 75,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        1,
+        2
+      ]
+    }
+  ],
+  "edgesCrossing": [
+    {
+      "firstEdgeName": "מדרגות נעות קומה 2",
+      "secondEdgeName": "מדרגות נעות קומה 1"
+    }
+  ],
+  "edgesCrossTrasitions": [
+    {
+      "firstEdgeName": "",
+      "secondEdgeName": ""
+    }
+  ],
+  "locationInTrasition": [
+    {
+      "trasitionNum": 0,
+      "transitionId": 29,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 100,
+            "z": 1
+          },
+          "locationName": "zara",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "H&M",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "zoya",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 1,
+      "transitionId": 30,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "fox",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "levi",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "מדרגות נעות קומה 1",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 2,
+      "transitionId": 31,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 50,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "laline",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 3,
+      "transitionId": 32,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "מדרגות נעות קומה 2",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "kitch",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "bell",
+          "locationTypesId": 1
+        }
+      ]
+    }
+  ],
+  "intersection": [
+    {
+      "intersectionNum": 1,
+      "coordinate": {
+        "x": 20,
+        "y": 100,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        2
+      ]
+    },
+    {
+      "intersectionNum": 2,
+      "coordinate": {
+        "x": 20,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        1
+      ]
+    },
+    {
+      "intersectionNum": 3,
+      "coordinate": {
+        "x": 75,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        1,
+        2
+      ]
+    }
+  ],
+  "edgesCrossing": [
+    {
+      "firstEdgeName": "מדרגות נעות קומה 2",
+      "secondEdgeName": "מדרגות נעות קומה 1"
+    }
+  ],
+  "edgesCrossTrasitions": [
+    {
+      "firstEdgeName": "",
+      "secondEdgeName": ""
+    }
+  ],
+  "locationInTrasition": [
+    {
+      "trasitionNum": 0,
+      "transitionId": 29,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 100,
+            "z": 1
+          },
+          "locationName": "zara",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "H&M",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "zoya",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 1,
+      "transitionId": 30,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "fox",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "levi",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "מדרגות נעות קומה 1",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 2,
+      "transitionId": 31,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 50,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "laline",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 3,
+      "transitionId": 32,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "מדרגות נעות קומה 2",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "kitch",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "bell",
+          "locationTypesId": 1
+        }
+      ]
+    }
+  ],
+  "intersection": [
+    {
+      "intersectionNum": 1,
+      "coordinate": {
+        "x": 20,
+        "y": 100,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        2
+      ]
+    },
+    {
+      "intersectionNum": 2,
+      "coordinate": {
+        "x": 20,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        1
+      ]
+    },
+    {
+      "intersectionNum": 3,
+      "coordinate": {
+        "x": 75,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        1,
+        2
+      ]
+    }
+  ],
+  "edgesCrossing": [
+    {
+      "firstEdgeName": "מדרגות נעות קומה 2",
+      "secondEdgeName": "מדרגות נעות קומה 1"
+    }
+  ],
+  "edgesCrossTrasitions": [
+    {
+      "firstEdgeName": "",
+      "secondEdgeName": ""
+    }
+  ],
+  "locationInTrasition": [
+    {
+      "trasitionNum": 0,
+      "transitionId": 29,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 100,
+            "z": 1
+          },
+          "locationName": "zara",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "H&M",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 20,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "zoya",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 1,
+      "transitionId": 30,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "fox",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "levi",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 1
+          },
+          "locationName": "מדרגות נעות קומה 1",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 2,
+      "transitionId": 31,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 50,
+            "y": 70,
+            "z": 1
+          },
+          "locationName": "laline",
+          "locationTypesId": 1
+        }
+      ]
+    },
+    {
+      "trasitionNum": 3,
+      "transitionId": 32,
+      "locations": [
+        {
+          "coordinate": {
+            "x": 110,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "מדרגות נעות קומה 2",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 75,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "kitch",
+          "locationTypesId": 1
+        },
+        {
+          "coordinate": {
+            "x": 40,
+            "y": 40,
+            "z": 2
+          },
+          "locationName": "bell",
+          "locationTypesId": 1
+        }
+      ]
+    }
+  ],
+  "intersection": [
+    {
+      "intersectionNum": 1,
+      "coordinate": {
+        "x": 20,
+        "y": 100,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        2
+      ]
+    },
+    {
+      "intersectionNum": 2,
+      "coordinate": {
+        "x": 20,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        0,
+        1
+      ]
+    },
+    {
+      "intersectionNum": 3,
+      "coordinate": {
+        "x": 75,
+        "y": 40,
+        "z": 1
+      },
+      "IntersectionOnLocation": true,
+      "transitionsNums": [
+        1,
+        2
+      ]
+    }
+  ],
+  "edgesCrossing": [
+    {
+      "firstEdgeName": "מדרגות נעות קומה 2",
+      "secondEdgeName": "מדרגות נעות קומה 1"
+    }
+  ],
+  "edgesCrossTrasitions": [
+    {
+      "firstEdgeName": "",
+      "secondEdgeName": ""
+    }
   ]
 }

@@ -271,14 +271,14 @@ namespace FastRouting.Services.Services.Logic
                     {
                         locationIdA = loc.coordinate.coordinateId,
                         locationIdB = loc2.coordinate.coordinateId,
-                        distance = 0
+                        distance = 200
                     };
                     Edges.Add(e);
                     e = new EdgesDTO
                     {
                         locationIdA = loc2.coordinate.coordinateId,
                         locationIdB = loc.coordinate.coordinateId,
-                        distance = 0
+                        distance = 200
                     };
                     Edges.Add(e);
                     

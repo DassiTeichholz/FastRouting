@@ -2,7 +2,7 @@
   "locationInTrasition": [
     {
       "trasitionNum": 0,
-      "transitionId": 29,
+      "transitionId": 86,
       "locations": [
         {
           "coordinate": {
@@ -13,13 +13,11 @@
           "locationName": "משרדי ההנהלה",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 1,
-      "transitionId": 30,
+      "transitionId": 87,
       "locations": [
         {
           "coordinate": {
@@ -30,12 +28,11 @@
           "locationName": "ביג טויס",
           "locationTypesId": 1
         }
-
       ]
     },
     {
       "trasitionNum": 2,
-      "transitionId": 30,
+      "transitionId": 88,
       "locations": [
         {
           "coordinate": {
@@ -82,13 +79,11 @@
           "locationName": "ברוסטר ציקן",
           "locationTypesId": 1
         }
-
       ]
     },
-
     {
       "trasitionNum": 3,
-      "transitionId": 30,
+      "transitionId": 89,
       "locations": [
         {
           "coordinate": {
@@ -108,13 +103,11 @@
           "locationName": "פינות אוכל, קומה 0",
           "locationTypesId": 1
         }
-
       ]
     },
-
     {
       "trasitionNum": 4,
-      "transitionId": 30,
+      "transitionId": 90,
       "locations": [
         {
           "coordinate": {
@@ -125,13 +118,11 @@
           "locationName": "מדרגות נעות דרום, קומה 0",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 5,
-      "transitionId": 30,
+      "transitionId": 91,
       "locations": [
         {
           "coordinate": {
@@ -151,13 +142,11 @@
           "locationName": "כניסה דרום-מזרח, קומה 0",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 6,
-      "transitionId": 30,
+      "transitionId": 92,
       "locations": [
         {
           "coordinate": {
@@ -276,13 +265,11 @@
           "locationName": "אופיס דיפו",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 7,
-      "transitionId": 29,
+      "transitionId": 93,
       "locations": [
         {
           "coordinate": {
@@ -338,13 +325,11 @@
           "locationName": "גונגל",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 8,
-      "transitionId": 29,
+      "transitionId": 94,
       "locations": [
         {
           "coordinate": {
@@ -355,13 +340,11 @@
           "locationName": "כניסה מזרח, קומה 0",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 9,
-      "transitionId": 29,
+      "transitionId": 95,
       "locations": [
         {
           "coordinate": {
@@ -372,13 +355,11 @@
           "locationName": "מעליות מזרח, קומה 0",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 10,
-      "transitionId": 29,
+      "transitionId": 96,
       "locations": [
         {
           "coordinate": {
@@ -389,13 +370,11 @@
           "locationName": "זארה",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 11,
-      "transitionId": 29,
+      "transitionId": 97,
       "locations": [
         {
           "coordinate": {
@@ -478,13 +457,11 @@
           "locationName": "גנטלמן",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 12,
-      "transitionId": 29,
+      "transitionId": 98,
       "locations": [
         {
           "coordinate": {
@@ -504,13 +481,11 @@
           "locationName": "איל מקיאג",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 13,
-      "transitionId": 29,
+      "transitionId": 99,
       "locations": [
         {
           "coordinate": {
@@ -521,13 +496,11 @@
           "locationName": "מדרגות נעות דרום, קומה 1",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 14,
-      "transitionId": 29,
+      "transitionId": 100,
       "locations": [
         {
           "coordinate": {
@@ -547,13 +520,11 @@
           "locationName": "כניסה דרום מזרח, קומה 1",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 15,
-      "transitionId": 29,
+      "transitionId": 101,
       "locations": [
         {
           "coordinate": {
@@ -672,13 +643,11 @@
           "locationName": "תכשיטי גאיה",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 16,
-      "transitionId": 29,
+      "transitionId": 102,
       "locations": [
         {
           "coordinate": {
@@ -761,13 +730,11 @@
           "locationName": "אס וואר",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 17,
-      "transitionId": 29,
+      "transitionId": 103,
       "locations": [
         {
           "coordinate": {
@@ -796,13 +763,11 @@
           "locationName": "מעליות מזרח, קומה 1",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 18,
-      "transitionId": 29,
+      "transitionId": 104,
       "locations": [
         {
           "coordinate": {
@@ -822,13 +787,11 @@
           "locationName": "סאקס",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 19,
-      "transitionId": 29,
+      "transitionId": 105,
       "locations": [
         {
           "coordinate": {
@@ -839,13 +802,11 @@
           "locationName": "אמריקו איגל",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 20,
-      "transitionId": 29,
+      "transitionId": 106,
       "locations": [
         {
           "coordinate": {
@@ -856,13 +817,11 @@
           "locationName": "סברובסקי",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 21,
-      "transitionId": 29,
+      "transitionId": 107,
       "locations": [
         {
           "coordinate": {
@@ -972,13 +931,11 @@
           "locationName": "אורבן אאוטפיטרס, קומה 1",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 22,
-      "transitionId": 29,
+      "transitionId": 108,
       "locations": [
         {
           "coordinate": {
@@ -1115,14 +1072,11 @@
           "locationName": "רנואר",
           "locationTypesId": 1
         }
-
-
-
       ]
     },
     {
       "trasitionNum": 23,
-      "transitionId": 29,
+      "transitionId": 109,
       "locations": [
         {
           "coordinate": {
@@ -1133,15 +1087,12 @@
           "locationName": "מעליות מזרח 2, קומה 1",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 24,
-      "transitionId": 29,
+      "transitionId": 110,
       "locations": [
-
         {
           "coordinate": {
             "x": 2573,
@@ -1223,13 +1174,11 @@
           "locationName": "אורבניקה, קומה 1",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 25,
-      "transitionId": 29,
+      "transitionId": 111,
       "locations": [
         {
           "coordinate": {
@@ -1240,13 +1189,11 @@
           "locationName": "חדרי שירות צפון, קומה 1",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 26,
-      "transitionId": 29,
+      "transitionId": 112,
       "locations": [
         {
           "coordinate": {
@@ -1320,13 +1267,11 @@
           "locationName": "סופר פארם",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 27,
-      "transitionId": 29,
+      "transitionId": 113,
       "locations": [
         {
           "coordinate": {
@@ -1346,13 +1291,11 @@
           "locationName": "מדרגות נעות צפון, קומה 1",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 28,
-      "transitionId": 29,
+      "transitionId": 114,
       "locations": [
         {
           "coordinate": {
@@ -1363,13 +1306,11 @@
           "locationName": "כניסה צפון, קומה 1",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 29,
-      "transitionId": 29,
+      "transitionId": 115,
       "locations": [
         {
           "coordinate": {
@@ -1380,13 +1321,11 @@
           "locationName": "חדרי שירות משניים, קומה 1",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 30,
-      "transitionId": 29,
+      "transitionId": 116,
       "locations": [
         {
           "coordinate": {
@@ -1397,13 +1336,11 @@
           "locationName": "המשביר לצרכן",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 31,
-      "transitionId": 29,
+      "transitionId": 117,
       "locations": [
         {
           "coordinate": {
@@ -1522,13 +1459,11 @@
           "locationName": "אופטיקה הלפרין",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 32,
-      "transitionId": 29,
+      "transitionId": 118,
       "locations": [
         {
           "coordinate": {
@@ -1683,13 +1618,11 @@
           "locationName": "מאסימו דוטי",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 33,
-      "transitionId": 29,
+      "transitionId": 119,
       "locations": [
         {
           "coordinate": {
@@ -1709,13 +1642,11 @@
           "locationName": "בליקר בייקרי",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 34,
-      "transitionId": 29,
+      "transitionId": 120,
       "locations": [
         {
           "coordinate": {
@@ -1744,13 +1675,11 @@
           "locationName": "גי סטאר",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 35,
-      "transitionId": 29,
+      "transitionId": 121,
       "locations": [
         {
           "coordinate": {
@@ -1761,13 +1690,11 @@
           "locationName": "נויז",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 36,
-      "transitionId": 29,
+      "transitionId": 122,
       "locations": [
         {
           "coordinate": {
@@ -1859,13 +1786,11 @@
           "locationName": "זיפ",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 37,
-      "transitionId": 29,
+      "transitionId": 123,
       "locations": [
         {
           "coordinate": {
@@ -1957,13 +1882,11 @@
           "locationName": "נייק",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 38,
-      "transitionId": 29,
+      "transitionId": 124,
       "locations": [
         {
           "coordinate": {
@@ -1974,13 +1897,11 @@
           "locationName": "פוקס הום",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 39,
-      "transitionId": 29,
+      "transitionId": 125,
       "locations": [
         {
           "coordinate": {
@@ -2027,13 +1948,11 @@
           "locationName": "מדרגות נעות צפון, קומה 2",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 40,
-      "transitionId": 29,
+      "transitionId": 126,
       "locations": [
         {
           "coordinate": {
@@ -2098,13 +2017,11 @@
           "locationName": "טופ שופ",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 41,
-      "transitionId": 29,
+      "transitionId": 127,
       "locations": [
         {
           "coordinate": {
@@ -2124,13 +2041,11 @@
           "locationName": "אורבניקה, קומה 2",
           "locationTypesId": 1
         }
-
-
       ]
     },
     {
       "trasitionNum": 42,
-      "transitionId": 29,
+      "transitionId": 128,
       "locations": [
         {
           "coordinate": {
@@ -2143,10 +2058,7 @@
         }
       ]
     }
-
   ],
-
-
   "intersection": [
     {
       "intersectionNum": 1,
@@ -2329,9 +2241,7 @@
         24
       ]
     }
-
   ],
-
   "edgesCrossTrasitions": [
     {
       "firstEdgeName": "ביג טויס",
@@ -2469,7 +2379,6 @@
       "firstEdgeName": "מעליות מזרח 2, קומה 1",
       "secondEdgeName": "רנואר"
     },
-
     {
       "firstEdgeName": "המשביר לצרכן",
       "secondEdgeName": "חנות קטנה ומדפיסה"
@@ -2562,12 +2471,6 @@
       "firstEdgeName": "מעלית מזרח 2, קומה 2",
       "secondEdgeName": "פוקס הום"
     }
-
-
-
-
-
-
   ],
   "edgesCrossing": [
     {
@@ -2603,7 +2506,4 @@
       "secondEdgeName": "מדרגות נעות צפון, קומה 2"
     }
   ]
-
-
-
 }
