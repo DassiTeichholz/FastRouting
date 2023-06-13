@@ -388,13 +388,15 @@ public  class RouteCalculation: IRouteCalculation
             double angle = angle2 - angle1;
             if (angle < -180) angle += 360;
             if (angle > 180) angle -= 360;
-            if (angle < -30) return "פנה שמאלה ל ";
-            if (angle > 30) return "פנה ימינה ל";
-            return "המשך ישר ל";
+            if (angle < -20) return "פנה שמאלה";
+            if (angle > 20) return "פנה ימינה";
+            return "המשך ישר";
         } 
 
         public async Task<List<Floor>> GetRoute(List<VertexOfGraph> vertexsOfGraph,int centerId)
         {
+            bool flag=false;
+            bool flag2= true;
             Floor floor;
             List<Floor> floors = new List<Floor>();
             List<string> directions = new List<string>();
@@ -412,189 +414,368 @@ public  class RouteCalculation: IRouteCalculation
                 return floors;
 
             }
-
-            double xPrev;
-            double yPrev;
-            double xCurrent;
-            double yCurrent;
-            double xNext;
-            double yNext;
-            string locationName="";
-            string currentDirection;
-            int trasition;
-            Task<string> partOfTheDirection;
-            string result;
-            int index = 0;
-            int numOfVertexsInT = 0;
-            int listLength = vertexsOfGraph.Count;
-            int z= vertexsOfGraph[index].coordinate.z;
-            bool flag = true;
-            //כל סיבוב לולאה בלולאה החיצונית, מבטא אובייקט "קומה" חדש
-            while (index<listLength)
+            else
             {
-                numOfVertexsInT=0;
-                z = vertexsOfGraph[index].coordinate.z;
-                xPrev= vertexsOfGraph[index].coordinate.x;
-                yPrev= vertexsOfGraph[index].coordinate.y;
-                numOfVertexsInT++;
-                vertexsOfFloor.Add(vertexsOfGraph[index]);
-                trasition = vertexsOfGraph[index].trasition;
-                index++;
-                //טיפול נפרד במעבר הראשון בקומה, בו כיוון ההדרכה נמדד אחרת
-                while (index<listLength&&z==vertexsOfGraph[index].coordinate.z
-                    &&(trasition==vertexsOfGraph[index].trasition))
+                int listLength = vertexsOfGraph.Count;
+
+                int index = 0;
+                int z;
+                VertexOfGraph a, b, c;
+                string d = "המשך ישר";
+                string direction;
+                string lastLocation;
+                while (index < listLength)
                 {
-                    numOfVertexsInT++;
-                    vertexsOfFloor.Add(vertexsOfGraph[index]);
-                    if (vertexsOfGraph[index].name != null)
+                    flag= false;
+                    z = vertexsOfGraph[index].coordinate.z;
+                    flag2= true;
+                    if ((index+1)==listLength||vertexsOfGraph[index+1].coordinate.z!=z)//יש קודקוד אחד בלבד בקומה זו
                     {
-                      locationName= vertexsOfGraph[index].name;
+                        TheCenterPhoto=await _TheCenterPhotoService.GetByZAsync(vertexsOfGraph[index].coordinate.z, centerId);
+                        directions.Add("הגעת ל "+vertexsOfGraph[index].name);
+                        vertexsOfFloor.Add(vertexsOfGraph[index]);
+                        //floor=new Floor(vertexsOfFloor, directions, TheCenterPhoto);
+                        //floors.Add(floor);
+                        index++;
                     }
-                    index++;
-                }
-               
-                // או שנגמר הליסט בודקת למה יצאנו מהלולאה, האם הגענו להצטלבות או למיקום
-                if (index==listLength)
-                {
-                    directions.Add("המשך ישר עד "+locationName);
-                }
-                else
-                {
-                    if (z!=vertexsOfGraph[index].coordinate.z)
+                    else if ((index+2)==listLength||vertexsOfGraph[index+2].coordinate.z!=z)//ישנם 2 קודקודים בלבד בקומה זו
                     {
-                        if(numOfVertexsInT>1)
-                        {
-                            directions.Add("המשך לכוון"+locationName);
-                        }
-                        directions.Add("המשך לקומה "+vertexsOfGraph[index].coordinate.z);
+                        TheCenterPhoto=await _TheCenterPhotoService.GetByZAsync(vertexsOfGraph[index].coordinate.z, centerId);
+                        directions.Add("המשך ל"+vertexsOfGraph[index+1].name);
+                        vertexsOfFloor.Add(vertexsOfGraph[index]);
+                        vertexsOfFloor.Add(vertexsOfGraph[index+1]);
+                        //floor=new Floor(vertexsOfFloor, directions, TheCenterPhoto);
+                        //floors.Add(floor);
+                        index++;
+                        index++;
                     }
                     else
                     {
-                        if (vertexsOfGraph[index].name==null)
-                        {
-                            if (numOfVertexsInT>1)
-                            {
-                                directions.Add("המשך עד "+locationName);
+                        //טיפול בשני הקודקודים הראשונים של הקומה
+                        a=vertexsOfGraph[index];
+                        lastLocation=a.name;
+                        vertexsOfFloor.Add(a);
+                        index++;
 
-                            }
-                            directions.Add("המשך מעט ");
-                            vertexsOfFloor.Add(vertexsOfFloor[index]);
-                            index++;
-                            while (index<listLength&& vertexsOfGraph[index].name==null)
-                            {
-                                vertexsOfFloor.Add(vertexsOfGraph[index]);
-                                index++;
-                                directions.Add("המשך עוד");
-                            }
+                        if (vertexsOfGraph[index].coordinate.z!=z)
+                        {
+                            TheCenterPhoto=await _TheCenterPhotoService.GetByZAsync(vertexsOfGraph[0].coordinate.z, centerId);
+                            directions.Add("הגעת ל "+vertexsOfGraph[index-1].name);
+                            floor=new Floor(vertexsOfFloor, directions, TheCenterPhoto);
+                            floors.Add(floor);
+
                         }
                         else
                         {
-                            directions.Add("המשך לכוון "+vertexsOfGraph[index].name);
-                        }
-                        xCurrent =vertexsOfGraph[index].coordinate.x;
-                        yCurrent=vertexsOfGraph[index].coordinate.y;
-
-                        //המשך טיפול בשאר הקודקודים הנמצאים בקומה זו
-                        while (index<listLength&&z==vertexsOfGraph[index].coordinate.z)
-                        {
-                            numOfVertexsInT=0;
-                            trasition =vertexsOfGraph[index].trasition;
-                            while (index<listLength&&z==vertexsOfGraph[index].coordinate.z
-                                &&trasition==vertexsOfGraph[index].trasition)
+                            b=vertexsOfGraph[index];
+                            vertexsOfFloor.Add(b);
+                            index++;
+                            if (b.name!=null)
                             {
-                                numOfVertexsInT++;
-                                vertexsOfFloor.Add(vertexsOfGraph[index]);
-                                if (vertexsOfGraph[index].name != null)
-                                {
-                                    locationName= vertexsOfGraph[index].name;
-                                }
-                                index++;
+                                lastLocation=b.name;
                             }
-                            if (index==listLength)
+                            d = "המשך ישר";
+                            while (index<listLength&&vertexsOfGraph[index].coordinate.z==z)//כל סיבוב = קומה חדשה
                             {
-                                if(numOfVertexsInT>1)
+                                direction=d;
+                                if (!flag&&!flag2)//אם זו לא הפעם הראשונה שנכנסתי ללולאה בקומה זו וכן, לא שמור מיקום אחרון
                                 {
-                                    xNext =vertexsOfGraph[index-1].coordinate.x;
-                                    yNext=vertexsOfGraph[index-1].coordinate.y;
-                                    partOfTheDirection=GetDirection(xPrev, yPrev, xCurrent, yCurrent, xNext, yNext);
-                                    result = await partOfTheDirection;
-                                    //locationName=vertexsOfGraph[index-1].name;
-                                    currentDirection=result+locationName;
-                                    directions.Add(currentDirection);
-                                }
-                                
-                            }
-                            else
-                            {
-                                xNext =vertexsOfGraph[index].coordinate.x;
-                                yNext=vertexsOfGraph[index].coordinate.y;
-                                if (z!=vertexsOfGraph[index].coordinate.z)
-                                {
-                                    if(numOfVertexsInT>1)
-                                    {
-                                        xNext =vertexsOfGraph[index-1].coordinate.x;
-                                        yNext=vertexsOfGraph[index-1].coordinate.y;
-                                        partOfTheDirection=GetDirection(xPrev, yPrev, xCurrent, yCurrent, xNext, yNext);
-                                        result = await partOfTheDirection;
-                                        //locationName=vertexsOfGraph[index-1].name;
-                                        currentDirection=result+locationName;
-                                        directions.Add(currentDirection);
-                                    }
-                                    directions.Add("המשך לקומה "+vertexsOfGraph[index].coordinate.z);
-                                    
+                                    lastLocation="";
                                 }
                                 else
                                 {
-                                    if (vertexsOfGraph[index].name==null)
+                                    lastLocation=vertexsOfGraph[index-1].name;
+                                }
+                                flag2=false;
+                                d="המשך ישר";
+                                while (index<listLength&&vertexsOfGraph[index].coordinate.z==z&&d=="המשך ישר")
+                                {
+                                    flag=false;
+                                    c=vertexsOfGraph[index];
+                                    vertexsOfFloor.Add(c);
+                                    d=GetDirection(a.coordinate.x, a.coordinate.y, b.coordinate.x, b.coordinate.y, c.coordinate.x, c.coordinate.y).Result;
+                                    if (d=="המשך ישר")
                                     {
-                                        if (numOfVertexsInT>1)
+                                        if (vertexsOfGraph[index].name!=null)
                                         {
-                                            directions.Add("המשך עד "+locationName);
-
-                                        }
-                                        directions.Add("המשך מעט ");
-                                        vertexsOfFloor.Add(vertexsOfFloor[index]);
-                                        index++;
-                                        while (index<listLength&&vertexsOfGraph[index].name==null)
-                                        {
-                                            vertexsOfFloor.Add(vertexsOfGraph[index]);
-                                            index++;
-                                            directions.Add("המשך עוד");
+                                            lastLocation=vertexsOfGraph[index].name;
                                         }
                                     }
                                     else
                                     {
-                                        partOfTheDirection=GetDirection(xPrev, yPrev, xCurrent, yCurrent, xNext, yNext);
-                                        result = await partOfTheDirection;
-                                        locationName=vertexsOfGraph[index].name;
-                                        currentDirection=result+locationName;
-                                        directions.Add(currentDirection);
+                                        if (d!="המשך ישר"&&vertexsOfGraph[index].name!=null)
+                                        {
+                                            flag=true;
+                                        }
+                                    }
+                                    a=b;
+                                    b=c;
+                                    index++;
+
+                                }
+                                //אם יצאתי מהלולאה בגלל שהכיוון השתנה 
+                                if (d!="המשך ישר")
+                                {
+
+
+                                    if (lastLocation==a.name)
+                                    {
+                                        directions.Add(a.name+" "+direction);
+                                    }
+                                    else if (lastLocation!=null)
+                                    {
+                                        directions.Add(lastLocation+" אחרי "+direction);
 
                                     }
-                                    //xNext =vertexsOfGraph[index].coordinate.x;
-                                    //yNext=vertexsOfGraph[index].coordinate.y;
+                                    else
+                                    {
+                                        directions.Add("מעט"+" "+direction);
+                                    }
+
+                                }
+                                //אם יצאתי מהקומה כי נגמרה הקומה או הקודקודים
+                                else if (index==listLength||vertexsOfGraph[index].coordinate.z!=z&&d=="המשך ישר")
+                                {
+                                    if (lastLocation==b.name)
+                                    {
+                                        directions.Add(b+" "+d);
+                                    }
+                                    else if (lastLocation!=null)
+                                    {
+                                        directions.Add(lastLocation+" אחרי "+d);
+
+                                    }
+                                    else
+                                    {
+                                        directions.Add("מעט"+" "+d);
+                                    }
+                                }
+                                if (index==listLength||vertexsOfGraph[index].coordinate.z!=z&&d!="המשך ישר")
+                                {
+                                    if (!flag)//אם זו לא הפעם הראשונה שנכנסתי ללולאה בקומה זו וכן, לא שמור מיקום אחרון
+                                    {
+                                        lastLocation="";
+                                    }
+                                    else
+                                    {
+                                        lastLocation=vertexsOfGraph[index-1].name;
+                                    }
+                                    if (lastLocation==b.name)
+                                    {
+                                        directions.Add(b.name+" "+d);
+                                    }
+                                    else if (lastLocation!="")
+                                    {
+                                        directions.Add(lastLocation+" אחרי "+d);
+
+                                    }
+                                    else
+                                    {
+                                        directions.Add("מעט"+" "+d);
+                                    }
+
+                                }
+                            }
+                            
+                        }
+                    }
+
+                    TheCenterPhoto=await _TheCenterPhotoService.GetByZAsync(z, centerId);
+                    floor=new Floor(vertexsOfFloor, directions, TheCenterPhoto);
+                    floors.Add(floor);
+                    directions=new List<string>();
+                    vertexsOfFloor=new List<VertexOfGraph>();
+                    TheCenterPhoto=new List<TheCenterPhotoDTO>();
+
+                }
+            }
+           
+            return floors;
+           
+            //while (index<listLength&&vertexsOfGraph[index].z)
+
+            //double xPrev;
+            //double yPrev;
+            //double xCurrent;
+            //double yCurrent;
+            //double xNext;
+            //double yNext;
+            //string locationName="";
+            //string currentDirection;
+            //int trasition;
+            //Task<string> partOfTheDirection;
+            //string result;
+            //int index = 0;
+            //int numOfVertexsInT = 0;
+            //int listLength = vertexsOfGraph.Count;
+            //int z= vertexsOfGraph[index].coordinate.z;
+            //bool flag = true;
+            ////כל סיבוב לולאה בלולאה החיצונית, מבטא אובייקט "קומה" חדש
+            //while (index<listLength)
+            //{
+            //    numOfVertexsInT=0;
+            //    z = vertexsOfGraph[index].coordinate.z;
+            //    xPrev= vertexsOfGraph[index].coordinate.x;
+            //    yPrev= vertexsOfGraph[index].coordinate.y;
+            //    numOfVertexsInT++;
+            //    vertexsOfFloor.Add(vertexsOfGraph[index]);
+            //    trasition = vertexsOfGraph[index].trasition;
+            //    index++;
+            //    //טיפול נפרד במעבר הראשון בקומה, בו כיוון ההדרכה נמדד אחרת
+            //    while (index<listLength&&z==vertexsOfGraph[index].coordinate.z
+            //        &&(trasition==vertexsOfGraph[index].trasition))
+            //    {
+            //        numOfVertexsInT++;
+            //        vertexsOfFloor.Add(vertexsOfGraph[index]);
+            //        if (vertexsOfGraph[index].name != null)
+            //        {
+            //          locationName= vertexsOfGraph[index].name;
+            //        }
+            //        index++;
+            //    }
+               
+            //    // או שנגמר הליסט בודקת למה יצאנו מהלולאה, האם הגענו להצטלבות או למיקום
+            //    if (index==listLength)
+            //    {
+            //        directions.Add("המשך ישר עד "+locationName);
+            //    }
+            //    else
+            //    {
+            //        if (z!=vertexsOfGraph[index].coordinate.z)
+            //        {
+            //            if(numOfVertexsInT>1)
+            //            {
+            //                directions.Add("המשך לכוון"+locationName);
+            //            }
+            //            directions.Add("המשך לקומה "+vertexsOfGraph[index].coordinate.z);
+            //        }
+            //        else
+            //        {
+            //            if (vertexsOfGraph[index].name==null)
+            //            {
+            //                if (numOfVertexsInT>1)
+            //                {
+            //                    directions.Add("המשך עד "+locationName);
+
+            //                }
+            //                directions.Add("המשך מעט ");
+            //                vertexsOfFloor.Add(vertexsOfFloor[index]);
+            //                index++;
+            //                while (index<listLength&& vertexsOfGraph[index].name==null)
+            //                {
+            //                    vertexsOfFloor.Add(vertexsOfGraph[index]);
+            //                    index++;
+            //                    directions.Add("המשך עוד");
+            //                }
+            //            }
+            //            else
+            //            {
+            //                directions.Add("המשך לכוון "+vertexsOfGraph[index].name);
+            //            }
+            //            xCurrent =vertexsOfGraph[index].coordinate.x;
+            //            yCurrent=vertexsOfGraph[index].coordinate.y;
+
+            //            //המשך טיפול בשאר הקודקודים הנמצאים בקומה זו
+            //            while (index<listLength&&z==vertexsOfGraph[index].coordinate.z)
+            //            {
+            //                numOfVertexsInT=0;
+            //                trasition =vertexsOfGraph[index].trasition;
+            //                while (index<listLength&&z==vertexsOfGraph[index].coordinate.z
+            //                    &&trasition==vertexsOfGraph[index].trasition)
+            //                {
+            //                    numOfVertexsInT++;
+            //                    vertexsOfFloor.Add(vertexsOfGraph[index]);
+            //                    if (vertexsOfGraph[index].name != null)
+            //                    {
+            //                        locationName= vertexsOfGraph[index].name;
+            //                    }
+            //                    index++;
+            //                }
+            //                if (index==listLength)
+            //                {
+            //                    if(numOfVertexsInT>1)
+            //                    {
+            //                        xNext =vertexsOfGraph[index-1].coordinate.x;
+            //                        yNext=vertexsOfGraph[index-1].coordinate.y;
+            //                        partOfTheDirection=GetDirection(xPrev, yPrev, xCurrent, yCurrent, xNext, yNext);
+            //                        result = await partOfTheDirection;
+            //                        //locationName=vertexsOfGraph[index-1].name;
+            //                        currentDirection=result+locationName;
+            //                        directions.Add(currentDirection);
+            //                    }
+                                
+            //                }
+            //                else
+            //                {
+            //                    xNext =vertexsOfGraph[index].coordinate.x;
+            //                    yNext=vertexsOfGraph[index].coordinate.y;
+            //                    if (z!=vertexsOfGraph[index].coordinate.z)
+            //                    {
+            //                        if(numOfVertexsInT>1)
+            //                        {
+            //                            xNext =vertexsOfGraph[index-1].coordinate.x;
+            //                            yNext=vertexsOfGraph[index-1].coordinate.y;
+            //                            partOfTheDirection=GetDirection(xPrev, yPrev, xCurrent, yCurrent, xNext, yNext);
+            //                            result = await partOfTheDirection;
+            //                            //locationName=vertexsOfGraph[index-1].name;
+            //                            currentDirection=result+locationName;
+            //                            directions.Add(currentDirection);
+            //                        }
+            //                        directions.Add("המשך לקומה "+vertexsOfGraph[index].coordinate.z);
+                                    
+            //                    }
+            //                    else
+            //                    {
+            //                        if (vertexsOfGraph[index].name==null)
+            //                        {
+            //                            if (numOfVertexsInT>1)
+            //                            {
+            //                                directions.Add("המשך עד "+locationName);
+
+            //                            }
+            //                            directions.Add("המשך מעט ");
+            //                            vertexsOfFloor.Add(vertexsOfFloor[index]);
+            //                            index++;
+            //                            while (index<listLength&&vertexsOfGraph[index].name==null)
+            //                            {
+            //                                vertexsOfFloor.Add(vertexsOfGraph[index]);
+            //                                index++;
+            //                                directions.Add("המשך עוד");
+            //                            }
+            //                        }
+            //                        else
+            //                        {
+            //                            partOfTheDirection=GetDirection(xPrev, yPrev, xCurrent, yCurrent, xNext, yNext);
+            //                            result = await partOfTheDirection;
+            //                            locationName=vertexsOfGraph[index].name;
+            //                            currentDirection=result+locationName;
+            //                            directions.Add(currentDirection);
+
+            //                        }
+            //                        //xNext =vertexsOfGraph[index].coordinate.x;
+            //                        //yNext=vertexsOfGraph[index].coordinate.y;
 
                                    
 
-                                    xPrev=xCurrent;
-                                    yPrev=yCurrent;
-                                    xCurrent=xNext;
-                                    yCurrent=yNext;
-                                }
-                            }
-                        }
-                    }
-                }
+            //                        xPrev=xCurrent;
+            //                        yPrev=yCurrent;
+            //                        xCurrent=xNext;
+            //                        yCurrent=yNext;
+            //                    }
+            //                }
+            //            }
+            //        }
+            //    }
                
-                TheCenterPhoto=await _TheCenterPhotoService.GetByZAsync(z, centerId);
-                floor=new Floor(vertexsOfFloor, directions, TheCenterPhoto);
-                floors.Add(floor);
-                directions=new List<string>();
-                vertexsOfFloor=new List<VertexOfGraph>();
-                TheCenterPhoto=new List<TheCenterPhotoDTO>();
+            //    TheCenterPhoto=await _TheCenterPhotoService.GetByZAsync(z, centerId);
+            //    floor=new Floor(vertexsOfFloor, directions, TheCenterPhoto);
+            //    floors.Add(floor);
+            //    directions=new List<string>();
+            //    vertexsOfFloor=new List<VertexOfGraph>();
+            //    TheCenterPhoto=new List<TheCenterPhotoDTO>();
 
-            }
-            return floors;
+            //}
+            //return floors;
 
         }
 
